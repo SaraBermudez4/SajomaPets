@@ -1,0 +1,131 @@
+{
+    "productos": [
+        {
+            "id_producto": "producto-1",
+            "id_tienda": "tienda-1",
+            "id_categoria_mascota": "categoria-mascota-1",
+            "id_categoria_producto": "categoria-producto-1",
+            "nombre_producto": "Dog Chow",
+            "descripcion_producto": "Comida para perro",
+            "imagen_producto": "",
+            "precio_producto": 20000,
+            "calificacion_producto": 4.5
+        }
+    ],
+    "reseñas": [
+        {
+            "id_reseña": "reseña-1",
+            "id_usuario_reseña": "usuario-1",
+            "id_producto_reseña": "producto-1",
+            "descripcion_reseña": "Me encanta!!!",
+            "puntuacion_reseña": 4
+        }
+    ],
+    "cart": [
+        {
+            "id_producto_cart": "producto-1",
+            "nombre_producto_cart": "Dog Chow",
+            "imagen_producto_cart": "",
+            "precio_producto_cart": 20000,
+            "cantidad_producto_cart": 3
+        }
+    ],
+    "categoria_mascotas": [
+        {
+            "id_categoria_mascotas": "categoria-mascota-1",
+            "nombre": "Perros"
+        },
+        {
+            "id_categoria_mascotas": "categoria-mascota-2",
+            "nombre": "Gatos"
+        },
+        {
+            "id_categoria_mascotas": "categoria-mascota-3",
+            "nombre": "Pajaros"
+        }
+    ],
+    "categoria_productos": [
+        {
+            "id_categoria_productos": "categoria-producto-1",
+            "nombre": "Alimentos"
+        },
+        {
+            "id_categoria_productos": "categoria-producto-2",
+            "nombre": "Accesorios"
+        },
+        {
+            "id_categoria_productos": "categoria-producto-3",
+            "nombre": "Juguetes"
+        }
+    ],
+    "favoritos": [
+        {
+            "id_producto_favorito": "producto-1",
+            "nombre_producto_favorito": "Dog Chow",
+            "imagen_producto_favorito": "",
+            "precio_producto_favorito": 20000
+        }
+    ],
+    "tiendas": [
+        {
+            "id_tienda": "tienda-1",
+            "nombre_tienda": "Tierra de gatos",
+            "ubicacion_tienda": {
+                "direccion": "Cll 87 BC 32",
+                "ciudad": "Medellín",
+                "departamento": "Antioquia"
+            },
+            "precio_envio_tienda": 9400,
+            "tiempo_estimado_tienda": "1 dia"
+        }
+    ],
+    "slider_productos": [
+        {
+            "id_producto": "producto-1",
+            "id_tienda": "tienda-1",
+            "id_categoria_mascota": "categoria-mascota-1",
+            "id_categoria_producto": "categoria-producto-1",
+            "nombre_producto": "Dog Chow",
+            "descripcion_producto": "Comida para perro",
+            "imagen_producto": "",
+            "precio_producto": 20000,
+            "calificacion_producto": 4.5
+        }
+    ],
+    "usuarios": [
+        {
+            "id_usuario": "usuario-1",
+            "nombre_usuario": "Pepito",
+            "apellido_usuario": "Perez",
+            "nick_usuario": "pepito123",
+            "correo": "pepito@gmail.com",
+            "contraseña": "123",
+            "documento": "1234567890",
+            "telefono": "+57 123453215",
+            "telefono_alternativo": "",
+            "tarjetas": [
+                {
+                    "id_tarjeta": "tarjeta-1",
+                    "metodo_pago_tarjeta": "credito",
+                    "numero_tarjeta": 122122,
+                    "validando_tarjeta": "12/29",
+                    "cvv_tarjeta": "123",
+                    "titular_tarjeta": "Pepito Perez",
+                    "documento_titular_tarjeta": "1000000"
+                }
+            ],
+            "domicilios": [
+                {
+                    "id_domicilio": "domicilio-1",
+                    "dirección": "Cll 87 BC 32",
+                    "tipo_domicilio": "Casa",
+                    "complemento": "int 123",
+                    "pais": "Colombia",
+                    "departamento": "Antioquia",
+                    "ciudad": "Medellín",
+                    "barrio": "Belén"
+                }
+            ]
+        }
+    ]
+}
