@@ -5,6 +5,9 @@ import { FcGoogle } from "react-icons/fc"
 import { SiFacebook } from "react-icons/si"
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { useForm } from '../../hooks/useForm'
+import { useDispatch } from 'react-redux'
+import { login } from '../../actions/authAction'
 
 const DivLogin = styled.div`
     padding: 40px;
@@ -34,18 +37,35 @@ const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
     const handleShowClick = () => setShowPassword(!showPassword);
 
+    const dispatch = useDispatch()
+
+    const [formValues, handleInputChange] = useForm({
+        user: '',
+        password: ''
+    })
+
+    const {user, password} = formValues
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+        dispatch(login(user, password))
+        
+        console.log('Se han enviados los datos');
+    }
+
     return (
         <Center>
             <DivLogin>
                 <ImageMediaLogin src="https://i.ibb.co/VtFcZgM/LOGASO-NO-JODA-2.png" alt="LOGASO-NO-JODA-2" border="0" />
-                <form>
+                <form onSubmit={handleSubmit}>
                     <FormControl mt={10}>
                         <InputGroup>
                             <InputLeftElement
                                 pointerEvents="none"
                                 children={<CFaUserAlt color="gray.300" />}
                             />
-                            <Input type="email" placeholder="Email address" />
+                            <Input type="email" placeholder="Email address" name='user' value={user} onChange={handleInputChange} />
                         </InputGroup>
                     </FormControl>
                     <FormControl mt={10}>
@@ -55,7 +75,7 @@ const Login = () => {
                                 color="gray.300"
                                 children={<CFaLock color="gray.300" />}
                             />
-                            <Input type={showPassword ? "text" : "password"} placeholder="Password" />
+                            <Input type={showPassword ? "text" : "password"} placeholder="Password" name='password' value={password} onChange={handleInputChange} />
                             <InputRightElement width="4.5rem">
                                 <Button h="1.75rem" size="sm" onClick={handleShowClick}>
                                     {showPassword ? "Hide" : "Show"}
@@ -63,7 +83,7 @@ const Login = () => {
                             </InputRightElement>
                         </InputGroup>
                     </FormControl>
-                    <Button width='100%' mt={10} background='#49519a' color='white' _hover={{ color: 'white' }}>Login</Button>
+                    <Button type='submit' width='100%' mt={10} background='#49519a' color='white' _hover={{ color: 'white' }}>Login</Button>
                 </form>
                 <Box mt={3} mb={3}>
                     New to us?{" "}
