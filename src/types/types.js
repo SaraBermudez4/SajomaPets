@@ -1,4 +1,10 @@
 export const types = {
     login: 'LOGIN',
-    logout: 'LOGOUT'
+    logout: 'LOGOUT',
+
+    uiSetError: 'SetError',
+    uiRemoveError: 'RemoveError',
+    
+    uiStartLoading: 'StartLoading',
+    uiFinishLoading: 'FinishLoaging'
 }

@@ -2,7 +2,6 @@ import firebase from 'firebase/app'
 import 'firebase/firestore'
 import 'firebase/auth'
 
-
 const firebaseConfig = {
     apiKey: "AIzaSyBkzLMe4Qoctb4OcE34AsEw7kOWMtvJGt0",
     authDomain: "sajoma-pets.firebaseapp.com",

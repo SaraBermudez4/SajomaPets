@@ -6,8 +6,8 @@ import { SiFacebook } from "react-icons/si"
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { useForm } from '../../hooks/useForm'
-import { useDispatch } from 'react-redux'
-import { login } from '../../actions/authAction'
+import { useDispatch, useSelector } from 'react-redux'
+import {    startLoginGoogle, startGoogleLogin } from '../../actions/authAction'
 
 const DivLogin = styled.div`
     padding: 40px;
@@ -39,6 +39,8 @@ const Login = () => {
 
     const dispatch = useDispatch()
 
+    const loading = useSelector(state => state.ui)
+
     const [formValues, handleInputChange] = useForm({
         user: '',
         password: ''
@@ -49,9 +51,13 @@ const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        dispatch(login(user, password))
+        dispatch(startLoginGoogle(user, password))
         
         console.log('Se han enviados los datos');
+    }
+
+    const handleGoogleLogin = () => {
+        dispatch(startGoogleLogin())
     }
 
     return (
@@ -83,7 +89,7 @@ const Login = () => {
                             </InputRightElement>
                         </InputGroup>
                     </FormControl>
-                    <Button type='submit' width='100%' mt={10} background='#49519a' color='white' _hover={{ color: 'white' }}>Login</Button>
+                    <Button type='submit' width='100%' mt={10} background='#49519a' color='white' _hover={{ color: 'white' }} disabled={loading}>Login</Button>
                 </form>
                 <Box mt={3} mb={3}>
                     New to us?{" "}
@@ -97,7 +103,7 @@ const Login = () => {
                     <Box w="100%" h="10" mt='13px'><hr color='black' /></Box>
                 </Grid>
                 <div>
-                    <Button width='100%' mt={5} background='red.500' color='white' _hover={{ bg: "#f95f62" }}><CFcGoogle mr={2} />Sign in with google</Button>
+                    <Button onClick={handleGoogleLogin} width='100%' mt={5} background='red.500' color='white' _hover={{ bg: "#f95f62" }}><CFcGoogle mr={2} />Sign in with google</Button>
                     <Button width='100%' mt={3} background='#3b5a9a' color='white' _hover={{ bg: "#4b6bad" }}><CSiFacebook mr={2} />Sign in with google</Button>
                 </div>
                 <div>
