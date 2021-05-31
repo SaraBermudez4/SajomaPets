@@ -2,7 +2,7 @@
   "name": "sajoma-pets",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://sarabermudez4.github.io/sajoma-pets",
+  "homepage": "https://SaraBermudez4.github.io/Sajoma-Pets",
   "dependencies": {
     "@chakra-ui/react": "^1.6.2",
     "@emotion/react": "11",
