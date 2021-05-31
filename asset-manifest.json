@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.js": "/sajoma-pets/static/js/main.fde22751.chunk.js",
+    "main.js.map": "/sajoma-pets/static/js/main.fde22751.chunk.js.map",
+    "runtime-main.js": "/sajoma-pets/static/js/runtime-main.fb5517e0.js",
+    "runtime-main.js.map": "/sajoma-pets/static/js/runtime-main.fb5517e0.js.map",
+    "static/js/2.fff0ef37.chunk.js": "/sajoma-pets/static/js/2.fff0ef37.chunk.js",
+    "static/js/2.fff0ef37.chunk.js.map": "/sajoma-pets/static/js/2.fff0ef37.chunk.js.map",
+    "index.html": "/sajoma-pets/index.html",
+    "static/js/2.fff0ef37.chunk.js.LICENSE.txt": "/sajoma-pets/static/js/2.fff0ef37.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fb5517e0.js",
+    "static/js/2.fff0ef37.chunk.js",
+    "static/js/main.fde22751.chunk.js"
+  ]
+}
