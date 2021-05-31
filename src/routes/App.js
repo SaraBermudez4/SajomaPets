@@ -2,6 +2,7 @@ import React from 'react'
 import { ChakraProvider } from "@chakra-ui/react";
 import {
   BrowserRouter as Router,
+  Redirect,
   Switch,
   // Route,
   // Redirect
@@ -48,6 +49,7 @@ const App = () => {
         <Switch>
           <PublicRouter path='/auth' component={Routes} isAuthenticated={isLoogedIn} />
           <PrivateRouter exact path='/' component={Home} isAuthenticated={isLoogedIn} />
+          <Redirect to='/auth/login' />
         </Switch>
       </Router>
     </ChakraProvider>
