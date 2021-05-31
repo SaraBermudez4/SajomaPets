@@ -1,7 +1,7 @@
 import { types } from "../types/types"
 
 const initialState = {
-    loadding: false,
+    loading: false,
     msjError: null
 }
 
@@ -23,6 +23,11 @@ export const registro = (state = initialState, action) => {
                 loading: true
             }
         case types.uiFinishLoading:
+            return {
+                ...state,
+                loading: false
+            }
+        case types.logout:
             return {
                 ...state,
                 loading: false

@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { useForm } from '../../hooks/useForm'
 import { useDispatch, useSelector } from 'react-redux'
-import {    startLoginGoogle, startGoogleLogin } from '../../actions/authAction'
+import { startLoginGoogle, startGoogleLogin } from '../../actions/authAction'
 
 const DivLogin = styled.div`
     padding: 40px;
@@ -89,11 +89,11 @@ const Login = () => {
                             </InputRightElement>
                         </InputGroup>
                     </FormControl>
-                    <Button type='submit' width='100%' mt={10} background='#49519a' color='white' _hover={{ color: 'white' }} disabled={loading}>Login</Button>
+                    <Button type='submit' width='100%' mt={10} background='#49519a' color='white' _hover={{ color: 'white' }} disable={loading}>Login</Button>
                 </form>
                 <Box mt={3} mb={3}>
                     New to us?{" "}
-                    <Link to='/registro'>
+                    <Link to='/auth/registro'>
                         Sign Up
                     </Link>
                 </Box>
@@ -104,7 +104,7 @@ const Login = () => {
                 </Grid>
                 <div>
                     <Button onClick={handleGoogleLogin} width='100%' mt={5} background='red.500' color='white' _hover={{ bg: "#f95f62" }}><CFcGoogle mr={2} />Sign in with google</Button>
-                    <Button width='100%' mt={3} background='#3b5a9a' color='white' _hover={{ bg: "#4b6bad" }}><CSiFacebook mr={2} />Sign in with google</Button>
+                    <Button width='100%' mt={3} background='#3b5a9a' color='white' _hover={{ bg: "#4b6bad" }}><CSiFacebook mr={2} />Sign in with facebook</Button>
                 </div>
                 <div>
                 </div>

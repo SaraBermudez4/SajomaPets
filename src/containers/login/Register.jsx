@@ -139,7 +139,7 @@ const Register = () => {
                 </form>
                 <Box mt={3} mb={3}>
                     Already registered?{" "}
-                    <Link to='/login'>
+                    <Link to='/auth/login'>
                         Sign in
                     </Link>
                 </Box>

@@ -6,11 +6,11 @@ export const startLoginGoogle = (email, password) => {
     return (dispatch) => {
         return firebase.auth().signInWithEmailAndPassword(email, password)
         .then(({user}) => {
-            dispatch(startLoading)
+            dispatch(startLoading())
             dispatch(login(user.uid, user.displayName))
         })
         .catch(e => {
-            dispatch(finishLoading)
+            dispatch(finishLoading())
             console.log(e);
         })
     }
@@ -34,15 +34,15 @@ export const startRegisterUser = (name, lastName, email, password) => {
             dispatch(login(user.uid, user.displayName))
             
 
-            user.providerData.forEach(function (profile) {
-                console.log("Sign-in provider: " + profile.providerId);
-                console.log("  Provider-specific UID: " + profile.uid);
-                console.log("  Name: " + profile.displayName);
-                console.log("  Email: " + profile.email);
-                console.log("  Photo URL: " + profile.photoURL);
-              });
-              console.log(user);
-              console.log(user.providerDatas);
+            // user.providerData.forEach(function (profile) {
+            //     console.log("Sign-in provider: " + profile.providerId);
+            //     console.log("  Provider-specific UID: " + profile.uid);
+            //     console.log("  Name: " + profile.displayName);
+            //     console.log("  Email: " + profile.email);
+            //     console.log("  Photo URL: " + profile.photoURL);
+            //   });
+            //   console.log(user);
+            //   console.log(user.providerDatas);
         })
         .catch( e => {
             console.log(e);
@@ -57,5 +57,18 @@ export const login = (uid, displayName) => {
             uid,
             displayName
         }
+    }
+}
+
+export const startLogout = () => {
+    return async ( dispatch ) => {
+        await firebase.auth().signOut()
+        dispatch(logout())
+    }
+}
+
+export const logout = () => {
+    return {
+        type: types.logout
     }
 }

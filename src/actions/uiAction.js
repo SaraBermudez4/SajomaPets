@@ -13,10 +13,14 @@ export const removeError = () => {
     }
 }
 
-export const startLoading = () => ({
-    type: types.uiStartLoading
-})
+export const startLoading = () => {
+    return {
+        type: types.uiStartLoading
+    }
+}
 
-export const finishLoading = () => ({
-    type: types.uiFinishLoading
-})
+export const finishLoading = () => {
+    return {
+        type: types.uiFinishLoading
+    }
+}
