@@ -48,7 +48,7 @@ const App = () => {
       <Router>
         <Switch>
           <PublicRouter path='/auth' component={Routes} isAuthenticated={isLoogedIn} />
-          <PrivateRouter exact path='/' component={Home} isAuthenticated={isLoogedIn} />
+          <PrivateRouter exact path='/home' component={Home} isAuthenticated={isLoogedIn} />
           <Redirect to='/auth/login' />
         </Switch>
       </Router>

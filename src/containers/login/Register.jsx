@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Input, FormControl, InputGroup, InputLeftElement, InputRightElement, Button, Center, Image, chakra, Box } from '@chakra-ui/react'
+import { Input, FormControl, InputGroup, InputLeftElement, InputRightElement, Button, Center, Image, chakra, Box, Alert, AlertIcon } from '@chakra-ui/react'
 import { FaUserAlt, FaLock } from "react-icons/fa"
 import { MdEmail } from "react-icons/md"
 import { AiFillTags } from "react-icons/ai"
@@ -36,7 +36,6 @@ const Register = () => {
     const CMdEmail = chakra(MdEmail);
     const CAiFillTags = chakra(AiFillTags);
 
-
     const [showPassword, setShowPassword] = useState(false);
     const handleShowClick = () => setShowPassword(!showPassword);
 
@@ -55,16 +54,16 @@ const Register = () => {
 
     const formValid = () => {
         if (name.trim().length === 0) {
-            dispatch(setError('nombre requerido'))
+            dispatch(setError('Nombre requerido'))
             return false
         } else if (lastName.trim().length === 0) {
-            dispatch(setError('apellido requerido'))
+            dispatch(setError('Apellido requerido'))
             return false
         } else if (!validator.isEmail(email)) {
-            dispatch(setError('email requerido'))
+            dispatch(setError('Email requerido'))
             return false
         } else if (!validator.isStrongPassword(password)) {
-            dispatch(setError('password no strong'))
+            dispatch(setError('Password no strong'))
             return false
         }
 
@@ -85,14 +84,15 @@ const Register = () => {
             <DivRegistro>
                 <ImageMediaRegistro src="https://i.ibb.co/VtFcZgM/LOGASO-NO-JODA-2.png" alt="LOGASO-NO-JODA-2" border="0" />
                 <form onSubmit={handleRegister}>
-                        {
-                            msjError &&
-                            (
-                                <div className="auth_alert-error">
-                                    {msjError}
-                                </div>
-                            )
-                        }
+                    {
+                        msjError &&
+                        (
+                            <Alert status="error" marginTop='5'>
+                                <AlertIcon />
+                                {msjError}
+                            </Alert>
+                        )
+                    }
                     <FormControl mt={7}>
                         <InputGroup>
                             <InputLeftElement
