@@ -137,9 +137,11 @@ const Register = () => {
                     </FormControl>
                     <Button type='submit' width='100%' mt={7} background='#49519a' color='white' _hover={{ color: 'white' }}>Register</Button>
                 </form>
-                <Box mt={3} mb={3}>
+                <Box mt={3} mb={3} >
                     Already registered?{" "}
-                    <Link to='/auth/login'>
+                    <Link to='/auth/login' onClick={()=>{
+                    dispatch(removeError())
+                }}>
                         Sign in
                     </Link>
                 </Box>

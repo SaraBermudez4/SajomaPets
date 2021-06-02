@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Input, FormControl, InputGroup, InputLeftElement, chakra, InputRightElement, Button, Center, Image, Box, Grid } from '@chakra-ui/react'
+import { Input, FormControl, InputGroup, InputLeftElement, chakra, InputRightElement, Button, Center, Image, Box, Grid, Alert, AlertIcon } from '@chakra-ui/react'
 import { FaUserAlt, FaLock } from "react-icons/fa"
 import { FcGoogle } from "react-icons/fc"
 import { SiFacebook } from "react-icons/si"
@@ -8,6 +8,8 @@ import styled from 'styled-components'
 import { useForm } from '../../hooks/useForm'
 import { useDispatch, useSelector } from 'react-redux'
 import { startLoginGoogle, startGoogleLogin } from '../../actions/authAction'
+import validator from 'validator'
+import { removeError, setError } from '../../actions/uiAction'
 
 const DivLogin = styled.div`
     padding: 40px;
@@ -38,7 +40,6 @@ const Login = () => {
     const handleShowClick = () => setShowPassword(!showPassword);
 
     const dispatch = useDispatch()
-    const loading = useSelector(state => state.error)
 
     const loading = useSelector(state => state.ui)
 
@@ -49,12 +50,27 @@ const Login = () => {
 
     const { user, password } = formValues
 
+    const { msjError } = useSelector(state => state.ui)
+
+    const formValid = () => {
+        if (!validator.isEmail(user)) {
+            dispatch(setError('Email requerido'))
+            return false
+        }
+        else if (!validator.isStrongPassword(password)) {
+            dispatch(setError('La contraseña es incorecta'))
+            return false
+        }
+        dispatch(removeError(''))
+        return true
+    }
+
+
     const handleSubmit = (e) => {
         e.preventDefault()
-
-        dispatch(startLoginGoogle(user, password))
-        
-        console.log('Se han enviados los datos');
+        if (formValid()) {
+            dispatch(startLoginGoogle(user, password))
+        }
     }
 
     const handleGoogleLogin = () => {
@@ -66,6 +82,15 @@ const Login = () => {
             <DivLogin>
                 <ImageMediaLogin src="https://i.ibb.co/VtFcZgM/LOGASO-NO-JODA-2.png" alt="LOGASO-NO-JODA-2" border="0" />
                 <form onSubmit={handleSubmit}>
+                    {
+                        msjError &&
+                        (
+                            <Alert status="error" marginTop='5'>
+                                <AlertIcon />
+                                {msjError}
+                            </Alert>
+                        )
+                    }
                     <FormControl mt={10}>
                         <InputGroup>
                             <InputLeftElement
@@ -94,7 +119,9 @@ const Login = () => {
                 </form>
                 <Box mt={3} mb={3}>
                     New to us?{" "}
-                    <Link to='/auth/registro'>
+                    <Link to='/auth/registro' onClick={() => {
+                        dispatch(removeError())
+                    }}>
                         Sign Up
                     </Link>
                 </Box>
