@@ -2,9 +2,8 @@ import React from 'react'
 import { ChakraProvider } from "@chakra-ui/react";
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
-  // Redirect
+  Redirect,
+  Switch
 } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import Routes from './Routes';
@@ -47,8 +46,8 @@ const App = () => {
       <Router>
         <Switch>
           <PublicRouter path='/auth' component={Routes} isAuthenticated={isLoogedIn} />
-          <PrivateRouter exact path='/' component={Home}
-            isAuthenticated={isLoogedIn} />
+          <PrivateRouter exact path='/home' component={Home} isAuthenticated={isLoogedIn} />
+          <Redirect to='/auth/login' />
         </Switch>
       </Router>
     </ChakraProvider>

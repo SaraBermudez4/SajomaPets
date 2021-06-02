@@ -8,7 +8,6 @@ const Home = () => {
 
     const handleLogout = () => {
         dispatch(startLogout())
-        console.log("Chao mi so");
     }
 
     return (

@@ -2,8 +2,7 @@ import React from 'react'
 import {
     BrowserRouter as Router,
     Switch,
-    Route,
-    // Redirect
+    Route
 } from 'react-router-dom';
 import Register from '../containers/login/Register';
 import Login from '../containers/login/Login';

@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { useForm } from '../../hooks/useForm'
 import { useDispatch, useSelector } from 'react-redux'
-import { startLoginEmailPassword, startGoogle } from '../../actions/authAction'
+import { startLoginGoogle, startGoogleLogin } from '../../actions/authAction'
 
 const DivLogin = styled.div`
     padding: 40px;
@@ -40,6 +40,8 @@ const Login = () => {
     const dispatch = useDispatch()
     const loading = useSelector(state => state.error)
 
+    const loading = useSelector(state => state.ui)
+
     const [formValues, handleInputChange] = useForm({
         user: '',
         password: ''
@@ -49,12 +51,14 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        dispatch(startLoginEmailPassword(user, password))
+
+        dispatch(startLoginGoogle(user, password))
+        
         console.log('Se han enviados los datos');
     }
 
     const handleGoogleLogin = () => {
-        dispatch(startGoogle())
+        dispatch(startGoogleLogin())
     }
 
     return (
@@ -100,8 +104,8 @@ const Login = () => {
                     <Box w="100%" h="10" mt='13px'><hr color='black' /></Box>
                 </Grid>
                 <div>
-                    <Button width='100%' mt={5} background='red.500' color='white' _hover={{ bg: "#f95f62" }} onClick={handleGoogleLogin}><CFcGoogle mr={2} />Sign in with google</Button>
-                    <Button width='100%' mt={3} background='#3b5a9a' color='white' _hover={{ bg: "#4b6bad" }}><CSiFacebook mr={2} />Sign in with google</Button>
+                    <Button onClick={handleGoogleLogin} width='100%' mt={5} background='red.500' color='white' _hover={{ bg: "#f95f62" }}><CFcGoogle mr={2} />Sign in with google</Button>
+                    <Button width='100%' mt={3} background='#3b5a9a' color='white' _hover={{ bg: "#4b6bad" }}><CSiFacebook mr={2} />Sign in with facebook</Button>
                 </div>
                 <div>
                 </div>
