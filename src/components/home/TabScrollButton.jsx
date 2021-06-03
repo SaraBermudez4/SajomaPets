@@ -14,7 +14,6 @@ import Box from '@material-ui/core/Box';
 
 //Styles
 import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 import GridProductos from './GridProductos';
 
 
@@ -31,7 +30,7 @@ function TabPanel(props) {
         >
             {value === index && (
                 <Box p={3}>
-                    <Typography>{children}</Typography>
+                    <div>{children}</div>
                 </Box>
             )}
         </div>
@@ -89,27 +88,21 @@ export default function TabScrollButton() {
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
-                <h2>Perros</h2>
                 <GridProductos props="Perros" />
             </TabPanel>
             <TabPanel value={value} index={1}>
-                <h2>Gatos</h2>
                 <GridProductos props="Gatos" />
             </TabPanel>
             <TabPanel value={value} index={2}>
-                <h2>Pajaros</h2>
                 <GridProductos props="Pajaros" />
             </TabPanel>
             <TabPanel value={value} index={3}>
-                <h2>Roedores</h2>
                 <GridProductos props="Roedores" />
             </TabPanel>
             <TabPanel value={value} index={4}>
-                <h2>Reptiles</h2>
                 <GridProductos props="Reptiles" />
             </TabPanel>
             <TabPanel value={value} index={5}>
-                <h2>Peces</h2>
                 <GridProductos props="Peces" />
             </TabPanel>
         </div>

@@ -180,7 +180,6 @@ const NabBarMiniVariantDrawer = () => {
             >
                 <Toolbar>
                     <IconButton
-                        color="#3143e4"
                         aria-label="open drawer"
                         onClick={handleDrawerOpen}
                         edge="start"
@@ -188,7 +187,7 @@ const NabBarMiniVariantDrawer = () => {
                             [classes.hide]: open,
                         })}
                     >
-                        <GiHamburgerMenu color="#3143e4" />
+                        <GiHamburgerMenu />
                     </IconButton>
                     {/* <Typography variant="h6" noWrap>
                         Sajoma Pets

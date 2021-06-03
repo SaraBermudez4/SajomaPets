@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import MobileStepper from '@material-ui/core/MobileStepper';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
 
@@ -20,47 +19,47 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const tutorialSteps = [
   {
-    label: 'San Francisco – Oakland Bay Bridge, United States',
+    label: 'imagen1',
     imgPath:
       imagen1,
   },
   {
-    label: 'Bird',
+    label: 'imagen2',
     imgPath:
       imagen2,
   },
   {
-    label: 'Bali, Indonesia',
+    label: 'imagen3',
     imgPath:
       imagen3,
   },
   {
-    label: 'NeONBRAND Digital Marketing, Las Vegas, United States',
+    label: 'imagen4',
     imgPath:
       imagen4,
   },
   {
-    label: 'Goč, Serbia',
+    label: 'imagen5',
     imgPath:
       imagen5,
   },
   {
-    label: 'Goč, Serbia',
+    label: 'imagen6',
     imgPath:
       imagen6,
   },
   {
-    label: 'Goč, Serbia',
+    label: 'imagen7',
     imgPath:
       imagen7,
   },
   {
-    label: 'Goč, Serbia',
+    label: 'imagen8',
     imgPath:
       imagen8,
   },
   {
-    label: 'Goč, Serbia',
+    label: 'imagen9',
     imgPath:
       imagen9,
   },
@@ -95,25 +94,13 @@ function CarouselSwipeableTextMobileStepper() {
   const classes = useStyles();
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
-  const maxSteps = tutorialSteps.length;
-
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
-
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
 
   const handleStepChange = (step) => {
     setActiveStep(step);
   };
 
   return (
-    <div className={classes.root} >
-      {/* <Paper square elevation={0} className={classes.header}>
-        <Typography>{tutorialSteps[activeStep].label}</Typography>
-      </Paper> */}
+    <div className={classes.root}>
       <AutoPlaySwipeableViews
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
         index={activeStep}
@@ -128,24 +115,6 @@ function CarouselSwipeableTextMobileStepper() {
           </div>
         ))}
       </AutoPlaySwipeableViews>
-      <MobileStepper
-      // steps={maxSteps}
-      // position="static"
-      // variant="text"
-      // activeStep={activeStep}
-      // nextButton={
-      //   <Button size="small" onClick={handleNext} disabled={activeStep === maxSteps - 1}>
-      //     Next
-      //     {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
-      //   </Button>
-      // }
-      // backButton={
-      //   <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-      //     {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
-      //     Back
-      //   </Button>
-      // }
-      />
     </div>
   );
 }

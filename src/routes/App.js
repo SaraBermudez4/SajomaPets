@@ -23,8 +23,6 @@ const App = () => {
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(async (user) => {
-      console.log(user);
-
       if (user?.uid) {
         dispatch(login(user.uid, user.displayName))
         setIsLoogedIn(true)

@@ -4,14 +4,17 @@ import React from 'react'
 
 const GridProductos = (props) => {
     return (
-        <SimpleGrid minChildWidth="120px" spacing="40px">
-            <Box bg="tomato" height="80px">{props.props}</Box>
-            <Box bg="tomato" height="80px">{props.props}</Box>
-            <Box bg="tomato" height="80px">{props.props}</Box>
-            <Box bg="tomato" height="80px">{props.props}</Box>
-            <Box bg="tomato" height="80px">{props.props}</Box>
-            <Box bg="tomato" height="80px">{props.props}</Box>
-        </SimpleGrid>
+        <>
+            {props.props}
+            <SimpleGrid minChildWidth="120px" spacing="40px">
+                <Box bg="tomato" height="80px">{props.props}</Box>
+                <Box bg="tomato" height="80px">{props.props}</Box>
+                <Box bg="tomato" height="80px">{props.props}</Box>
+                <Box bg="tomato" height="80px">{props.props}</Box>
+                <Box bg="tomato" height="80px">{props.props}</Box>
+                <Box bg="tomato" height="80px">{props.props}</Box>
+            </SimpleGrid>
+        </>
     )
 }
 
