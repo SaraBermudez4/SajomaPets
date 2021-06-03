@@ -1,10 +1,8 @@
 import React from 'react'
 
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import MobileStepper from '@material-ui/core/MobileStepper';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
-import { GoChevronLeft, GoChevronRight } from "react-icons/go";
 
 import '../../styles/style.css'
 import imagen1 from '../../imagenes/perros.jpg'
@@ -16,7 +14,6 @@ import imagen6 from '../../imagenes/conejos.jpg'
 import imagen7 from '../../imagenes/beneficios.jpeg'
 import imagen8 from '../../imagenes/alimentacion.jpg'
 import imagen9 from '../../imagenes/dientes.jpg'
-import { Button } from '@material-ui/core';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -97,15 +94,6 @@ function CarouselSwipeableTextMobileStepper() {
   const classes = useStyles();
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
-  const maxSteps = tutorialSteps.length;
-
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
-
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
 
   const handleStepChange = (step) => {
     setActiveStep(step);

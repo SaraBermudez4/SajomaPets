@@ -2,6 +2,7 @@ import React from 'react'
 import { ChakraProvider } from "@chakra-ui/react";
 import {
   BrowserRouter as Router,
+  Route,
   Redirect,
   Switch
 } from 'react-router-dom';
@@ -24,8 +25,6 @@ const App = () => {
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(async (user) => {
-      console.log(user);
-
       if (user?.uid) {
         dispatch(login(user.uid, user.displayName))
         setIsLoogedIn(true)
@@ -46,10 +45,11 @@ const App = () => {
     <ChakraProvider>
       <Router>
         <Switch>
+          <Route exact path='/' component={Home} />
           <PublicRouter path='/auth' component={Routes} isAuthenticated={isLoogedIn} />
-          <PrivateRouter exact path='/home' component={Home} isAuthenticated={isLoogedIn} />
+          {/* <PrivateRouter exact path='/home' component={Home} isAuthenticated={isLoogedIn} /> */}
           <PrivateRouter exact path='/profile' component={Profile} isAuthenticated={isLoogedIn} />
-          <Redirect to='/auth/login' />
+          <Redirect to='/' />
         </Switch>
       </Router>
     </ChakraProvider>
