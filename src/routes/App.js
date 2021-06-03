@@ -4,8 +4,7 @@ import {
   BrowserRouter as Router,
   Route,
   Redirect,
-  Switch,
-  Route
+  Switch
 } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import Routes from './Routes';
