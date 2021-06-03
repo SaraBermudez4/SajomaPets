@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import clsx from 'clsx';
@@ -31,8 +31,10 @@ import { fade, InputBase } from '@material-ui/core';
 
 import styled from 'styled-components'
 import '../../styles/style.css'
-import { useDispatch } from 'react-redux';
-import { startLogout } from '../../actions/authAction.js';
+import { useDispatch, useSelector } from 'react-redux';
+import { login, startLogout } from '../../actions/authAction.js';
+
+import firebase from 'firebase'
 
 const drawerWidth = 240;
 
@@ -153,14 +155,14 @@ const NabBarMiniVariantDrawer = () => {
 
     const dispatch = useDispatch()
 
-    const handleLogout = () => {
-        dispatch(startLogout())
-    }
-
     const classes = useStyles();
     const theme = useTheme();
 
     const [open, setOpen] = React.useState(false);
+    const [isLoogedIn, setIsLoogedIn] = useState(false)
+    const handleLogout = () => {
+        dispatch(startLogout())
+    }
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -169,6 +171,18 @@ const NabBarMiniVariantDrawer = () => {
     const handleDrawerClose = () => {
         setOpen(false);
     };
+
+    // const [checking, setChecking] = useState(false)
+    useEffect(() => {
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user?.uid) {
+                setIsLoogedIn(true)
+            } else {
+                setIsLoogedIn(false)
+            }
+            // setChecking(true)
+        })
+    }, [])
 
     return (
         <div className={classes.root}>
@@ -271,10 +285,21 @@ const NabBarMiniVariantDrawer = () => {
                             <ListItemText primary="Profile" />
                         </ListItem>
                     </Link>
-                    <ListItem button key="Login" display="none" onClick={handleLogout}>
-                        <ListItemIcon> <RiLogoutBoxLine style={{ fontSize: "20px" }} /> </ListItemIcon>
-                        <ListItemText primary="Logout" />
-                    </ListItem>
+                    {
+                        (!isLoogedIn)
+                            ?
+                            <Link to="auth/login">
+                                <ListItem button key="Login" display="none">
+                                    <ListItemIcon> <RiLogoutBoxLine style={{ fontSize: "20px" }} /> </ListItemIcon>
+                                    <ListItemText primary="Login" />
+                                </ListItem>
+                            </Link>
+                            :
+                            <ListItem button key="Logout" display="none" onClick={handleLogout}>
+                                <ListItemIcon> <RiLogoutBoxLine style={{ fontSize: "20px" }} /> </ListItemIcon>
+                                <ListItemText primary="Logout" />
+                            </ListItem>
+                    }
                     {/* {
                         (auth)
                             ?

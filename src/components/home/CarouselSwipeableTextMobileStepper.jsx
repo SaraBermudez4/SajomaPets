@@ -1,5 +1,5 @@
 import React from 'react'
-
+import styled from 'styled-components'
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import MobileStepper from '@material-ui/core/MobileStepper';
 import SwipeableViews from 'react-swipeable-views';
@@ -70,12 +70,7 @@ const tutorialSteps = [
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: "100%",
     flexGrow: 1,
-    marginLeft: "17%",
-    marginTop: "17%",
-    marginRight: "-50px"
-
   },
   header: {
     display: 'flex',
@@ -92,6 +87,18 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
   },
 }));
+
+const StyledDiv = styled.div`
+  margin-left: 6%;
+  margin-top: 6%;
+  margin-right: -50px;
+  width: 93%;
+  @media (min-width: 320px) and (max-width: 480px){
+    max-width: 80%;
+    margin-left: 17%;
+    margin-top: 17%;
+  }
+`
 
 function CarouselSwipeableTextMobileStepper() {
   const classes = useStyles();
@@ -112,7 +119,7 @@ function CarouselSwipeableTextMobileStepper() {
   };
 
   return (
-    <div className={classes.root} >
+    <StyledDiv className={classes.root} >
       {/* <Paper square elevation={0} className={classes.header}>
         <Typography>{tutorialSteps[activeStep].label}</Typography>
       </Paper> */}
@@ -147,7 +154,7 @@ function CarouselSwipeableTextMobileStepper() {
         </Button>
         }
       /> */}
-    </div>
+    </StyledDiv>
   );
 }
 

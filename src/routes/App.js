@@ -3,7 +3,8 @@ import { ChakraProvider } from "@chakra-ui/react";
 import {
   BrowserRouter as Router,
   Redirect,
-  Switch
+  Switch,
+  Route
 } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import Routes from './Routes';
@@ -14,7 +15,7 @@ import firebase from 'firebase'
 import { PrivateRouter } from './PrivateRoute'
 import { PublicRouter } from './PublicRoute'
 import Profile from '../containers/profile/Profile';
-
+import '../styles/style.css'
 const App = () => {
 
   const [checking, setChecking] = useState(true)
@@ -24,7 +25,6 @@ const App = () => {
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(async (user) => {
-      console.log(user);
 
       if (user?.uid) {
         dispatch(login(user.uid, user.displayName))
@@ -46,10 +46,10 @@ const App = () => {
     <ChakraProvider>
       <Router>
         <Switch>
+          <Route exact path='/' component={Home} />
           <PublicRouter path='/auth' component={Routes} isAuthenticated={isLoogedIn} />
-          <PrivateRouter exact path='/home' component={Home} isAuthenticated={isLoogedIn} />
           <PrivateRouter exact path='/profile' component={Profile} isAuthenticated={isLoogedIn} />
-          <Redirect to='/auth/login' />
+          <Redirect to='/' />
         </Switch>
       </Router>
     </ChakraProvider>
