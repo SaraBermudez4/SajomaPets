@@ -13,6 +13,7 @@ import { login } from '../actions/authAction'
 import firebase from 'firebase'
 import { PrivateRouter } from './PrivateRoute'
 import { PublicRouter } from './PublicRoute'
+import Profile from '../containers/profile/Profile';
 
 const App = () => {
 
@@ -47,6 +48,7 @@ const App = () => {
         <Switch>
           <PublicRouter path='/auth' component={Routes} isAuthenticated={isLoogedIn} />
           <PrivateRouter exact path='/home' component={Home} isAuthenticated={isLoogedIn} />
+          <PrivateRouter exact path='/profile' component={Profile} isAuthenticated={isLoogedIn} />
           <Redirect to='/auth/login' />
         </Switch>
       </Router>

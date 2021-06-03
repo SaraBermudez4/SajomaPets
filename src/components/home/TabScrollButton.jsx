@@ -31,7 +31,7 @@ function TabPanel(props) {
         >
             {value === index && (
                 <Box p={3}>
-                    <Typography>{children}</Typography>
+                    <div>{children}</div>
                 </Box>
             )}
         </div>
@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
         width: '100%',
         backgroundColor: theme.palette.background.paper,
-        marginTop: "65px" 
+        marginTop: "15px" 
     },
 }));
 
@@ -89,27 +89,21 @@ export default function TabScrollButton() {
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
-                <h2>Perros</h2>
                 <GridProductos props="Perros" />
             </TabPanel>
             <TabPanel value={value} index={1}>
-                <h2>Gatos</h2>
                 <GridProductos props="Gatos" />
             </TabPanel>
             <TabPanel value={value} index={2}>
-                <h2>Pajaros</h2>
                 <GridProductos props="Pajaros" />
             </TabPanel>
             <TabPanel value={value} index={3}>
-                <h2>Roedores</h2>
                 <GridProductos props="Roedores" />
             </TabPanel>
             <TabPanel value={value} index={4}>
-                <h2>Reptiles</h2>
                 <GridProductos props="Reptiles" />
             </TabPanel>
             <TabPanel value={value} index={5}>
-                <h2>Peces</h2>
                 <GridProductos props="Peces" />
             </TabPanel>
         </div>

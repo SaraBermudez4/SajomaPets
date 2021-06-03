@@ -13,19 +13,20 @@ import { removeError, setError } from '../../actions/uiAction'
 
 const DivLogin = styled.div`
     padding: 40px;
-    height: 100vh;
     align-items: center;
     justify-content: center;
     display: flex;
     flex-direction: column;
     @media (min-width: 481px) {
         margin: 50px;
+        height: 100vh;
     }
 `
 
 const ImageMediaLogin = styled(Image)`
+    width: 100%; 
     @media (min-width: 481px) {
-        width: 50%;
+        width: 35%;
     }
 `
 
@@ -131,7 +132,7 @@ const Login = () => {
                     <Box w="100%" h="10" mt='13px'><hr color='black' /></Box>
                 </Grid>
                 <div>
-                    <Button onClick={handleGoogleLogin} width='100%' mt={5} background='red.500' color='white' _hover={{ bg: "#f95f62" }}><CFcGoogle mr={2} />Sign in with google</Button>
+                    <Button onClick={handleGoogleLogin} width='100%'  background='red.500' color='white' _hover={{ bg: "#f95f62" }}><CFcGoogle mr={2} />Sign in with google</Button>
                     <Button width='100%' mt={3} background='#3b5a9a' color='white' _hover={{ bg: "#4b6bad" }}><CSiFacebook mr={2} />Sign in with facebook</Button>
                 </div>
                 <div>

@@ -8,11 +8,10 @@ import NabBarMiniVariantDrawer from '../sideBar/NabBarMiniVariantDrawer';
 const Home = () => {
 
     return (
-        <div>
+        <>
             <CarouselSwipeableTextMobileStepper />
             <NabBarMiniVariantDrawer />
-            
-        </div>
+        </>
     )
 }
 

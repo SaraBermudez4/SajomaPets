@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -56,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
         }),
     },
     menuButton: {
-        marginRight: 36,
+        marginRight: 10,
     },
     hide: {
         display: 'none',
@@ -180,7 +181,6 @@ const NabBarMiniVariantDrawer = () => {
             >
                 <Toolbar>
                     <IconButton
-                        color="#3143e4"
                         aria-label="open drawer"
                         onClick={handleDrawerOpen}
                         edge="start"
@@ -188,7 +188,7 @@ const NabBarMiniVariantDrawer = () => {
                             [classes.hide]: open,
                         })}
                     >
-                        <GiHamburgerMenu color="#3143e4" />
+                        <GiHamburgerMenu />
                     </IconButton>
                     {/* <Typography variant="h6" noWrap>
                         Sajoma Pets
@@ -265,10 +265,12 @@ const NabBarMiniVariantDrawer = () => {
                         <ListItemIcon> <FaShoppingCart style={{ fontSize: "20px" }} /> </ListItemIcon>
                         <ListItemText primary="Cart" />
                     </ListItem>
-                    <ListItem button key="Profile">
-                        <ListItemIcon> <FaUser style={{ fontSize: "20px" }} /> </ListItemIcon>
-                        <ListItemText primary="Profile" />
-                    </ListItem>
+                    <Link to="/profile">
+                        <ListItem button key="Profile">
+                            <ListItemIcon> <FaUser style={{ fontSize: "20px" }} /> </ListItemIcon>
+                            <ListItemText primary="Profile" />
+                        </ListItem>
+                    </Link>
                     <ListItem button key="Login" display="none" onClick={handleLogout}>
                         <ListItemIcon> <RiLogoutBoxLine style={{ fontSize: "20px" }} /> </ListItemIcon>
                         <ListItemText primary="Logout" />

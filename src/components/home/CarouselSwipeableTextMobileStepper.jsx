@@ -4,6 +4,7 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import MobileStepper from '@material-ui/core/MobileStepper';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
+import { GoChevronLeft, GoChevronRight } from "react-icons/go";
 
 import '../../styles/style.css'
 import imagen1 from '../../imagenes/perros.jpg'
@@ -15,52 +16,53 @@ import imagen6 from '../../imagenes/conejos.jpg'
 import imagen7 from '../../imagenes/beneficios.jpeg'
 import imagen8 from '../../imagenes/alimentacion.jpg'
 import imagen9 from '../../imagenes/dientes.jpg'
+import { Button } from '@material-ui/core';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const tutorialSteps = [
   {
-    label: 'San Francisco – Oakland Bay Bridge, United States',
+    label: 'Imagen1',
     imgPath:
       imagen1,
   },
   {
-    label: 'Bird',
+    label: 'Imagen2',
     imgPath:
       imagen2,
   },
   {
-    label: 'Bali, Indonesia',
+    label: 'Imagen3',
     imgPath:
       imagen3,
   },
   {
-    label: 'NeONBRAND Digital Marketing, Las Vegas, United States',
+    label: 'Imagen4',
     imgPath:
       imagen4,
   },
   {
-    label: 'Goč, Serbia',
+    label: 'Imagen5',
     imgPath:
       imagen5,
   },
   {
-    label: 'Goč, Serbia',
+    label: 'Imagen6',
     imgPath:
       imagen6,
   },
   {
-    label: 'Goč, Serbia',
+    label: 'Imagen7',
     imgPath:
       imagen7,
   },
   {
-    label: 'Goč, Serbia',
+    label: 'Imagen8',
     imgPath:
       imagen8,
   },
   {
-    label: 'Goč, Serbia',
+    label: 'Imagen9',
     imgPath:
       imagen9,
   },
@@ -118,8 +120,7 @@ function CarouselSwipeableTextMobileStepper() {
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
         index={activeStep}
         onChangeIndex={handleStepChange}
-        enableMouseEvents
-      >
+        enableMouseEvents>
         {tutorialSteps.map((step, index) => (
           <div key={step.label}>
             {Math.abs(activeStep - index) <= 2 ? (
@@ -128,24 +129,24 @@ function CarouselSwipeableTextMobileStepper() {
           </div>
         ))}
       </AutoPlaySwipeableViews>
-      <MobileStepper
-      // steps={maxSteps}
-      // position="static"
-      // variant="text"
-      // activeStep={activeStep}
-      // nextButton={
-      //   <Button size="small" onClick={handleNext} disabled={activeStep === maxSteps - 1}>
-      //     Next
-      //     {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
-      //   </Button>
-      // }
-      // backButton={
-      //   <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-      //     {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
-      //     Back
-      //   </Button>
-      // }
-      />
+      {/* <MobileStepper
+        steps={maxSteps}
+        position="static"
+        variant="text"
+        activeStep={activeStep}
+        nextButton={
+          <Button size="small" onClick={handleNext} disabled={activeStep === maxSteps - 1}>
+            Next
+          {theme.direction === 'rtl' ? <GoChevronLeft /> : <GoChevronRight />}
+          </Button>
+        }
+        backButton={
+          <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+            {theme.direction === 'rtl' ? <GoChevronRight /> : <GoChevronLeft />}
+          Back
+        </Button>
+        }
+      /> */}
     </div>
   );
 }
