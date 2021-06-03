@@ -271,20 +271,6 @@ const NabBarMiniVariantDrawer = () => {
                 </List>
                 <Divider />
                 <List>
-                    <ListItem button key="Favorite">
-                        <ListItemIcon> <IoMdHeart style={{ fontSize: "20px" }} /> </ListItemIcon>
-                        <ListItemText primary="Favorite" />
-                    </ListItem>
-                    <ListItem button key="Cart">
-                        <ListItemIcon> <FaShoppingCart style={{ fontSize: "20px" }} /> </ListItemIcon>
-                        <ListItemText primary="Cart" />
-                    </ListItem>
-                    <Link to="/profile">
-                        <ListItem button key="Profile">
-                            <ListItemIcon> <FaUser style={{ fontSize: "20px" }} /> </ListItemIcon>
-                            <ListItemText primary="Profile" />
-                        </ListItem>
-                    </Link>
                     {
                         (!isLoogedIn)
                             ?
@@ -295,32 +281,30 @@ const NabBarMiniVariantDrawer = () => {
                                 </ListItem>
                             </Link>
                             :
-                            <ListItem button key="Logout" display="none" onClick={handleLogout}>
-                                <ListItemIcon> <RiLogoutBoxLine style={{ fontSize: "20px" }} /> </ListItemIcon>
-                                <ListItemText primary="Logout" />
-                            </ListItem>
+                            <>
+                                <ListItem button key="Favorite">
+                                    <ListItemIcon> <IoMdHeart style={{ fontSize: "20px" }} /> </ListItemIcon>
+                                    <ListItemText primary="Favorite" />
+                                </ListItem>
+                                <ListItem button key="Cart">
+                                    <ListItemIcon> <FaShoppingCart style={{ fontSize: "20px" }} /> </ListItemIcon>
+                                    <ListItemText primary="Cart" />
+                                </ListItem>
+                                <Link to="/profile">
+                                    <ListItem button key="Profile">
+                                        <ListItemIcon> <FaUser style={{ fontSize: "20px" }} /> </ListItemIcon>
+                                        <ListItemText primary="Profile" />
+                                    </ListItem>
+                                </Link>
+                                <ListItem button key="Logout" display="none" onClick={handleLogout}>
+                                    <ListItemIcon> <RiLogoutBoxLine style={{ fontSize: "20px" }} /> </ListItemIcon>
+                                    <ListItemText primary="Logout" />
+                                </ListItem>
+                            </>
                     }
-                    {/* {
-                        (auth)
-                            ?
-                            <ListItem button key="Login" display="none">
-                                <ListItemIcon> <RiLogoutBoxLine style={{ fontSize: "20px" }} /> </ListItemIcon>
-                                <ListItemText primary="Login" />
-                            </ListItem>
-                            :
-                            <ListItem button key="Logout" display="none">
-                                <ListItemIcon> <RiLogoutBoxLine style={{ fontSize: "20px" }} /> </ListItemIcon>
-                                <ListItemText primary="Logout" />
-                            </ListItem>
-                    } */}
-
                 </List>
             </Drawer>
-            {/* <main className={classes.content}>
-                <div className={classes.toolbar} />
-                <TabScrollButton />
-            </main> */}
-            <TabScrollButton />
+            {/* <TabScrollButton /> */}
 
         </div>
 
