@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import firebase from 'firebase'
 
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -33,7 +32,9 @@ import { fade, InputBase } from '@material-ui/core';
 import styled from 'styled-components'
 import '../../styles/style.css'
 import { useDispatch, useSelector } from 'react-redux';
-import { startLogout } from '../../actions/authAction.js';
+import { login, startLogout } from '../../actions/authAction.js';
+
+import firebase from 'firebase'
 
 const drawerWidth = 240;
 
@@ -154,18 +155,16 @@ const NabBarMiniVariantDrawer = () => {
 
     const dispatch = useDispatch()
 
-    const auth = useSelector(state => state.auth)
-
-    console.log(auth);
-
-    const handleLogout = () => {
-        dispatch(startLogout())
-    }
-
     const classes = useStyles();
     const theme = useTheme();
 
     const [open, setOpen] = React.useState(false);
+    
+    const [isLoogedIn, setIsLoogedIn] = useState(false)
+
+    const handleLogout = () => {
+        dispatch(startLogout())
+    }
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -175,17 +174,17 @@ const NabBarMiniVariantDrawer = () => {
         setOpen(false);
     };
 
-    const [isLoogedIn, setIsLoogedIn] = React.useState(false)
-
+    // const [checking, setChecking] = useState(false)
     useEffect(() => {
-        firebase.auth().onAuthStateChanged(async (user) => {
+        firebase.auth().onAuthStateChanged((user) => {
             if (user?.uid) {
                 setIsLoogedIn(true)
             } else {
                 setIsLoogedIn(false)
             }
+            // setChecking(true)
         })
-    }, [dispatch])
+    }, [])
 
     return (
         <div className={classes.root}>
@@ -289,10 +288,10 @@ const NabBarMiniVariantDrawer = () => {
                         </ListItem>
                     </Link>
                     {
-                        !isLoogedIn
+                        (!isLoogedIn)
                             ?
-                            <Link to="/auth/login">
-                                <ListItem button key="Login">
+                            <Link to="auth/login">
+                                <ListItem button key="Login" display="none">
                                     <ListItemIcon> <RiLogoutBoxLine style={{ fontSize: "20px" }} /> </ListItemIcon>
                                     <ListItemText primary="Login" />
                                 </ListItem>
@@ -303,26 +302,8 @@ const NabBarMiniVariantDrawer = () => {
                                 <ListItemText primary="Logout" />
                             </ListItem>
                     }
-                    {/* {
-                        (auth)
-                            ?
-                            <ListItem button key="Login" display="none">
-                                <ListItemIcon> <RiLogoutBoxLine style={{ fontSize: "20px" }} /> </ListItemIcon>
-                                <ListItemText primary="Login" />
-                            </ListItem>
-                            :
-                            <ListItem button key="Logout" display="none">
-                                <ListItemIcon> <RiLogoutBoxLine style={{ fontSize: "20px" }} /> </ListItemIcon>
-                                <ListItemText primary="Logout" />
-                            </ListItem>
-                    } */}
-
                 </List>
             </Drawer>
-            {/* <main className={classes.content}>
-                <div className={classes.toolbar} />
-                <TabScrollButton />
-            </main> */}
             <TabScrollButton />
 
         </div>

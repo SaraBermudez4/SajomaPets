@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Input, FormControl, InputGroup, InputLeftElement, chakra, InputRightElement, Button, Center, Image, Box, Grid, Alert, AlertIcon } from '@chakra-ui/react'
+import { Input, FormControl, InputGroup, InputLeftElement, chakra, InputRightElement, Button, Center, Image, Box, Grid, Alert, AlertIcon, Container } from '@chakra-ui/react'
 import { FaUserAlt, FaLock } from "react-icons/fa"
 import { FcGoogle } from "react-icons/fc"
 import { SiFacebook } from "react-icons/si"
@@ -11,22 +11,18 @@ import { startLoginGoogle, startGoogleLogin } from '../../actions/authAction'
 import validator from 'validator'
 import { removeError, setError } from '../../actions/uiAction'
 
-const DivLogin = styled.div`
-    padding: 40px;
+const ContainerLogin = styled(Container)`
     align-items: center;
-    justify-content: center;
     display: flex;
+    height: 100vh;
+    justify-content: center;
     flex-direction: column;
-    @media (min-width: 481px) {
-        margin: 50px;
-        height: 100vh;
-    }
 `
 
 const ImageMediaLogin = styled(Image)`
     width: 100%; 
     @media (min-width: 481px) {
-        width: 35%;
+        width: 65%;
     }
 `
 
@@ -79,8 +75,8 @@ const Login = () => {
     }
 
     return (
-        <Center>
-            <DivLogin>
+        <div>
+            <ContainerLogin>
                 <ImageMediaLogin src="https://i.ibb.co/VtFcZgM/LOGASO-NO-JODA-2.png" alt="LOGASO-NO-JODA-2" border="0" />
                 <form onSubmit={handleSubmit}>
                     {
@@ -137,8 +133,8 @@ const Login = () => {
                 </div>
                 <div>
                 </div>
-            </DivLogin>
-        </Center>
+            </ContainerLogin>
+        </div>
     )
 }
 

@@ -4,7 +4,8 @@ import {
   BrowserRouter as Router,
   Route,
   Redirect,
-  Switch
+  Switch,
+  Route
 } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import Routes from './Routes';
@@ -15,7 +16,7 @@ import firebase from 'firebase'
 import { PrivateRouter } from './PrivateRoute'
 import { PublicRouter } from './PublicRoute'
 import Profile from '../containers/profile/Profile';
-
+import '../styles/style.css'
 const App = () => {
 
   const [checking, setChecking] = useState(true)
@@ -47,7 +48,6 @@ const App = () => {
         <Switch>
           <Route exact path='/' component={Home} />
           <PublicRouter path='/auth' component={Routes} isAuthenticated={isLoogedIn} />
-          {/* <PrivateRouter exact path='/home' component={Home} isAuthenticated={isLoogedIn} /> */}
           <PrivateRouter exact path='/profile' component={Profile} isAuthenticated={isLoogedIn} />
           <Redirect to='/' />
         </Switch>
