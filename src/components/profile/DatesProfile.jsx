@@ -3,9 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { useSelector } from 'react-redux';
 import { Heading } from '@chakra-ui/layout';
-import { Button, Divider, FormControl, FormControlLabel, FormHelperText, FormLabel, IconButton, InputLabel, MenuItem, Radio, RadioGroup, Select } from '@material-ui/core';
-import { IoMdAddCircle } from "react-icons/io";
-
+import { Divider, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     root: {

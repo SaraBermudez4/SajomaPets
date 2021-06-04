@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Search = () => {
+const Cart = () => {
     return (
         <div>
             <Link to='/'>Volver</Link>
-            <h1>Search</h1>
+            <h1>Cart</h1>
         </div>
     )
 }
 
-export default Search
+export default Cart

@@ -1,10 +1,7 @@
 import React from 'react'
-import { useDispatch } from 'react-redux';
-import { startLogout } from '../../actions/authAction';
 import CarouselSwipeableTextMobileStepper from '../../components/home/CarouselSwipeableTextMobileStepper';
-import TabScrollButton from '../../components/home/TabScrollButton';
-import NabBarMiniVariantDrawer from '../sideBar/NabBarMiniVariantDrawer';
 import styled from 'styled-components'
+import TabScrollButton from '../../components/home/TabScrollButton';
 
 const StyledDivTabs = styled.div`
     display:flex; 
@@ -22,11 +19,9 @@ const Home = () => {
     return (
         <>
             <CarouselSwipeableTextMobileStepper />
-            <NabBarMiniVariantDrawer />
             <StyledDivTabs>
-            <TabScrollButton />
+                <TabScrollButton />
             </StyledDivTabs>
-            
         </>
     )
 }

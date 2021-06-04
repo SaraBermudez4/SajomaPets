@@ -4,7 +4,7 @@ import {
     Switch,
     Route
 } from 'react-router-dom';
-import Register from '../containers/login/Register';
+import Register from '../containers/register/Register';
 import Login from '../containers/login/Login';
 
 const Routes = () => {
