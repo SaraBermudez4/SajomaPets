@@ -1,6 +1,5 @@
 import React from 'react'
 import CarouselSwipeableTextMobileStepper from '../../components/home/CarouselSwipeableTextMobileStepper';
-import NabBarMiniVariantDrawer from '../sideBar/NabBarMiniVariantDrawer';
 import styled from 'styled-components'
 import TabScrollButton from '../../components/home/TabScrollButton';
 
@@ -19,7 +18,6 @@ const Home = () => {
 
     return (
         <>
-            <NabBarMiniVariantDrawer />
             <CarouselSwipeableTextMobileStepper />
             <StyledDivTabs>
                 <TabScrollButton />

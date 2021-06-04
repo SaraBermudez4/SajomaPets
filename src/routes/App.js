@@ -22,6 +22,7 @@ import Accessories from '../containers/products/Accessories';
 import Food from '../containers/products/Food';
 import Toys from '../containers/products/Toys';
 import Profile from '../containers/profile/Profile';
+import Contenedor from '../containers/sideBar/Contenedor';
 // import ProfileRoutes from './ProfileRoutes';
 // import DashboardRouter from './DashboardRouter';
 
@@ -53,19 +54,21 @@ const App = () => {
   return (
     <ChakraProvider>
       <Router>
-        <Switch>
-          {/* <Route path='/' component={DashboardRouter} /> */}
-          <Route exact path='/' component={Home} />
-          <Route exact path='/search' component={Search} />
-          <Route exact path='/food' component={Food} />
-          <Route exact path='/accessories' component={Accessories} />
-          <Route exact path='/toys' component={Toys} />
-          <PublicRouter path='/auth' component={AuthRoutes} isAuthenticated={isLoogedIn} />
-          <PrivateRouter exact path='/cart' component={Cart} isAuthenticated={isLoogedIn} />
-          <PrivateRouter exact path='/favorite' component={Favorite} isAuthenticated={isLoogedIn} />
-          <PrivateRouter path='/profile' component={Profile} isAuthenticated={isLoogedIn} />
-          <Redirect to='/' />
-        </Switch>
+        <Contenedor>
+          <Switch>
+            {/* <Route path='/' component={DashboardRouter} /> */}
+            <Route exact path='/' component={Home} />
+            <Route exact path='/search' component={Search} />
+            <Route exact path='/food' component={Food} />
+            <Route exact path='/accessories' component={Accessories} />
+            <Route exact path='/toys' component={Toys} />
+            <PublicRouter path='/auth' component={AuthRoutes} isAuthenticated={isLoogedIn} />
+            <PrivateRouter exact path='/cart' component={Cart} isAuthenticated={isLoogedIn} />
+            <PrivateRouter exact path='/favorite' component={Favorite} isAuthenticated={isLoogedIn} />
+            <PrivateRouter path='/profile' component={Profile} isAuthenticated={isLoogedIn} />
+            <Redirect to='/' />
+          </Switch>
+        </Contenedor>
       </Router>
     </ChakraProvider>
   );

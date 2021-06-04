@@ -244,7 +244,7 @@ const NabBarMiniVariantDrawer = () => {
                 </div>
                 <Divider />
                 <List>
-                    <Link to='/home'>
+                    <Link to='/'>
                         <ListItem button key="Home">
                             <ListItemIcon> <ImHome3 style={{ fontSize: "20px" }} /> </ListItemIcon>
                             <ListItemText primary="Home" />
