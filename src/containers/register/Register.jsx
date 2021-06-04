@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Input, FormControl, InputGroup, InputLeftElement, InputRightElement, Button, Center, Image, chakra, Box, Alert, AlertIcon, Container } from '@chakra-ui/react'
+import { Input, FormControl, InputGroup, InputLeftElement, InputRightElement, Button, Image, chakra, Box, Alert, AlertIcon, Container } from '@chakra-ui/react'
 import { FaUserAlt, FaLock } from "react-icons/fa"
 import { MdEmail } from "react-icons/md"
 import { AiFillTags } from "react-icons/ai"

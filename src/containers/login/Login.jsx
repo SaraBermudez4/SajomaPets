@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Input, FormControl, InputGroup, InputLeftElement, chakra, InputRightElement, Button, Center, Image, Box, Grid, Alert, AlertIcon, Container } from '@chakra-ui/react'
+import { Input, FormControl, InputGroup, InputLeftElement, chakra, InputRightElement, Button, Image, Box, Grid, Alert, AlertIcon, Container } from '@chakra-ui/react'
 import { FaUserAlt, FaLock } from "react-icons/fa"
 import { FcGoogle } from "react-icons/fc"
 import { SiFacebook } from "react-icons/si"

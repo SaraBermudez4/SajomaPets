@@ -20,19 +20,18 @@ import IconButton from '@material-ui/core/IconButton';
 import { GoChevronLeft, GoChevronRight, GoSearch } from "react-icons/go";
 import { FaShoppingCart, FaSearch, FaUser } from "react-icons/fa";
 import { ImHome3 } from "react-icons/im";
-import { MdPets } from "react-icons/md";
 import { GiOpenedFoodCan, GiHamburgerMenu } from "react-icons/gi";
 import { TiScissors } from "react-icons/ti";
 import { IoIosTennisball, IoMdHeart } from "react-icons/io";
 import { RiLogoutBoxLine } from "react-icons/ri";
 
-import TabScrollButton from "../../components/home/TabScrollButton.jsx";
+// import TabScrollButton from "../../components/home/TabScrollButton.jsx";
 import { fade, InputBase } from '@material-ui/core';
 
 import styled from 'styled-components'
 import '../../styles/style.css'
-import { useDispatch, useSelector } from 'react-redux';
-import { login, startLogout } from '../../actions/authAction.js';
+import { useDispatch } from 'react-redux';
+import { startLogout } from '../../actions/authAction.js';
 
 import firebase from 'firebase'
 
@@ -158,7 +157,7 @@ const NabBarMiniVariantDrawer = () => {
     const classes = useStyles();
     const theme = useTheme();
 
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
 
     const [isLoogedIn, setIsLoogedIn] = useState(false)
 
@@ -245,30 +244,36 @@ const NabBarMiniVariantDrawer = () => {
                 </div>
                 <Divider />
                 <List>
-                    <ListItem button key="Home">
-                        <ListItemIcon> <ImHome3 style={{ fontSize: "20px" }} /> </ListItemIcon>
-                        <ListItemText primary="Home" />
-                    </ListItem>
-                    <ListItem button key="Search">
-                        <ListItemIcon> <FaSearch style={{ fontSize: "20px" }} /> </ListItemIcon>
-                        <ListItemText primary="Search" />
-                    </ListItem>
-                    <ListItem button key="Category Pets">
-                        <ListItemIcon> <MdPets style={{ fontSize: "20px" }} /> </ListItemIcon>
-                        <ListItemText primary="Category Pets" />
-                    </ListItem>
-                    <ListItem button key="Food">
-                        <ListItemIcon> <GiOpenedFoodCan style={{ fontSize: "20px" }} /> </ListItemIcon>
-                        <ListItemText primary="Food" />
-                    </ListItem>
-                    <ListItem button key="Accessories">
-                        <ListItemIcon> <TiScissors style={{ fontSize: "20px" }} /> </ListItemIcon>
-                        <ListItemText primary="Accessories" />
-                    </ListItem>
-                    <ListItem button key="Toys">
-                        <ListItemIcon> <IoIosTennisball style={{ fontSize: "20px" }} /> </ListItemIcon>
-                        <ListItemText primary="Toys" />
-                    </ListItem>
+                    <Link to='/home'>
+                        <ListItem button key="Home">
+                            <ListItemIcon> <ImHome3 style={{ fontSize: "20px" }} /> </ListItemIcon>
+                            <ListItemText primary="Home" />
+                        </ListItem>
+                    </Link>
+                    <Link to='/search'>
+                        <ListItem button key="Search">
+                            <ListItemIcon> <FaSearch style={{ fontSize: "20px" }} /> </ListItemIcon>
+                            <ListItemText primary="Search" />
+                        </ListItem>
+                    </Link>
+                    <Link to='/food'>
+                        <ListItem button key="Food">
+                            <ListItemIcon> <GiOpenedFoodCan style={{ fontSize: "20px" }} /> </ListItemIcon>
+                            <ListItemText primary="Food" />
+                        </ListItem>
+                    </Link>
+                    <Link to='/accessories'>
+                        <ListItem button key="Accessories">
+                            <ListItemIcon> <TiScissors style={{ fontSize: "20px" }} /> </ListItemIcon>
+                            <ListItemText primary="Accessories" />
+                        </ListItem>
+                    </Link>
+                    <Link to='/toys'>
+                        <ListItem button key="Toys">
+                            <ListItemIcon> <IoIosTennisball style={{ fontSize: "20px" }} /> </ListItemIcon>
+                            <ListItemText primary="Toys" />
+                        </ListItem>
+                    </Link>
 
                 </List>
                 <Divider />
@@ -284,15 +289,19 @@ const NabBarMiniVariantDrawer = () => {
                             </Link>
                             :
                             <>
-                                <ListItem button key="Favorite">
-                                    <ListItemIcon> <IoMdHeart style={{ fontSize: "20px" }} /> </ListItemIcon>
-                                    <ListItemText primary="Favorite" />
-                                </ListItem>
-                                <ListItem button key="Cart">
-                                    <ListItemIcon> <FaShoppingCart style={{ fontSize: "20px" }} /> </ListItemIcon>
-                                    <ListItemText primary="Cart" />
-                                </ListItem>
-                                <Link to="/profile">
+                                <Link to='/favorite'>
+                                    <ListItem button key="Favorite">
+                                        <ListItemIcon> <IoMdHeart style={{ fontSize: "20px" }} /> </ListItemIcon>
+                                        <ListItemText primary="Favorite" />
+                                    </ListItem>
+                                </Link>
+                                <Link to="/cart">
+                                    <ListItem button key="Cart">
+                                        <ListItemIcon> <FaShoppingCart style={{ fontSize: "20px" }} /> </ListItemIcon>
+                                        <ListItemText primary="Cart" />
+                                    </ListItem>
+                                </Link>
+                                <Link to="/profile/data">
                                     <ListItem button key="Profile">
                                         <ListItemIcon> <FaUser style={{ fontSize: "20px" }} /> </ListItemIcon>
                                         <ListItemText primary="Profile" />
