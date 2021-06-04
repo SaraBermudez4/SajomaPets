@@ -7,15 +7,15 @@ import { autoPlay } from 'react-swipeable-views-utils';
 import { GoChevronLeft, GoChevronRight } from "react-icons/go";
 
 import '../../styles/style.css'
-import imagen1 from '../../imagenes/perros.jpg'
-import imagen2 from '../../imagenes/peces.jpg'
-import imagen3 from '../../imagenes/pajaros.jpg'
-import imagen4 from '../../imagenes/hamnsters.jpg'
-import imagen5 from '../../imagenes/gatos.jpg'
-import imagen6 from '../../imagenes/conejos.jpg'
-import imagen7 from '../../imagenes/beneficios.jpeg'
-import imagen8 from '../../imagenes/alimentacion.jpg'
-import imagen9 from '../../imagenes/dientes.jpg'
+import imagen1 from '../../imagenes/imagen1.jpg'
+import imagen2 from '../../imagenes/imagen2.png'
+import imagen3 from '../../imagenes/imagen3.jpg'
+import imagen4 from '../../imagenes/imagen4.jpg'
+import imagen5 from '../../imagenes/imagen5.jpg'
+import imagen6 from '../../imagenes/imagen6.jpg'
+import imagen7 from '../../imagenes/imagen7.jpg'
+import imagen8 from '../../imagenes/imagen8.png'
+import imagen9 from '../../imagenes/imagen9.png'
 import { Button } from '@material-ui/core';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
