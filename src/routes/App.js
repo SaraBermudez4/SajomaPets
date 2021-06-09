@@ -36,14 +36,14 @@ const App = () => {
   useEffect(() => {
     firebase.auth().onAuthStateChanged(async (user) => {
       if (user?.uid) {
-        dispatch(login(user.uid, user.displayName))
+        dispatch(login(user.uid, user.displayName, user.email, user.photoURL, user.phoneNumber))
         setIsLoogedIn(true)
       } else {
         setIsLoogedIn(false)
       }
       setChecking(false)
     })
-  }, [dispatch, setChecking])
+  }, [dispatch, setChecking, setIsLoogedIn])
 
   if (checking) {
     return (
