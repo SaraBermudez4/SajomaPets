@@ -1,5 +1,6 @@
 .MuiToolbar-root {
     justify-content: space-between;
+    z-index: 1
 }
 
 @media (min-width: 768px) {
@@ -18,4 +19,7 @@
     box-sizing: border-box;
     margin:0;
     padding:0;
+}
+body{
+    padding: 70px;
 }
