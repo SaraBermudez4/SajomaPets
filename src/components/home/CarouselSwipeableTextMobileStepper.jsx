@@ -19,47 +19,47 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const tutorialSteps = [
   {
-    label: 'Imagen1',
+    label: 'imagen1',
     imgPath:
       imagen1,
   },
   {
-    label: 'Imagen2',
+    label: 'imagen2',
     imgPath:
       imagen2,
   },
   {
-    label: 'Imagen3',
+    label: 'imagen3',
     imgPath:
       imagen3,
   },
   {
-    label: 'Imagen4',
+    label: 'imagen4',
     imgPath:
       imagen4,
   },
   {
-    label: 'Imagen5',
+    label: 'imagen5',
     imgPath:
       imagen5,
   },
   {
-    label: 'Imagen6',
+    label: 'imagen6',
     imgPath:
       imagen6,
   },
   {
-    label: 'Imagen7',
+    label: 'imagen7',
     imgPath:
       imagen7,
   },
   {
-    label: 'Imagen8',
+    label: 'imagen8',
     imgPath:
       imagen8,
   },
   {
-    label: 'Imagen9',
+    label: 'imagen9',
     imgPath:
       imagen9,
   },
@@ -107,10 +107,7 @@ function CarouselSwipeableTextMobileStepper() {
   };
 
   return (
-    <StyledDiv className={classes.root} >
-      {/* <Paper square elevation={0} className={classes.header}>
-        <Typography>{tutorialSteps[activeStep].label}</Typography>
-      </Paper> */}
+    <div className={classes.root}>
       <AutoPlaySwipeableViews
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
         index={activeStep}
@@ -124,25 +121,7 @@ function CarouselSwipeableTextMobileStepper() {
           </div>
         ))}
       </AutoPlaySwipeableViews>
-      {/* <MobileStepper
-        steps={maxSteps}
-        position="static"
-        variant="text"
-        activeStep={activeStep}
-        nextButton={
-          <Button size="small" onClick={handleNext} disabled={activeStep === maxSteps - 1}>
-            Next
-          {theme.direction === 'rtl' ? <GoChevronLeft /> : <GoChevronRight />}
-          </Button>
-        }
-        backButton={
-          <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-            {theme.direction === 'rtl' ? <GoChevronRight /> : <GoChevronLeft />}
-          Back
-        </Button>
-        }
-      /> */}
-    </StyledDiv>
+    </div>
   );
 }
 
