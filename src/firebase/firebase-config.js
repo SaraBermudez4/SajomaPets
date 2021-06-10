@@ -8,8 +8,7 @@ const firebaseConfig = {
     projectId: "sajoma-pets",
     storageBucket: "sajoma-pets.appspot.com",
     messagingSenderId: "997451965959",
-    appId: "1:997451965959:web:886e66de2d0044a740eca2",
-    measurementId: "G-HXEXN6XW95"
+    appId: "1:997451965959:web:4ec1204b7f97999140eca2"
 }
 
 firebase.initializeApp(firebaseConfig)

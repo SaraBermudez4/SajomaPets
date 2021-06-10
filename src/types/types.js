@@ -9,5 +9,6 @@ export const types = {
     uiFinishLoading: 'FinishLoaging',
 
     dataUserAdd: 'AddUserData',
-    dataUserLoad: 'LoadUserData'
+    dataUserLoad: 'LoadUserData',
+    dataUserUpdate: 'UpdateUserData'
 }

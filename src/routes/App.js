@@ -39,6 +39,8 @@ const App = () => {
       if (user?.uid) {
         dispatch(login(user.uid, user.displayName, user.email, user.photoURL, user.phoneNumber))
         dispatch(startUserLoad(user.uid))
+        
+        console.log(dispatch(startUserLoad(user.uid)));
         setIsLoogedIn(true)
       } else {
         setIsLoogedIn(false)
