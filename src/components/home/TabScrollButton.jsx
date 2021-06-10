@@ -53,9 +53,9 @@ function a11yProps(index) {
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
-        width: '100%',
+        width: '80%',
         backgroundColor: theme.palette.background.paper,
-        marginTop: "65px" 
+        marginTop: "15px" 
     },
 }));
 
@@ -82,9 +82,9 @@ export default function TabScrollButton() {
                     <Tab label="Perros" icon={<FaDog style={{ fontSize: "20px" }} />} {...a11yProps(0)} />
                     <Tab label="Gatos" icon={<FaCat style={{ fontSize: "20px" }} />} {...a11yProps(1)} />
                     <Tab label="Pajaros" icon={<GiHummingbird style={{ fontSize: "20px" }} />} {...a11yProps(2)} />
-                    <Tab label="Roedores" icon={<GiRabbit style={{ fontSize: "20px" }} />} {...a11yProps(3)} />
-                    <Tab label="Reptiles" icon={<GiGecko style={{ fontSize: "20px" }} />} {...a11yProps(4)} />
-                    <Tab label="Peces" icon={<GiDoubleFish style={{ fontSize: "20px" }} />} {...a11yProps(5)} />
+                    <Tab label="Roedores" disabled icon={<GiRabbit style={{ fontSize: "20px" }} />} {...a11yProps(3)} />
+                    <Tab label="Reptiles" disabled icon={<GiGecko style={{ fontSize: "20px" }} />} {...a11yProps(4)} />
+                    <Tab label="Peces" disabled icon={<GiDoubleFish style={{ fontSize: "20px" }} />} {...a11yProps(5)} />
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>

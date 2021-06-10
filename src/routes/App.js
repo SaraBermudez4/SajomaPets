@@ -2,17 +2,30 @@ import React from 'react'
 import { ChakraProvider } from "@chakra-ui/react";
 import {
   BrowserRouter as Router,
+  Route,
   Redirect,
   Switch
 } from 'react-router-dom';
 import { useDispatch } from "react-redux";
-import Routes from './Routes';
+import AuthRoutes from './AuthRoutes';
 import Home from "../containers/home/Home";
 import { useEffect, useState } from "react";
 import { login } from '../actions/authAction'
 import firebase from 'firebase'
 import { PrivateRouter } from './PrivateRoute'
 import { PublicRouter } from './PublicRoute'
+import '../styles/style.css'
+import Favorite from '../containers/favorite/Favorite';
+import Cart from '../containers/cart/Cart';
+import Search from '../containers/search/Search';
+import Accessories from '../containers/products/Accessories';
+import Food from '../containers/products/Food';
+import Toys from '../containers/products/Toys';
+import Profile from '../containers/profile/Profile';
+import Contenedor from '../containers/sideBar/Contenedor';
+import { startUserLoad } from '../actions/userAction';
+// import ProfileRoutes from './ProfileRoutes';
+// import DashboardRouter from './DashboardRouter';
 
 const App = () => {
 
@@ -24,14 +37,15 @@ const App = () => {
   useEffect(() => {
     firebase.auth().onAuthStateChanged(async (user) => {
       if (user?.uid) {
-        dispatch(login(user.uid, user.displayName))
+        dispatch(login(user.uid, user.displayName, user.email, user.photoURL, user.phoneNumber))
+        dispatch(startUserLoad(user.uid))
         setIsLoogedIn(true)
       } else {
         setIsLoogedIn(false)
       }
       setChecking(false)
     })
-  }, [dispatch, setChecking])
+  }, [dispatch, setChecking, setIsLoogedIn])
 
   if (checking) {
     return (
@@ -42,11 +56,21 @@ const App = () => {
   return (
     <ChakraProvider>
       <Router>
-        <Switch>
-          <PublicRouter path='/auth' component={Routes} isAuthenticated={isLoogedIn} />
-          <PrivateRouter exact path='/home' component={Home} isAuthenticated={isLoogedIn} />
-          <Redirect to='/auth/login' />
-        </Switch>
+        <Contenedor>
+          <Switch>
+            {/* <Route path='/' component={DashboardRouter} /> */}
+            <Route exact path='/' component={Home} />
+            <Route exact path='/search' component={Search} />
+            <Route exact path='/food' component={Food} />
+            <Route exact path='/accessories' component={Accessories} />
+            <Route exact path='/toys' component={Toys} />
+            <PublicRouter path='/auth' component={AuthRoutes} isAuthenticated={isLoogedIn} />
+            <PrivateRouter exact path='/cart' component={Cart} isAuthenticated={isLoogedIn} />
+            <PrivateRouter exact path='/favorite' component={Favorite} isAuthenticated={isLoogedIn} />
+            <PrivateRouter path='/profile' component={Profile} isAuthenticated={isLoogedIn} />
+            <Redirect to='/' />
+          </Switch>
+        </Contenedor>
       </Router>
     </ChakraProvider>
   );

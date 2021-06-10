@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Input, FormControl, InputGroup, InputLeftElement, chakra, InputRightElement, Button, Center, Image, Box, Grid, Alert, AlertIcon } from '@chakra-ui/react'
+import { Input, FormControl, InputGroup, InputLeftElement, chakra, InputRightElement, Button, Image, Box, Grid, Alert, AlertIcon, Container } from '@chakra-ui/react'
 import { FaUserAlt, FaLock } from "react-icons/fa"
 import { FcGoogle } from "react-icons/fc"
 import { SiFacebook } from "react-icons/si"
@@ -11,21 +11,18 @@ import { startLoginGoogle, startGoogleLogin } from '../../actions/authAction'
 import validator from 'validator'
 import { removeError, setError } from '../../actions/uiAction'
 
-const DivLogin = styled.div`
-    padding: 40px;
-    height: 100vh;
+const ContainerLogin = styled(Container)`
     align-items: center;
-    justify-content: center;
     display: flex;
+    height: 100vh;
+    justify-content: center;
     flex-direction: column;
-    @media (min-width: 481px) {
-        margin: 50px;
-    }
 `
 
 const ImageMediaLogin = styled(Image)`
+    width: 100%; 
     @media (min-width: 481px) {
-        width: 50%;
+        width: 65%;
     }
 `
 
@@ -78,8 +75,8 @@ const Login = () => {
     }
 
     return (
-        <Center>
-            <DivLogin>
+        <div>
+            <ContainerLogin>
                 <ImageMediaLogin src="https://i.ibb.co/VtFcZgM/LOGASO-NO-JODA-2.png" alt="LOGASO-NO-JODA-2" border="0" />
                 <form onSubmit={handleSubmit}>
                     {
@@ -131,13 +128,13 @@ const Login = () => {
                     <Box w="100%" h="10" mt='13px'><hr color='black' /></Box>
                 </Grid>
                 <div>
-                    <Button onClick={handleGoogleLogin} width='100%' mt={5} background='red.500' color='white' _hover={{ bg: "#f95f62" }}><CFcGoogle mr={2} />Sign in with google</Button>
+                    <Button onClick={handleGoogleLogin} width='100%'  background='red.500' color='white' _hover={{ bg: "#f95f62" }}><CFcGoogle mr={2} />Sign in with google</Button>
                     <Button width='100%' mt={3} background='#3b5a9a' color='white' _hover={{ bg: "#4b6bad" }}><CSiFacebook mr={2} />Sign in with facebook</Button>
                 </div>
                 <div>
                 </div>
-            </DivLogin>
-        </Center>
+            </ContainerLogin>
+        </div>
     )
 }
 

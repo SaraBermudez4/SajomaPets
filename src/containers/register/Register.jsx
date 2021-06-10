@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Input, FormControl, InputGroup, InputLeftElement, InputRightElement, Button, Center, Image, chakra, Box, Alert, AlertIcon } from '@chakra-ui/react'
+import { Input, FormControl, InputGroup, InputLeftElement, InputRightElement, Button, Image, chakra, Box, Alert, AlertIcon, Container } from '@chakra-ui/react'
 import { FaUserAlt, FaLock } from "react-icons/fa"
 import { MdEmail } from "react-icons/md"
 import { AiFillTags } from "react-icons/ai"
@@ -11,21 +11,18 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setError, removeError } from '../../actions/uiAction'
 import { startRegisterUser } from '../../actions/authAction'
 
-const DivRegistro = styled.div`
-    padding: 40px;
-    height: 100vh;
+const ContainerRegistro = styled(Container)`
     align-items: center;
-    justify-content: center;
     display: flex;
+    height: 100vh;
     flex-direction: column;
-    @media (min-width: 481px) {
-        margin: 50px;
-    }
+    justify-content: center;
 `
 
 const ImageMediaRegistro = styled(Image)`
+    width: 100%; 
     @media (min-width: 481px) {
-        width: 50%;
+        width: 65%;
     }
 `
 
@@ -80,8 +77,8 @@ const Register = () => {
     }
 
     return (
-        <Center id='registro'>
-            <DivRegistro>
+        <div id='registro'>
+            <ContainerRegistro>
                 <ImageMediaRegistro src="https://i.ibb.co/VtFcZgM/LOGASO-NO-JODA-2.png" alt="LOGASO-NO-JODA-2" border="0" />
                 <form onSubmit={handleRegister}>
                     {
@@ -139,14 +136,14 @@ const Register = () => {
                 </form>
                 <Box mt={3} mb={3} >
                     Already registered?{" "}
-                    <Link to='/auth/login' onClick={()=>{
-                    dispatch(removeError())
-                }}>
+                    <Link to='/auth/login' onClick={() => {
+                        dispatch(removeError())
+                    }}>
                         Sign in
                     </Link>
                 </Box>
-            </DivRegistro>
-        </Center>
+            </ContainerRegistro>
+        </div>
     )
 }
 

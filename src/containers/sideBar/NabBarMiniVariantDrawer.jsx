@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -19,19 +20,20 @@ import IconButton from '@material-ui/core/IconButton';
 import { GoChevronLeft, GoChevronRight, GoSearch } from "react-icons/go";
 import { FaShoppingCart, FaSearch, FaUser } from "react-icons/fa";
 import { ImHome3 } from "react-icons/im";
-import { MdPets } from "react-icons/md";
 import { GiOpenedFoodCan, GiHamburgerMenu } from "react-icons/gi";
 import { TiScissors } from "react-icons/ti";
 import { IoIosTennisball, IoMdHeart } from "react-icons/io";
 import { RiLogoutBoxLine } from "react-icons/ri";
 
-import TabScrollButton from "../../components/home/TabScrollButton.jsx";
+// import TabScrollButton from "../../components/home/TabScrollButton.jsx";
 import { fade, InputBase } from '@material-ui/core';
 
 import styled from 'styled-components'
 import '../../styles/style.css'
 import { useDispatch } from 'react-redux';
 import { startLogout } from '../../actions/authAction.js';
+
+import firebase from 'firebase'
 
 const drawerWidth = 240;
 
@@ -56,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
         }),
     },
     menuButton: {
-        marginRight: 36,
+        marginRight: 10,
     },
     hide: {
         display: 'none',
@@ -152,14 +154,16 @@ const NabBarMiniVariantDrawer = () => {
 
     const dispatch = useDispatch()
 
-    const handleLogout = () => {
-        dispatch(startLogout())
-    }
-
     const classes = useStyles();
     const theme = useTheme();
 
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
+
+    const [isLoogedIn, setIsLoogedIn] = useState(false)
+
+    const handleLogout = () => {
+        dispatch(startLogout())
+    }
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -168,6 +172,18 @@ const NabBarMiniVariantDrawer = () => {
     const handleDrawerClose = () => {
         setOpen(false);
     };
+
+    // const [checking, setChecking] = useState(false)
+    useEffect(() => {
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user?.uid) {
+                setIsLoogedIn(true)
+            } else {
+                setIsLoogedIn(false)
+            }
+            // setChecking(true)
+        })
+    }, [])
 
     return (
         <div className={classes.root}>
@@ -228,71 +244,78 @@ const NabBarMiniVariantDrawer = () => {
                 </div>
                 <Divider />
                 <List>
-                    <ListItem button key="Home">
-                        <ListItemIcon> <ImHome3 style={{ fontSize: "20px" }} /> </ListItemIcon>
-                        <ListItemText primary="Home" />
-                    </ListItem>
-                    <ListItem button key="Search">
-                        <ListItemIcon> <FaSearch style={{ fontSize: "20px" }} /> </ListItemIcon>
-                        <ListItemText primary="Search" />
-                    </ListItem>
-                    <ListItem button key="Category Pets">
-                        <ListItemIcon> <MdPets style={{ fontSize: "20px" }} /> </ListItemIcon>
-                        <ListItemText primary="Category Pets" />
-                    </ListItem>
-                    <ListItem button key="Food">
-                        <ListItemIcon> <GiOpenedFoodCan style={{ fontSize: "20px" }} /> </ListItemIcon>
-                        <ListItemText primary="Food" />
-                    </ListItem>
-                    <ListItem button key="Accessories">
-                        <ListItemIcon> <TiScissors style={{ fontSize: "20px" }} /> </ListItemIcon>
-                        <ListItemText primary="Accessories" />
-                    </ListItem>
-                    <ListItem button key="Toys">
-                        <ListItemIcon> <IoIosTennisball style={{ fontSize: "20px" }} /> </ListItemIcon>
-                        <ListItemText primary="Toys" />
-                    </ListItem>
+                    <Link to='/'>
+                        <ListItem button key="Home">
+                            <ListItemIcon> <ImHome3 style={{ fontSize: "20px" }} /> </ListItemIcon>
+                            <ListItemText primary="Home" />
+                        </ListItem>
+                    </Link>
+                    <Link to='/search'>
+                        <ListItem button key="Search">
+                            <ListItemIcon> <FaSearch style={{ fontSize: "20px" }} /> </ListItemIcon>
+                            <ListItemText primary="Search" />
+                        </ListItem>
+                    </Link>
+                    <Link to='/food'>
+                        <ListItem button key="Food">
+                            <ListItemIcon> <GiOpenedFoodCan style={{ fontSize: "20px" }} /> </ListItemIcon>
+                            <ListItemText primary="Food" />
+                        </ListItem>
+                    </Link>
+                    <Link to='/accessories'>
+                        <ListItem button key="Accessories">
+                            <ListItemIcon> <TiScissors style={{ fontSize: "20px" }} /> </ListItemIcon>
+                            <ListItemText primary="Accessories" />
+                        </ListItem>
+                    </Link>
+                    <Link to='/toys'>
+                        <ListItem button key="Toys">
+                            <ListItemIcon> <IoIosTennisball style={{ fontSize: "20px" }} /> </ListItemIcon>
+                            <ListItemText primary="Toys" />
+                        </ListItem>
+                    </Link>
 
                 </List>
                 <Divider />
                 <List>
-                    <ListItem button key="Favorite">
-                        <ListItemIcon> <IoMdHeart style={{ fontSize: "20px" }} /> </ListItemIcon>
-                        <ListItemText primary="Favorite" />
-                    </ListItem>
-                    <ListItem button key="Cart">
-                        <ListItemIcon> <FaShoppingCart style={{ fontSize: "20px" }} /> </ListItemIcon>
-                        <ListItemText primary="Cart" />
-                    </ListItem>
-                    <ListItem button key="Profile">
-                        <ListItemIcon> <FaUser style={{ fontSize: "20px" }} /> </ListItemIcon>
-                        <ListItemText primary="Profile" />
-                    </ListItem>
-                    <ListItem button key="Login" display="none" onClick={handleLogout}>
-                        <ListItemIcon> <RiLogoutBoxLine style={{ fontSize: "20px" }} /> </ListItemIcon>
-                        <ListItemText primary="Logout" />
-                    </ListItem>
-                    {/* {
-                        (auth)
+                    {
+                        (!isLoogedIn)
                             ?
-                            <ListItem button key="Login" display="none">
-                                <ListItemIcon> <RiLogoutBoxLine style={{ fontSize: "20px" }} /> </ListItemIcon>
-                                <ListItemText primary="Login" />
-                            </ListItem>
+                            <Link to="auth/login">
+                                <ListItem button key="Login" display="none">
+                                    <ListItemIcon> <RiLogoutBoxLine style={{ fontSize: "20px" }} /> </ListItemIcon>
+                                    <ListItemText primary="Login" />
+                                </ListItem>
+                            </Link>
                             :
-                            <ListItem button key="Logout" display="none">
-                                <ListItemIcon> <RiLogoutBoxLine style={{ fontSize: "20px" }} /> </ListItemIcon>
-                                <ListItemText primary="Logout" />
-                            </ListItem>
-                    } */}
-
+                            <>
+                                <Link to='/favorite'>
+                                    <ListItem button key="Favorite">
+                                        <ListItemIcon> <IoMdHeart style={{ fontSize: "20px" }} /> </ListItemIcon>
+                                        <ListItemText primary="Favorite" />
+                                    </ListItem>
+                                </Link>
+                                <Link to="/cart">
+                                    <ListItem button key="Cart">
+                                        <ListItemIcon> <FaShoppingCart style={{ fontSize: "20px" }} /> </ListItemIcon>
+                                        <ListItemText primary="Cart" />
+                                    </ListItem>
+                                </Link>
+                                <Link to="/profile/data">
+                                    <ListItem button key="Profile">
+                                        <ListItemIcon> <FaUser style={{ fontSize: "20px" }} /> </ListItemIcon>
+                                        <ListItemText primary="Profile" />
+                                    </ListItem>
+                                </Link>
+                                <ListItem button key="Logout" display="none" onClick={handleLogout}>
+                                    <ListItemIcon> <RiLogoutBoxLine style={{ fontSize: "20px" }} /> </ListItemIcon>
+                                    <ListItemText primary="Logout" />
+                                </ListItem>
+                            </>
+                    }
                 </List>
             </Drawer>
-            {/* <main className={classes.content}>
-                <div className={classes.toolbar} />
-                <TabScrollButton />
-            </main> */}
-            <TabScrollButton />
+            {/* <TabScrollButton /> */}
 
         </div>
 

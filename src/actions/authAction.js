@@ -7,7 +7,7 @@ export const startLoginGoogle = (email, password) => {
         return firebase.auth().signInWithEmailAndPassword(email, password)
         .then(({user}) => {
             dispatch(startLoading())
-            dispatch(login(user.uid, user.displayName))
+            dispatch(login(user.uid, user.displayName, user.email, user.photoURL, user.phoneNumber))
         })
         .catch(e => {
             dispatch(finishLoading())
@@ -20,7 +20,7 @@ export const startGoogleLogin = () => {
     return (dispatch) => {
         firebase.auth().signInWithPopup(googleAuthProvider)
         .then(({user}) => {
-            dispatch(login(user.uid, user.displayName))
+            dispatch(login(user.uid, user.displayName, user.email, user.photoURL, user.phoneNumber))
         })
     }
 }
@@ -31,7 +31,7 @@ export const startRegisterUser = (name, lastName, email, password) => {
         .then( async ({user}) => {
             await user.updateProfile({displayName: name + ' ' + lastName})
 
-            dispatch(login(user.uid, user.displayName))
+            dispatch(login(user.uid, user.displayName, user.email, user.photoURL, user.phoneNumber))
             
 
             // user.providerData.forEach(function (profile) {
@@ -50,12 +50,15 @@ export const startRegisterUser = (name, lastName, email, password) => {
     }
 }
 
-export const login = (uid, displayName) => {
+export const login = (uid, displayName, email, image, phone) => {
     return {
         type: types.login,
         payload: {
             uid,
-            displayName
+            displayName,
+            email,
+            image,
+            phone
         }
     }
 }
