@@ -6,5 +6,8 @@ export const types = {
     uiRemoveError: 'RemoveError',
     
     uiStartLoading: 'StartLoading',
-    uiFinishLoading: 'FinishLoaging'
+    uiFinishLoading: 'FinishLoaging',
+
+    dataUserAdd: 'AddUserData',
+    dataUserLoad: 'LoadUserData'
 }
