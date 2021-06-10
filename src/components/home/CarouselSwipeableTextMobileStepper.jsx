@@ -14,7 +14,6 @@ import imagen6 from '../../imagenes/imagen6.jpg'
 import imagen7 from '../../imagenes/imagen7.jpg'
 import imagen8 from '../../imagenes/imagen8.png'
 import imagen9 from '../../imagenes/imagen9.png'
-import { Button } from '@material-ui/core';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -78,7 +77,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.default,
   },
   img: {
-    height: 400,
     display: 'block',
     maxWidth: "100%",
     overflow: 'hidden',
@@ -95,6 +93,13 @@ const StyledDiv = styled.div`
     max-width: 80%;
     margin-left: 17%;
     margin-top: 17%;
+  }
+`
+
+const StyledImage = styled.img`
+  height: 400px;
+  @media (min-width: 320px) and (max-width: 480px){
+    height: 200px;
   }
 `
 
@@ -120,7 +125,7 @@ function CarouselSwipeableTextMobileStepper() {
         {tutorialSteps.map((step, index) => (
           <div key={step.label}>
             {Math.abs(activeStep - index) <= 2 ? (
-              <img className={classes.img} src={step.imgPath} alt={step.label} width="500px" />
+              <StyledImage className={classes.img} src={step.imgPath} alt={step.label} width="500px" />
             ) : null}
           </div>
         ))}

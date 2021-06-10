@@ -1,17 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { useSelector } from 'react-redux';
-import { Heading } from '@chakra-ui/layout';
-import { Divider, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@material-ui/core';
 
+import { Accordion, AccordionDetails, AccordionSummary, Box, Button, FormControl, Grid, Modal, Typography } from '@material-ui/core';
+
+import styled from 'styled-components'
+import { useDisclosure } from '@chakra-ui/hooks';
+
+import { RiArrowDownSLine } from "react-icons/ri";
+import { FaRegCreditCard, FaCcMastercard, FaCcVisa, FaCcPaypal, FaMapMarkerAlt } from 'react-icons/fa'
+import { MdAddCircle } from 'react-icons/md'
+import { BsHouseDoor, BsBuilding } from 'react-icons/bs'
+import CreditCardModal from './CreditCardModal';
+
+const StyledAccordionDetails = styled(AccordionDetails)`
+    flex-direction: column;
+    width: 50vw;
+`
+const StyledTextField = styled(TextField)`
+    margin-bottom: 20px;
+    width: 100%;
+`
 const useStyles = makeStyles((theme) => ({
     root: {
         '& > *': {
             margin: theme.spacing(1),
-            width: '350px',
+            width: '100%',
         },
-        textAlign:"center",
+
     },
     formControl: {
         margin: theme.spacing(1),
@@ -23,126 +40,173 @@ const useStyles = makeStyles((theme) => ({
     button: {
         margin: theme.spacing(1),
     },
+    heading: {
+        fontSize: theme.typography.pxToRem(18),
+        flexBasis: '33.33%',
+        flexShrink: 0,
+    },
+    typography: {
+        padding: theme.spacing(2),
+    },
 }));
+
 
 const DatesProfile = () => {
     const classes = useStyles();
+
     const { name } = useSelector(state => state.auth)
 
-    const [tarjeta, setTarjeta] = React.useState('');
-    const [domicilio, setDomicilio] = React.useState('');
+    // const { isOpen, onOpen, onClose } = useDisclosure()
 
-    const handleChangeTarjeta = (e) => {
-        setTarjeta(e.target.value);
-    };
-    const handleChangeDomicilio = (e) => {
-        setDomicilio(e.target.value);
-    };
-
-    // const [tarjeta2, setTarjeta2] = React.useState('');
-
-    // const handleChangeTarjeta2 = (e) => {
-    //     setTarjeta2(e.target.value);
-    // };
+    // const initialRef = React.useRef()
+    // const finalRef = React.useRef()
 
     return (
-        <form className={classes.root} noValidate autoComplete="off">
-            <Heading as="h4" size="md">Datos de la cuenta</Heading>
-            <TextField id="outlined-basic" label='NickName' variant="outlined" required />
-            <TextField id="outlined-basic" label='Email' variant="outlined" required />
-            <TextField id="outlined-basic" label='Password' variant="outlined" InputProps={{
-                readOnly: true,
-            }} />
-            <Divider />
-            <Heading as="h4" size="md">Datos personales</Heading>
-            <TextField id="outlined-basic" label={name} variant="outlined" required disabled />
-            <TextField id="outlined-basic" label='LastName' variant="outlined" required disabled />
-            <TextField id="outlined-basic" label='Document' variant="outlined" InputProps={{
-                readOnly: true,
-            }} />
-            <TextField id="outlined-basic" label='PhoneNumber' variant="outlined" InputProps={{
-                readOnly: true,
-            }} />
-            <TextField id="outlined-basic" label='PhoneNumber2' variant="outlined" InputProps={{
-                readOnly: true,
-            }} />
-            <Divider />
-            <Heading as="h4" size="md">Tarjetas</Heading>
-            {/* <div>
-                <FormControl className={classes.formControl}>
-                    <InputLabel shrink id="demo-simple-select-placeholder-label-label">
-                        Tarjeta
-                </InputLabel>
-                    <Select
-                        labelId="demo-simple-select-placeholder-label-label"
-                        id="demo-simple-select-placeholder-label"
-                        value={tarjeta}
-                        onChange={handleChangeTarjeta}
-                        displayEmpty
-                        className={classes.selectEmpty}
-                    >
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
-                        <MenuItem value={123456789}>123456789</MenuItem>
-                        <MenuItem value={98765432}>98765432</MenuItem>
-                        <MenuItem value={657483932}>657483932</MenuItem>
-                    </Select>
-                </FormControl>
-                <IconButton color="primary" aria-label="add tarjet card">
-                    <IoMdAddCircle />
-                </IconButton>
-            </div> */}
-            <div>
-                <FormControl component="fieldset">
-                    <FormLabel component="legend">Tarjetas</FormLabel>
-                    <RadioGroup aria-label="tarjeta" name="tarjeta1" value={tarjeta} onChange={handleChangeTarjeta}>
-                        <FormControlLabel value="123456789" control={<Radio />} label="123456789" />
-                        <FormControlLabel value="234567891" control={<Radio />} label="234567891" />
-                        <FormControlLabel value="345678912" control={<Radio />} label="345678912" />
-                        <FormControlLabel value="456789123" control={<Radio />} label="456789123" />
-                    </RadioGroup>
-                </FormControl>
-            </div>
-            <Divider />
-            <Heading as="h4" size="md">Domicilios</Heading>
-            <div>
-                <FormControl component="fieldset">
-                    <FormLabel component="legend">Domicilios</FormLabel>
-                    <RadioGroup aria-label="domicilio" name="domicilio1" value={domicilio} onChange={handleChangeDomicilio}>
-                        <FormControlLabel value="Medellín" control={<Radio />} label="Medellín" />
-                        <FormControlLabel value="Bogotá" control={<Radio />} label="Bogotá" />
-                        <FormControlLabel value="Cll 78 CA 87" control={<Radio />} label="Cll 78 CA 87" />
-                        <FormControlLabel value="Unidad recidencial" control={<Radio />} label="Unidad recidencial" />
-                    </RadioGroup>
-                </FormControl>
-            </div>
-            {/* <div>
-                <FormControl className={classes.formControl}>
-                    <InputLabel shrink id="demo-simple-select-placeholder-label-label">
-                        Domicilio
-                    </InputLabel>
-                    <Select
-                        labelId="demo-simple-select-placeholder-label-label"
-                        id="demo-simple-select-placeholder-label"
-                        value={domicilio}
-                        onChange={handleChangeDomicilio}
-                        displayEmpty
-                        className={classes.selectEmpty}
-                    >
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
-                        <MenuItem value="Cll 78 CA 98">Cll 78 CA 98</MenuItem>
-                        <MenuItem value="Medellín">Medellín</MenuItem>
-                        <MenuItem value="Bogot">Bogotá</MenuItem>
-                    </Select>
-                </FormControl>
-                <IconButton color="primary" aria-label="add tarjet card">
-                    <IoMdAddCircle />
-                </IconButton>
-            </div> */}
-        </form>
+
+        <div className={classes.root} noValidate autoComplete="off" display="flex"
+            justifyContent="center">
+            <Accordion>
+                <AccordionSummary
+                    expandIcon={<RiArrowDownSLine />}
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
+                >
+                    <Typography className={classes.heading}>Datos de la cuenta</Typography>
+                </AccordionSummary>
+                <StyledAccordionDetails>
+                    <StyledTextField id="outlined-basic" type="text" value="PepitoPerez4" label='NickName' variant="outlined" InputProps={{
+                        readOnly: true,
+                    }} />
+                    <StyledTextField id="outlined-basic" type="email" value="pepitoPerez@gmail.com" label='Email' variant="outlined" InputProps={{
+                        readOnly: true,
+                    }} />
+                    <StyledTextField type="password" value="123456789" id="outlined-basic" label='Password' variant="outlined" InputProps={{
+                        readOnly: true,
+                    }} />
+                </StyledAccordionDetails>
+            </Accordion>
+            <Accordion >
+                <AccordionSummary
+                    expandIcon={<RiArrowDownSLine />}
+                    aria-controls="panel2a-content"
+                    id="panel2a-header"
+                >
+                    <h3 className={classes.heading}>Datos personales</h3>
+                </AccordionSummary>
+                <StyledAccordionDetails>
+                    <StyledTextField id="outlined-basic" value={name} label="Name" variant="outlined" />
+                    <StyledTextField id="outlined-basic" value="Perez" label='LastName' variant="outlined" />
+                    <StyledTextField id="outlined-basic" value="1001137760" label='Document' variant="outlined" InputProps={{
+                        readOnly: true,
+                    }} />
+                    <StyledTextField id="outlined-basic" value="311373760" label='PhoneNumber' variant="outlined" InputProps={{
+                        readOnly: true,
+                    }} />
+                    <StyledTextField id="outlined-basic" value="5054602" label='PhoneNumber2' variant="outlined" InputProps={{
+                        readOnly: true,
+                    }} />
+                </StyledAccordionDetails>
+            </Accordion>
+            <Accordion>
+                <AccordionSummary
+                    expandIcon={<RiArrowDownSLine />}
+                    aria-controls="panel2a-content"
+                    id="panel2a-header"
+                >
+                    <Typography className={classes.heading}>Metodos de pago</Typography>
+                </AccordionSummary>
+                <StyledAccordionDetails>
+                    <div style={{ textAlign: "left", display: "flex", justifyContent: "space-between" }}>
+                        <FormControl component="fieldset" >
+                            <Grid
+                                container
+                                direction="row"
+                                justify="space-between"
+                                alignItems="flex-start"
+                            >
+                                <Box display="flex" marginBottom="10px" fontSize="18px">
+                                    <FaCcMastercard style={{ marginRight: "10px", fontSize: "18px" }} /> **** **** **** 1234
+                                </Box>
+                                <Box display="flex" marginBottom="10px" fontSize="18px" >
+                                    <FaCcVisa style={{ marginRight: "10px", fontSize: "18px" }} /> **** **** **** 1234
+                                </Box>
+                                <Box display="flex" marginBottom="10px" fontSize="18px" >
+                                    <FaRegCreditCard style={{ marginRight: "10px", fontSize: "18px" }} fontSize="18px" /> **** **** **** 1234
+                                </Box>
+                                <Box display="flex" marginBottom="10px" fontSize="18px" >
+                                    <FaCcPaypal style={{ marginRight: "10px", fontSize: "18px" }} fontSize="18px" /> **** **** **** 1234
+                                </Box>
+                            </Grid>
+                        </FormControl>
+                        <div>
+                            <Button
+                                variant="outlined" color="primary"
+                                className={classes.button}
+                                startIcon={<MdAddCircle />}
+                                // onClick={onOpen}
+
+                            >
+                                {/* <CreditCardModal /> */}
+                                Agregar
+                            </Button>
+                        </div>
+                    </div>
+                </StyledAccordionDetails>
+            </Accordion>
+            <Accordion>
+                <AccordionSummary
+                    expandIcon={<RiArrowDownSLine />}
+                    aria-controls="panel2a-content"
+                    id="panel2a-header"
+                >
+                    <Typography className={classes.heading}>Domicilios</Typography>
+                </AccordionSummary>
+                <StyledAccordionDetails>
+                    <div style={{ textAlign: "left", display: "flex", justifyContent: "space-between" }}>
+                        <FormControl component="fieldset" >
+                            <Grid
+                                container
+                                direction="row"
+                                justify="space-between"
+                                alignItems="flex-start"
+                            >
+                                <Box marginBottom="10px" fontSize="18px" border="solid 1px" borderRadius="20px" padding="20px" >
+                                    <p style={{ fontSize: "20px", fontWeight: "600", display: "flex" }}><BsHouseDoor style={{ marginRight: "10px", fontSize: "18px", marginTop: "5px" }} />Casa</p>
+                                    <p style={{ fontSize: "16px" }}>Bogotá - Barrio - Cll 76 CA # 90-26</p>
+                                    <p style={{ fontSize: "14px" }}>int 301</p>
+                                </Box>
+                                <Box marginBottom="10px" fontSize="18px" border="solid 1px" borderRadius="20px" padding="20px">
+                                    <p style={{ fontSize: "20px", fontWeight: "600", display: "flex" }}><BsBuilding style={{ marginRight: "10px", fontSize: "18px", marginTop: "5px" }} />Trabajo</p>
+                                    <p style={{ fontSize: "16px" }}>Bogotá - Barrio - Cll 76 CA # 90-26</p>
+                                    <p style={{ fontSize: "14px" }}>int 301</p>
+                                </Box>
+                                <Box marginBottom="10px" fontSize="18px" border="solid 1px" borderRadius="20px" padding="20px" >
+                                    <p style={{ fontSize: "20px", fontWeight: "600", display: "flex" }}><FaMapMarkerAlt style={{ marginRight: "10px", fontSize: "18px", marginTop: "5px" }} />Otro</p>
+                                    <p style={{ fontSize: "16px" }}>Bogotá - Barrio - Cll 76 CA # 90-26</p>
+                                    <p style={{ fontSize: "14px" }}>int 301</p>
+                                </Box>
+                            </Grid>
+                        </FormControl>
+                        <div>
+                            <Button
+                                variant="outlined" color="primary"
+                                className={classes.button}
+                                startIcon={<MdAddCircle />}
+                            >
+                                Agregar
+                            </Button>
+                        </div>
+                    </div>
+                </StyledAccordionDetails>
+            </Accordion>
+            {/* <Modal 
+            initialFocusRef={initialRef}
+            finalFocusRef={finalRef}
+            isOpen={isOpen}
+            onClose={onClose}>
+                <CreditCardModal  />
+            </Modal> */}
+        </div>
 
     )
 }
