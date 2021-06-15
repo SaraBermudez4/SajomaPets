@@ -302,7 +302,7 @@ const NabBarMiniVariantDrawer = () => {
                     {
                         (!isLoogedIn)
                             ?
-                            <Link to="auth/login">
+                            <Link to="/auth/login">
                                 <ListItem button key="Login" display="none">
                                     <ListItemIcon> <RiLogoutBoxLine style={{ fontSize: "20px" }} /> </ListItemIcon>
                                     <ListItemText primary="Login" />
@@ -322,7 +322,7 @@ const NabBarMiniVariantDrawer = () => {
                                         <ListItemText primary="Cart" />
                                     </ListItem>
                                 </Link>
-                                <Link to="/profile/data">
+                                <Link to="/profile">
                                     <ListItem button key="Profile">
                                         <ListItemIcon> <FaUser style={{ fontSize: "20px" }} /> </ListItemIcon>
                                         <ListItemText primary="Profile" />
