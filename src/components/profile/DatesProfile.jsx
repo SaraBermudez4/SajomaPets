@@ -58,8 +58,10 @@ const DatesProfile = () => {
     const { userData } = useSelector(state => state.user)
     const cards = userData[0].cards
 
+    console.log(cards);
+
     const address = userData[0].addresses
-    console.log(address);
+    
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     const initialRef = React.useRef()
@@ -128,23 +130,12 @@ const DatesProfile = () => {
                                 justify="space-between"
                                 alignItems="flex-start"
                             >
-                                {cards.map(card => {
-                                    <Box display="flex" marginBottom="10px" fontSize="18px">
-                                        <FaCcMastercard style={{ marginRight: "10px", fontSize: "18px" }} /> {card}
+                                {cards.map((card, index) => {
+                                    return (
+                                    <Box display="flex" key={index} marginBottom="10px" fontSize="18px">
+                                        <FaCcMastercard style={{ marginRight: "10px", fontSize: "18px" }} /> {card.numCard}
                                     </Box>
-                                })}
-                                <Box display="flex" marginBottom="10px" fontSize="18px">
-                                    <FaCcMastercard style={{ marginRight: "10px", fontSize: "18px" }} /> **** **** **** 1234
-                                </Box>
-                                <Box display="flex" marginBottom="10px" fontSize="18px" >
-                                    <FaCcVisa style={{ marginRight: "10px", fontSize: "18px" }} /> **** **** **** 1234
-                                </Box>
-                                <Box display="flex" marginBottom="10px" fontSize="18px" >
-                                    <FaRegCreditCard style={{ marginRight: "10px", fontSize: "18px" }} fontSize="18px" /> **** **** **** 1234
-                                </Box>
-                                <Box display="flex" marginBottom="10px" fontSize="18px" >
-                                    <FaCcPaypal style={{ marginRight: "10px", fontSize: "18px" }} fontSize="18px" /> **** **** **** 1234
-                                </Box>
+                                )})}
                             </Grid>
                         </FormControl>
                         <div>
@@ -219,7 +210,7 @@ const DatesProfile = () => {
                 finalFocusRef={finalRef}
                 isOpen={isOpen}
                 onClose={onClose} >
-                <CreditCardModal />
+                <CreditCardModal onClose={onClose} />
             </Modal>
         </div>
 

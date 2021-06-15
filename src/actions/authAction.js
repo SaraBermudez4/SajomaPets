@@ -1,6 +1,7 @@
 import { types } from "../types/types";
-import { googleAuthProvider, firebase, db } from '../firebase/firebase-config'
+import { googleAuthProvider, facebookAuthProvider, firebase, db } from '../firebase/firebase-config'
 import { startLoading, finishLoading } from './uiAction'
+import { loadUserData } from "../helpers/loadHelp";
 
 export const startLoginGoogle = (email, password) => {
     return (dispatch) => {
@@ -22,38 +23,60 @@ export const startGoogleLogin = () => {
             .then(async ({ user }) => {
                 dispatch(login(user.uid, user.displayName, user.email, user.photoURL, user.phoneNumber))
 
-                const newUser = {
-                    document: "",
-                    lastName: "",
-                    cellPhone: "",
-                    nickName: user.displayName,
-                    email: user.email,
-                    phone: "",
-                    name: "",
-                    cards: [
-                        {
-                            paymentMethod: "",
-                            numCard: "",
-                            validateCard: "",
-                            cvvCard: "",
-                            userNameCard: "",
-                            ccUser: ""
-                        }
-                    ],
-                    addresses: [
-                        {
-                            address: "",
-                            city:"",
-                            complement:"",
-                            country:"",
-                            department: "",
-                            neighborhood: "",
-                            type:""
-                        }
-                    ]
-                };
+                const data = await loadUserData(user.uid)
 
-                await db.collection(`profile/${user.uid}/personalData`).add(newUser)
+                console.log(data);
+
+                if (data.length < 1) {
+                    const newUser = {
+                        document: "",
+                        lastName: "",
+                        cellPhone: "",
+                        nickName: user.displayName,
+                        email: user.email,
+                        phone: "",
+                        name: "",
+                        cards: [],
+                        addresses: []
+                    };
+
+                    await db.collection(`profile/${user.uid}/personalData`).add(newUser)
+                }
+            })
+            .catch(e => {
+                console.log(e);
+            })
+    }
+}
+
+export const startFacebookLogin = () => {
+    return (dispatch) => {
+        firebase.auth().signInWithPopup(facebookAuthProvider)
+            .then(async ({ user }) => {
+                dispatch(login(user.uid, user.displayName, user.email, user.photoURL, user.phoneNumber))
+
+                const data = await loadUserData(user.uid)
+
+                console.log(data);
+
+                if (data.length < 1) {
+                    const newUser = {
+                        document: "",
+                        lastName: "",
+                        cellPhone: "",
+                        nickName: user.displayName,
+                        email: user.email,
+                        phone: "",
+                        name: "",
+                        cards: [],
+                        addresses: []
+                    };
+
+                    await db.collection(`profile/${user.uid}/personalData`).add(newUser)
+                }
+            })
+            .catch(e => {
+                console.log(e);
             })
     }
 }
