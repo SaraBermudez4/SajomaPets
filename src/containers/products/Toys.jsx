@@ -18,6 +18,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Spinner } from '@chakra-ui/react';
 import styled from 'styled-components'
 import ProductTabs from '../../components/home/ProductTabs';
+import CarouselSwipeableTextMobileStepper from '../../components/home/CarouselSwipeableTextMobileStepper';
+
+import imagen1 from '../../imagenes/1.png'
+import imagen2 from '../../imagenes/2.png'
+import imagen3 from '../../imagenes/3.png'
 
 const Carga = styled(Spinner)`
      display:block;
@@ -75,6 +80,25 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 const Toys = () => {
+
+    const tutorialSteps = [
+        {
+            label: 'Imagen1',
+            imgPath:
+                imagen1,
+        },
+        {
+            label: 'Imagen2',
+            imgPath:
+                imagen2,
+        },
+        {
+            label: 'Imagen3',
+            imgPath:
+                imagen3,
+        }
+    ]
+
     const classes = useStyles();
     const [value, setValue] = useState(0);
 
@@ -97,7 +121,7 @@ const Toys = () => {
 
     return (
         <StyledRoot className={classes.root}>
-            <h1>Toys</h1>
+            <CarouselSwipeableTextMobileStepper images={tutorialSteps} />
             <AppBar position="static" color="default">
                 <Tabs
                     value={value}
