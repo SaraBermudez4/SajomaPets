@@ -2,6 +2,7 @@ import React from 'react'
 import CarouselSwipeableTextMobileStepper from '../../components/home/CarouselSwipeableTextMobileStepper';
 import styled from 'styled-components'
 import TabScrollButton from '../../components/home/TabScrollButton';
+// import NabBarMiniVariantDrawer from '../sideBar/NabBarMiniVariantDrawer';
 
 const StyledDivTabs = styled.div`
     display:flex; 
@@ -18,6 +19,7 @@ const Home = () => {
 
     return (
         <>
+            {/* <NabBarMiniVariantDrawer /> */}
             <CarouselSwipeableTextMobileStepper />
             <StyledDivTabs>
                 <TabScrollButton />
