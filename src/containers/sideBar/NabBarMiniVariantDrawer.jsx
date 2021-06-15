@@ -30,10 +30,11 @@ import { fade, InputBase } from '@material-ui/core';
 
 import styled from 'styled-components'
 import '../../styles/style.css'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { startLogout } from '../../actions/authAction.js';
 
 import firebase from 'firebase'
+import { setUserData } from '../../actions/userAction';
 
 const drawerWidth = 240;
 
@@ -154,14 +155,34 @@ const NabBarMiniVariantDrawer = () => {
 
     const dispatch = useDispatch()
 
+    const {uid} = useSelector(state => state.auth)
+
+    console.log(uid);
+    
     const classes = useStyles();
     const theme = useTheme();
-
+    
     const [open, setOpen] = useState(false);
 
     const [isLoogedIn, setIsLoogedIn] = useState(false)
 
     const handleLogout = () => {
+        dispatch(setUserData(
+            [
+                {
+                    document:"",
+                    lastName: "",
+                    cellPhone: "",
+                    nickName: "",
+                    email: "",
+                    phone: "",
+                    name: "",
+                    cards: [],
+                    addresses: []
+        
+                }
+            ]
+        ))
         dispatch(startLogout())
     }
 
@@ -281,7 +302,7 @@ const NabBarMiniVariantDrawer = () => {
                     {
                         (!isLoogedIn)
                             ?
-                            <Link to="auth/login">
+                            <Link to="/auth/login">
                                 <ListItem button key="Login" display="none">
                                     <ListItemIcon> <RiLogoutBoxLine style={{ fontSize: "20px" }} /> </ListItemIcon>
                                     <ListItemText primary="Login" />
@@ -301,7 +322,7 @@ const NabBarMiniVariantDrawer = () => {
                                         <ListItemText primary="Cart" />
                                     </ListItem>
                                 </Link>
-                                <Link to="/profile/data">
+                                <Link to="/profile">
                                     <ListItem button key="Profile">
                                         <ListItemIcon> <FaUser style={{ fontSize: "20px" }} /> </ListItemIcon>
                                         <ListItemText primary="Profile" />

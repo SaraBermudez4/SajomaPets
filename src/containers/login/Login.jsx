@@ -76,6 +76,11 @@ const Login = () => {
 
     return (
         <div>
+            <Link to='/' onClick={() => {
+                setTimeout(() => {
+                    window.location.reload()
+                }, 500);
+            }}>volver</Link>
             <ContainerLogin>
                 <ImageMediaLogin src="https://i.ibb.co/VtFcZgM/LOGASO-NO-JODA-2.png" alt="LOGASO-NO-JODA-2" border="0" />
                 <form onSubmit={handleSubmit}>

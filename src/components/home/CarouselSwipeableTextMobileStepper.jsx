@@ -19,47 +19,83 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const tutorialSteps = [
   {
+<<<<<<< HEAD
     label: 'imagen1',
+=======
+    label: 'Imagen1',
+>>>>>>> 34414b360e99157d974be38ef6a1588f6bc7fb75
     imgPath:
       imagen1,
   },
   {
+<<<<<<< HEAD
     label: 'imagen2',
+=======
+    label: 'Imagen2',
+>>>>>>> 34414b360e99157d974be38ef6a1588f6bc7fb75
     imgPath:
       imagen2,
   },
   {
+<<<<<<< HEAD
     label: 'imagen3',
+=======
+    label: 'Imagen3',
+>>>>>>> 34414b360e99157d974be38ef6a1588f6bc7fb75
     imgPath:
       imagen3,
   },
   {
+<<<<<<< HEAD
     label: 'imagen4',
+=======
+    label: 'Imagen4',
+>>>>>>> 34414b360e99157d974be38ef6a1588f6bc7fb75
     imgPath:
       imagen4,
   },
   {
+<<<<<<< HEAD
     label: 'imagen5',
+=======
+    label: 'Imagen5',
+>>>>>>> 34414b360e99157d974be38ef6a1588f6bc7fb75
     imgPath:
       imagen5,
   },
   {
+<<<<<<< HEAD
     label: 'imagen6',
+=======
+    label: 'Imagen6',
+>>>>>>> 34414b360e99157d974be38ef6a1588f6bc7fb75
     imgPath:
       imagen6,
   },
   {
+<<<<<<< HEAD
     label: 'imagen7',
+=======
+    label: 'Imagen7',
+>>>>>>> 34414b360e99157d974be38ef6a1588f6bc7fb75
     imgPath:
       imagen7,
   },
   {
+<<<<<<< HEAD
     label: 'imagen8',
+=======
+    label: 'Imagen8',
+>>>>>>> 34414b360e99157d974be38ef6a1588f6bc7fb75
     imgPath:
       imagen8,
   },
   {
+<<<<<<< HEAD
     label: 'imagen9',
+=======
+    label: 'Imagen9',
+>>>>>>> 34414b360e99157d974be38ef6a1588f6bc7fb75
     imgPath:
       imagen9,
   },
@@ -77,7 +113,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.default,
   },
   img: {
-    height: 400,
     display: 'block',
     maxWidth: "100%",
     overflow: 'hidden',
@@ -97,6 +132,13 @@ const StyledDiv = styled.div`
   }
 `
 
+const StyledImage = styled.img`
+  height: 400px;
+  @media (min-width: 320px) and (max-width: 480px){
+    height: 200px;
+  }
+`
+
 function CarouselSwipeableTextMobileStepper() {
   const classes = useStyles();
   const theme = useTheme();
@@ -107,7 +149,10 @@ function CarouselSwipeableTextMobileStepper() {
   };
 
   return (
-    <div className={classes.root}>
+    <StyledDiv className={classes.root} >
+      {/* <Paper square elevation={0} className={classes.header}>
+        <Typography>{tutorialSteps[activeStep].label}</Typography>
+      </Paper> */}
       <AutoPlaySwipeableViews
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
         index={activeStep}
@@ -116,12 +161,34 @@ function CarouselSwipeableTextMobileStepper() {
         {tutorialSteps.map((step, index) => (
           <div key={step.label}>
             {Math.abs(activeStep - index) <= 2 ? (
-              <img className={classes.img} src={step.imgPath} alt={step.label} width="500px" />
+              <StyledImage className={classes.img} src={step.imgPath} alt={step.label} width="500px" />
             ) : null}
           </div>
         ))}
       </AutoPlaySwipeableViews>
+<<<<<<< HEAD
     </div>
+=======
+      {/* <MobileStepper
+        steps={maxSteps}
+        position="static"
+        variant="text"
+        activeStep={activeStep}
+        nextButton={
+          <Button size="small" onClick={handleNext} disabled={activeStep === maxSteps - 1}>
+            Next
+          {theme.direction === 'rtl' ? <GoChevronLeft /> : <GoChevronRight />}
+          </Button>
+        }
+        backButton={
+          <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+            {theme.direction === 'rtl' ? <GoChevronRight /> : <GoChevronLeft />}
+          Back
+        </Button>
+        }
+      /> */}
+    </StyledDiv>
+>>>>>>> 34414b360e99157d974be38ef6a1588f6bc7fb75
   );
 }
 
