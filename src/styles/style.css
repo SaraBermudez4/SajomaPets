@@ -1,5 +1,6 @@
 .MuiToolbar-root {
     justify-content: space-between;
+    /* z-index: 1 */
 }
 
 @media (min-width: 768px) {
@@ -14,10 +15,10 @@
     justify-content: space-between
 }
 
-.MuiAccordionSummary-content {
+/* .MuiAccordionSummary-content {
     justify-content: left;
     text-align: left;
-}
+} */
 
 .MuiGrid-root{
 
