@@ -19,7 +19,7 @@ export const startLoginGoogle = (email, password) => {
 export const startGoogleLogin = () => {
     return (dispatch) => {
         firebase.auth().signInWithPopup(googleAuthProvider)
-            .then( async ({ user }) => {
+            .then(async ({ user }) => {
                 dispatch(login(user.uid, user.displayName, user.email, user.photoURL, user.phoneNumber))
 
                 const newUser = {
@@ -30,8 +30,27 @@ export const startGoogleLogin = () => {
                     email: user.email,
                     phone: "",
                     name: "",
-                    cards: [],
-                    addresses: []
+                    cards: [
+                        {
+                            paymentMethod: "",
+                            numCard: "",
+                            validateCard: "",
+                            cvvCard: "",
+                            userNameCard: "",
+                            ccUser: ""
+                        }
+                    ],
+                    addresses: [
+                        {
+                            address: "",
+                            city:"",
+                            complement:"",
+                            country:"",
+                            department: "",
+                            neighborhood: "",
+                            type:""
+                        }
+                    ]
                 };
 
                 await db.collection(`profile/${user.uid}/personalData`).add(newUser)

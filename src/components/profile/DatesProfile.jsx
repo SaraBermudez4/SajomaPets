@@ -54,8 +54,11 @@ const useStyles = makeStyles((theme) => ({
 const DatesProfile = () => {
     const classes = useStyles();
 
-    const { name } = useSelector(state => state.auth)
+    const { userData } = useSelector(state => state.user)
+    const cards = userData[0].cards
 
+    const address = userData[0].addresses
+    console.log(address);
     // const { isOpen, onOpen, onClose } = useDisclosure()
 
     // const initialRef = React.useRef()
@@ -74,15 +77,15 @@ const DatesProfile = () => {
                     <Typography className={classes.heading}>Datos de la cuenta</Typography>
                 </AccordionSummary>
                 <StyledAccordionDetails>
-                    <StyledTextField id="outlined-basic" type="text" value="PepitoPerez4" label='NickName' variant="outlined" InputProps={{
+                    <StyledTextField id="outlined-basic" type="text" value={userData[0].nickName} label='NickName' variant="outlined" InputProps={{
                         readOnly: true,
                     }} />
-                    <StyledTextField id="outlined-basic" type="email" value="pepitoPerez@gmail.com" label='Email' variant="outlined" InputProps={{
+                    <StyledTextField id="outlined-basic" type="email" value={userData[0].email} label='Email' variant="outlined" InputProps={{
                         readOnly: true,
                     }} />
-                    <StyledTextField type="password" value="123456789" id="outlined-basic" label='Password' variant="outlined" InputProps={{
+                    {/* <StyledTextField type="password" value="123456789" id="outlined-basic" label='Password' variant="outlined" InputProps={{
                         readOnly: true,
-                    }} />
+                    }} /> */}
                 </StyledAccordionDetails>
             </Accordion>
             <Accordion >
@@ -94,15 +97,15 @@ const DatesProfile = () => {
                     <h3 className={classes.heading}>Datos personales</h3>
                 </AccordionSummary>
                 <StyledAccordionDetails>
-                    <StyledTextField id="outlined-basic" value={name} label="Name" variant="outlined" />
-                    <StyledTextField id="outlined-basic" value="Perez" label='LastName' variant="outlined" />
-                    <StyledTextField id="outlined-basic" value="1001137760" label='Document' variant="outlined" InputProps={{
+                    <StyledTextField id="outlined-basic" value={userData[0].name} label="Name" variant="outlined" />
+                    <StyledTextField id="outlined-basic" value={userData[0].lastName} label='LastName' variant="outlined" />
+                    <StyledTextField id="outlined-basic" value={userData[0].document} label='Document' variant="outlined" InputProps={{
                         readOnly: true,
                     }} />
-                    <StyledTextField id="outlined-basic" value="311373760" label='PhoneNumber' variant="outlined" InputProps={{
+                    <StyledTextField id="outlined-basic" value={userData[0].phone} label='PhoneNumber' variant="outlined" InputProps={{
                         readOnly: true,
                     }} />
-                    <StyledTextField id="outlined-basic" value="5054602" label='PhoneNumber2' variant="outlined" InputProps={{
+                    <StyledTextField id="outlined-basic" value={userData[0].cellPhone} label='PhoneNumber2' variant="outlined" InputProps={{
                         readOnly: true,
                     }} />
                 </StyledAccordionDetails>
@@ -124,6 +127,11 @@ const DatesProfile = () => {
                                 justify="space-between"
                                 alignItems="flex-start"
                             >
+                                {cards.map(card => {
+                                    <Box display="flex" marginBottom="10px" fontSize="18px">
+                                        <FaCcMastercard style={{ marginRight: "10px", fontSize: "18px" }} /> {card}
+                                    </Box>
+                                })}
                                 <Box display="flex" marginBottom="10px" fontSize="18px">
                                     <FaCcMastercard style={{ marginRight: "10px", fontSize: "18px" }} /> **** **** **** 1234
                                 </Box>
@@ -143,7 +151,7 @@ const DatesProfile = () => {
                                 variant="outlined" color="primary"
                                 className={classes.button}
                                 startIcon={<MdAddCircle />}
-                                // onClick={onOpen}
+                            // onClick={onOpen}
 
                             >
                                 {/* <CreditCardModal /> */}
@@ -170,6 +178,13 @@ const DatesProfile = () => {
                                 justify="space-between"
                                 alignItems="flex-start"
                             >
+                                {address.map(addr => {
+                                    <Box marginBottom="10px" fontSize="18px" border="solid 1px" borderRadius="20px" padding="20px" >
+                                        <p style={{ fontSize: "20px", fontWeight: "600", display: "flex" }}><BsHouseDoor style={{ marginRight: "10px", fontSize: "18px", marginTop: "5px" }} />{addr.type}</p>
+                                        <p style={{ fontSize: "16px" }}>{addr.country} - {addr.city} - {addr.neighborhood} - {addr.address}</p>
+                                        <p style={{ fontSize: "14px" }}>{addr.complement}</p>
+                                    </Box>
+                                })}
                                 <Box marginBottom="10px" fontSize="18px" border="solid 1px" borderRadius="20px" padding="20px" >
                                     <p style={{ fontSize: "20px", fontWeight: "600", display: "flex" }}><BsHouseDoor style={{ marginRight: "10px", fontSize: "18px", marginTop: "5px" }} />Casa</p>
                                     <p style={{ fontSize: "16px" }}>Bogotá - Barrio - Cll 76 CA # 90-26</p>
