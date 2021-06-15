@@ -13,7 +13,7 @@ const FavContainer = styled.div`
     margin-left: 75px;
     margin-top: 66px;
     @media (min-width: 320px) and (max-width: 480px){
-        width: 90%;
+        width: 85%;
         margin-left: 60px;
     }
 `
