@@ -18,17 +18,17 @@ const HeaderProfile = () => {
 
     const classes = useStyles();
 
-    const { name } = useSelector(state => state.auth)
+    const { name, email, image, phone } = useSelector(state => state.auth)
 
     return (
-        <div style={{marginRight:"100px"}}>
-            <Avatar size="2xl" mb="20px" name={name} src="https://bit.ly/sage-adebayo" onClick={() => console.log("EditarFoto")}>
+        <div style={{ marginRight: "100px" }}>
+            <Avatar size="2xl" mb="20px" name={name} src={image} onClick={() => console.log("EditarFoto")}>
                 <AvatarBadge borderColor="#eaecef" bg="#49519A" boxSize="50px" >
                     <IoCamera fontSize="18px" />
                 </AvatarBadge>
             </Avatar>
             <Heading as="h4" size="md">{name}</Heading>
-            <Text fontSize="xl">pepitoperez@gmail.com</Text>
+            <Text fontSize="xl">{email}</Text>
             <Button
                 variant="outlined" color="primary"
                 className={classes.button}
@@ -36,7 +36,7 @@ const HeaderProfile = () => {
             >
                 Edit
             </Button>
-            
+
         </div>
     )
 }

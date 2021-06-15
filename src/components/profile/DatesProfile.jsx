@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { useSelector } from 'react-redux';
 
-import { Accordion, AccordionDetails, AccordionSummary, Box, Button, FormControl, Grid, Modal, Typography } from '@material-ui/core';
+import { Accordion, AccordionDetails, AccordionSummary, Box, Button, FormControl, Grid, Typography } from '@material-ui/core';
 
 import styled from 'styled-components'
 import { useDisclosure } from '@chakra-ui/hooks';
@@ -13,6 +13,7 @@ import { FaRegCreditCard, FaCcMastercard, FaCcVisa, FaCcPaypal, FaMapMarkerAlt }
 import { MdAddCircle } from 'react-icons/md'
 import { BsHouseDoor, BsBuilding } from 'react-icons/bs'
 import CreditCardModal from './CreditCardModal';
+import { Modal } from '@chakra-ui/react';
 
 const StyledAccordionDetails = styled(AccordionDetails)`
     flex-direction: column;
@@ -59,10 +60,10 @@ const DatesProfile = () => {
 
     const address = userData[0].addresses
     console.log(address);
-    // const { isOpen, onOpen, onClose } = useDisclosure()
+    const { isOpen, onOpen, onClose } = useDisclosure()
 
-    // const initialRef = React.useRef()
-    // const finalRef = React.useRef()
+    const initialRef = React.useRef()
+    const finalRef = React.useRef()
 
     return (
 
@@ -151,7 +152,7 @@ const DatesProfile = () => {
                                 variant="outlined" color="primary"
                                 className={classes.button}
                                 startIcon={<MdAddCircle />}
-                            // onClick={onOpen}
+                                onClick={onOpen}
 
                             >
                                 {/* <CreditCardModal /> */}
@@ -214,13 +215,12 @@ const DatesProfile = () => {
                     </div>
                 </StyledAccordionDetails>
             </Accordion>
-            {/* <Modal 
-            initialFocusRef={initialRef}
-            finalFocusRef={finalRef}
-            isOpen={isOpen}
-            onClose={onClose}>
-                <CreditCardModal  />
-            </Modal> */}
+            <Modal initialFocusRef={initialRef}
+                finalFocusRef={finalRef}
+                isOpen={isOpen}
+                onClose={onClose} >
+                <CreditCardModal />
+            </Modal>
         </div>
 
     )
