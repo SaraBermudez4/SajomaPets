@@ -84,21 +84,14 @@ const AddressModal = ({ onClose }) => {
             addresses: userData[0].addresses
         }
 
+        console.log(dataUser);
+
         dispatch(startSaveUser(dataUser))
 
         setTimeout(() => {
             window.location.reload()
         }, 500);
     }
-
-
-    // "dirección": "Cll 87 BC 32",
-    //     "tipo_domicilio": "Casa",
-    //         "complemento": "int 123",
-    //             "pais": "Colombia",
-    //                 "departamento": "Antioquia",
-    //                     "ciudad": "Medellín",
-    //                         "barrio": "Belén"
 
     return (
         <>
