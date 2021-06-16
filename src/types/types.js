@@ -10,5 +10,7 @@ export const types = {
 
     dataUserAdd: 'AddUserData',
     dataUserLoad: 'LoadUserData',
-    dataUserUpdate: 'UpdateUserData'
+    dataUserUpdate: 'UpdateUserData',
+
+    productActive: '[Products] Active Product',
 }

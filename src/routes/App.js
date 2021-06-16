@@ -23,6 +23,9 @@ import Accessories from '../containers/products/Accessories';
 import Food from '../containers/products/Food';
 import Toys from '../containers/products/Toys';
 import Contenedor from '../containers/sideBar/Contenedor';
+import Maps from '../containers/GoogleMapApi/Maps';
+import UbicacionActualApi from '../containers/GoogleMapApi/UbicacionActualApi';
+import DatailProduct from '../containers/detailProduct/DatailProduct';
 // import ProfileRoutes from './ProfileRoutes';
 
 const App = () => {
@@ -64,6 +67,8 @@ const App = () => {
             <Route exact path='/food' component={Food} />
             <Route exact path='/accessories' component={Accessories} />
             <Route exact path='/toys' component={Toys} />
+            <Route exact path='/maps' component={Maps} />
+            <Route path="/detail/:prodId" component={DatailProduct} />
             <PrivateRouter exact path='/cart' component={Cart} isAuthenticated={isLoogedIn} />
             <PrivateRouter exact path='/favorite' component={Favorite} isAuthenticated={isLoogedIn} />
             <PrivateRouter exact path='/profile' component={Profile} isAuthenticated={isLoogedIn} />
