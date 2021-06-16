@@ -63,29 +63,16 @@ const GridProductos = ({ category, data }) => {
         <SimpleGrid minChildWidth="250px" spacing="40px">
             {productos.map((m, index) => {
                 return (
-                    <Link to={`/detail/${m.id}`} key={index}>
-                        <Card className={classes.root} onClick={() => {
-                            handleClickProduct(m)
-                        }}>
-                            <CardActionArea>
+                    <Card className={classes.root} key={index} onClick={() => {
+                        handleClickProduct(m)
+                    }}>
+                        <CardActionArea>
+                            <Link to={`/detail/${m.id}`} >
                                 <CardMedia
                                     className={classes.media}
                                     image={m.img_url}
                                     title={m.name}
                                 />
-                                <div style={{ display: "flex", justifyContent: "space-between", paddingLeft: "15px", paddingRight: "20px", position: "absolute", top: "0px", right: "0px" }} onClick={() => {
-                                    console.log(m.name, " añadido a favoritos");
-                                }}>
-                                    <Fab color="primary" aria-label="favorite" style={{ background: "#f44336", width: "40px", height: "40px" }} >
-                                        <FaHeart style={{ fontSize: "20px" }} />
-                                    </Fab>
-                                </div>
-                                <div style={{ display: "flex", justifyContent: "space-between", paddingLeft: "15px", paddingRight: "20px" }}>
-                                    <Fab color="#a7a7a7" aria-label="share" style={{ background: "#dbe9ff", width: "40px", height: "40px" }}>
-                                        <GrShareOption style={{ fontSize: "20px" }} />
-                                    </Fab>
-                                </div>
-
                                 <CardContent>
                                     <h3 style={{ fontSize: "23px" }}>
                                         {m.name}
@@ -98,9 +85,23 @@ const GridProductos = ({ category, data }) => {
                                     </div>
                                     <h3 style={{ color: "#00a650" }}>Envio gratis</h3>
                                 </CardContent>
-                            </CardActionArea>
-                        </Card>
-                    </Link>
+                            </Link>
+                            <div style={{ display: "flex", justifyContent: "space-between", paddingLeft: "15px", paddingRight: "20px", position: "absolute", top: "0px", right: "0px", paddingTop: "5px" }}>
+                                <Fab color="secondary" aria-label="favorite" style={{ width: "40px", height: "40px" }} onClick={() => {
+                                    console.log(m.name, " añadido a favoritos");
+                                }}>
+                                    <FaHeart style={{ fontSize: "20px" }} />
+                                </Fab>
+                            </div>
+                            <div style={{ display: "flex", justifyContent: "space-between", paddingLeft: "15px", paddingRight: "20px", position: "absolute", top: "120px", left: "0px" }}>
+                                <Fab aria-label="share" style={{ width: "40px", height: "40px" }} onClick={() => {
+                                    console.log(m.name, " compartido");
+                                }}>
+                                    <GrShareOption style={{ fontSize: "20px" }} />
+                                </Fab>
+                            </div>
+                        </CardActionArea>
+                    </Card>
                 )
             })}
         </SimpleGrid>
