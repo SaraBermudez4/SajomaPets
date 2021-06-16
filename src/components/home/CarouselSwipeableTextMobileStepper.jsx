@@ -5,65 +5,8 @@ import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
 
 import '../../styles/style.css'
-import imagen1 from '../../imagenes/imagen1.jpg'
-import imagen2 from '../../imagenes/imagen2.png'
-import imagen3 from '../../imagenes/imagen3.jpg'
-import imagen4 from '../../imagenes/imagen4.jpg'
-import imagen5 from '../../imagenes/imagen5.jpg'
-import imagen6 from '../../imagenes/imagen6.jpg'
-import imagen7 from '../../imagenes/imagen7.jpg'
-import imagen8 from '../../imagenes/imagen8.png'
-import imagen9 from '../../imagenes/imagen9.png'
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
-
-const tutorialSteps = [
-  {
-    label: 'Imagen1',
-    imgPath:
-      imagen1,
-  },
-  {
-    label: 'Imagen2',
-    imgPath:
-      imagen2,
-  },
-  {
-    label: 'Imagen3',
-    imgPath:
-      imagen3,
-  },
-  {
-    label: 'Imagen4',
-    imgPath:
-      imagen4,
-  },
-  {
-    label: 'Imagen5',
-    imgPath:
-      imagen5,
-  },
-  {
-    label: 'Imagen6',
-    imgPath:
-      imagen6,
-  },
-  {
-    label: 'Imagen7',
-    imgPath:
-      imagen7,
-  },
-  {
-    label: 'Imagen8',
-    imgPath:
-      imagen8,
-  },
-  {
-    label: 'Imagen9',
-    imgPath:
-      imagen9,
-  },
-];
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -103,7 +46,7 @@ const StyledImage = styled.img`
   }
 `
 
-function CarouselSwipeableTextMobileStepper() {
+function CarouselSwipeableTextMobileStepper({ images }) {
   const classes = useStyles();
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
@@ -122,7 +65,7 @@ function CarouselSwipeableTextMobileStepper() {
         index={activeStep}
         onChangeIndex={handleStepChange}
         enableMouseEvents>
-        {tutorialSteps.map((step, index) => (
+        {images.map((step, index) => (
           <div key={step.label}>
             {Math.abs(activeStep - index) <= 2 ? (
               <StyledImage className={classes.img} src={step.imgPath} alt={step.label} width="500px" />

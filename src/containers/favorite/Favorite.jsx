@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import ItemFav from '../../components/ItemFav.jsx'
+import ItemFav from '../../components/favorite/ItemFav'
 
 const FavContainer = styled.div`
     width: 93vw;
@@ -49,7 +49,9 @@ let producto = [
         "image": "https://mascotasbichos.vteximg.com.br/arquivos/ids/156210-292-292/7896588947164.jpg?v=636639775298600000",
         "nombre": "Alimento Perro C EQUILIBRIO ADULTO R. GRANDE 15KG",
         "precio": "$236.640"
-    }]
+    }
+]
+
 const Favorite = () => {
     return (
 
