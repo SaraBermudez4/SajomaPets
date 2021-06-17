@@ -2,15 +2,11 @@ import { types } from '../types/types';
 
 const initialState = {
     favorite: [],
-    active: {
-        id: "",
-        title: "",
-        imagen: ""
-    }
+    active: {}
 }
 
 const productsReducer = (state = initialState, action) => {
-    switch (action.payload) {
+    switch (action.type) {
         case types.productActive:
             return {
                 ...state,
@@ -21,7 +17,12 @@ const productsReducer = (state = initialState, action) => {
         case types.addFavoriteProduct:
             return {
                 ...state,
-                favorite: [action.payload, ...state.userData]
+                favorite: [action.payload, ...state.favorite]
+            }
+        case types.loadFavoriteProduct:
+            return {
+                ...state,
+                favorite: [...action.payload]
             }
         default:
             return state;

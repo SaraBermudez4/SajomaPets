@@ -14,3 +14,18 @@ export const loadUserData = async (id) => {
 
     return userData;
 }
+
+export const loadFavData = async (id) => {
+
+    const favDataSnap = await db.collection(`profile/${id}/favorites`).get();
+    const favData = [];
+
+    favDataSnap.forEach(snapHijo => {
+        favData.push({
+            id: snapHijo.id,
+            ...snapHijo.data()
+        })
+    });
+
+    return favData;
+}

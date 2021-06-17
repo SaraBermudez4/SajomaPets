@@ -1,7 +1,7 @@
 import { SimpleGrid } from '@chakra-ui/layout'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { activeProduct } from '../../actions/productAction'
+import { activeProduct, addFavProduct } from '../../actions/productAction'
 import { Link } from "react-router-dom"
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -28,6 +28,8 @@ const ProductTabs = ({ category, data, tipo }) => {
 
     const auth = useSelector(state => state.auth)
 
+    const { favorite } = useSelector(state => state.products)
+
     let productos = []
     
     if (tipo === "alimento") {
@@ -52,6 +54,18 @@ const ProductTabs = ({ category, data, tipo }) => {
             })
         );
     }
+
+    const handleAddFavoriteP = (product) => {
+
+        const found = favorite.find(element => element.name === product.name);
+
+        if (found !== undefined) {
+            alert('ya esta en favoritos')
+        } else {
+            dispatch(addFavProduct(product.img_url, product.name, product.price, product.description, product.brand))
+        }
+    }
+
 
     return (
         <SimpleGrid minChildWidth="250px" spacing="40px">
@@ -85,7 +99,7 @@ const ProductTabs = ({ category, data, tipo }) => {
                                 &&
                                 <div style={{ display: "flex", justifyContent: "space-between", paddingLeft: "15px", paddingRight: "20px", position: "absolute", top: "0px", right: "0px", paddingTop: "5px" }}>
                                     <Fab color="secondary" aria-label="favorite" style={{ width: "40px", height: "40px" }} onClick={() => {
-                                        console.log(m.name, " añadido a favoritos");
+                                        handleAddFavoriteP(m);
                                     }}>
                                         <FaHeart style={{ fontSize: "20px" }} />
                                     </Fab>
