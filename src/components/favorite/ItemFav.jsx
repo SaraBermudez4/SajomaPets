@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
 import Button from '@material-ui/core/Button';
+import { useSelector } from 'react-redux';
 
 const FavItem = styled.div`
 display:flex;
@@ -23,29 +24,37 @@ width:320px;
 `
 
 const ItemFav = (props) => {
-    console.log(props);
-    const {id,image,nombre,precio} = props
-    return ( 
-        <FavItem>
-                <div></div>
-                <img src={image} alt={nombre} />
-            <div style={{display:'flex',flexWrap:'wrap',justifyContent:'center'}}>
-                <CenterDiv style={{flexDirection:'column', textAlign:'center'}}>
-                <h3  style={{width:'inherit'}}>{nombre}</h3>
-                <span><h3>{precio}</h3></span>
-                </CenterDiv>
-            <CenterDiv style={{ textAlign:'center'}}>
-                <Button variant="contained" color="primary" style={{textAlign:'center'}}>
-                Comprar
-                </Button>
-                
-            </CenterDiv>
 
-            </div>
+    const { favorite } = useSelector(state => state.products)
+    console.log(favorite);
+    // const { id, image, nombre, precio } = props
+    return (
+        <>
+            {
+                favorite.map((item, index) =>
+                    <FavItem>
+                        <div></div>
+                        <img src={item.img_url} alt={item.name} />
+                        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+                            <CenterDiv style={{ flexDirection: 'column', textAlign: 'center' }}>
+                                <h3 style={{ width: 'inherit' }}>{item.name}</h3>
+                                <span><h3>{item.price}</h3></span>
+                            </CenterDiv>
+                            <CenterDiv style={{ textAlign: 'center' }}>
+                                <Button variant="contained" color="primary" style={{ textAlign: 'center' }}>
+                                    Add cart
+                                </Button>
 
-            <hr/>
-        </FavItem>
-     );
+                            </CenterDiv>
+
+                        </div>
+
+                        <hr />
+                    </FavItem>
+                )
+            }
+        </>
+    );
 }
- 
+
 export default ItemFav;

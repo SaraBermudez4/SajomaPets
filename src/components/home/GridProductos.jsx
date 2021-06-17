@@ -52,9 +52,9 @@ const GridProductos = ({ category, data }) => {
   shuffleArray(productos);
 
   const dispatch = useDispatch();
-  const handleClickProduct = (product, index) => {
+  const handleClickProduct = (product) => {
     dispatch(
-      activeProduct(index, {
+      activeProduct(product.id, {
         ...product,
       })
     );

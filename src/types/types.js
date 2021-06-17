@@ -13,5 +13,6 @@ export const types = {
     dataUserUpdate: 'UpdateUserData',
 
     productActive: '[Products] Active Product',
-    addFavoriteProduct: '[Products] Favorite Product'
+    addFavoriteProduct: '[Products] Favorite Product',
+    loadFavoriteProduct: '[Products] Load Favorite Product'
 }
