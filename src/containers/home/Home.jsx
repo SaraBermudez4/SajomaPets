@@ -25,65 +25,54 @@ const StyledDivTabs = styled.div`
 `;
 
 const Home = () => {
+  const tutorialSteps = [
+    {
+      label: "Imagen1",
+      imgPath: imagen1,
+    },
+    {
+      label: "Imagen2",
+      imgPath: imagen2,
+    },
+    {
+      label: "Imagen3",
+      imgPath: imagen3,
+    },
+    {
+      label: "Imagen4",
+      imgPath: imagen4,
+    },
+    {
+      label: "Imagen5",
+      imgPath: imagen5,
+    },
+    {
+      label: "Imagen6",
+      imgPath: imagen6,
+    },
+    {
+      label: "Imagen7",
+      imgPath: imagen7,
+    },
+    {
+      label: "Imagen8",
+      imgPath: imagen8,
+    },
+    {
+      label: "Imagen9",
+      imgPath: imagen9,
+    },
+  ];
+
   return (
     <>
       {/* <NabBarMiniVariantDrawer /> */}
-      <CarouselSwipeableTextMobileStepper />
+      <CarouselSwipeableTextMobileStepper images={tutorialSteps} />
       <StyledDivTabs>
         <TabScrollButton />
-        <NabBarMiniVariantDrawer />
       </StyledDivTabs>
     </>
   );
 };
-
-const tutorialSteps = [
-  {
-    label: "Imagen1",
-    imgPath: imagen1,
-  },
-  {
-    label: "Imagen2",
-    imgPath: imagen2,
-  },
-  {
-    label: "Imagen3",
-    imgPath: imagen3,
-  },
-  {
-    label: "Imagen4",
-    imgPath: imagen4,
-  },
-  {
-    label: "Imagen5",
-    imgPath: imagen5,
-  },
-  {
-    label: "Imagen6",
-    imgPath: imagen6,
-  },
-  {
-    label: "Imagen7",
-    imgPath: imagen7,
-  },
-  {
-    label: "Imagen8",
-    imgPath: imagen8,
-  },
-  {
-    label: "Imagen9",
-    imgPath: imagen9,
-  },
-];
-
-return (
-  <>
-    {/* <NabBarMiniVariantDrawer /> */}
-    <CarouselSwipeableTextMobileStepper images={tutorialSteps} />
-    <StyledDivTabs>
-      <TabScrollButton />
-    </StyledDivTabs>
-  </>
-);
 
 export default Home;

@@ -10,7 +10,7 @@ const initialState = {
 }
 
 const productsReducer = (state = initialState, action) => {
-    switch (action.payload) {
+    switch (action.type) {
         case types.productActive:
             return {
                 ...state,
