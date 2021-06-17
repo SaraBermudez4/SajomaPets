@@ -1,25 +1,29 @@
 .MuiToolbar-root {
     justify-content: space-between;
-    z-index: 1
-}
-
-@media (min-width: 768px) {
-    .makeStyles-root-1 {
-        margin-left: 6% !important;
-        /* margin-top: 6% !important; */
-        margin-right: 6px !important;
-    }
 }
 
 .MuiTabs-flexContainer {
     justify-content: space-between
 }
 
-*{
-    box-sizing: border-box;
-    margin:0;
-    padding:0;
+.MuiGrid-root {
+    flex-direction: column;
+    justify-content: left;
+    text-align: left;
 }
-body{
-    padding: 70px;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.leaflet-container {
+    height: 100vh;
+    width: 100%;
+}
+
+.MuiFab-secondary {
+    color: #fff;
+    background-color: #f44336 !important;
 }

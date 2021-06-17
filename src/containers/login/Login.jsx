@@ -62,7 +62,6 @@ const Login = () => {
         return true
     }
 
-
     const handleSubmit = (e) => {
         e.preventDefault()
         if (formValid()) {

@@ -33,7 +33,7 @@ export const userReducer = (state = initialState, action) => {
         case types.dataUserUpdate:
             return {
                 ...state,
-                userDate: state.userData.map(
+                userData: state.userData.map(
                     data => data.id === action.payload.id
                     ? action.payload.data
                     : data

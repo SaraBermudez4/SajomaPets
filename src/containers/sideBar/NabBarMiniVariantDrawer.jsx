@@ -278,19 +278,19 @@ const NabBarMiniVariantDrawer = () => {
                         </ListItem>
                     </Link>
                     <Link to='/food'>
-                        <ListItem button key="Food">
+                        <ListItem button key="Food" >
                             <ListItemIcon> <GiOpenedFoodCan style={{ fontSize: "20px" }} /> </ListItemIcon>
                             <ListItemText primary="Food" />
                         </ListItem>
                     </Link>
                     <Link to='/accessories'>
-                        <ListItem button key="Accessories">
+                        <ListItem button key="Accessories" >
                             <ListItemIcon> <TiScissors style={{ fontSize: "20px" }} /> </ListItemIcon>
                             <ListItemText primary="Accessories" />
                         </ListItem>
                     </Link>
                     <Link to='/toys'>
-                        <ListItem button key="Toys">
+                        <ListItem button key="Toys" >
                             <ListItemIcon> <IoIosTennisball style={{ fontSize: "20px" }} /> </ListItemIcon>
                             <ListItemText primary="Toys" />
                         </ListItem>
