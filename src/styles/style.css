@@ -1,29 +1,33 @@
 .MuiToolbar-root {
-    justify-content: space-between;
+  justify-content: space-between;
 }
 
 .MuiTabs-flexContainer {
-    justify-content: space-between
+  justify-content: space-between;
 }
 
 .MuiGrid-root {
-    flex-direction: column;
-    justify-content: left;
-    text-align: left;
+  flex-direction: column;
+  justify-content: left;
+  text-align: left;
 }
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 .leaflet-container {
-    height: 100vh;
-    width: 100%;
+  height: 100vh;
+  width: 100%;
 }
 
 .MuiFab-secondary {
-    color: #fff;
-    background-color: #f44336 !important;
+  color: #fff;
+  background-color: #f44336 !important;
+}
+.starsR {
+  display: flex;
+  border: 1px;
 }
