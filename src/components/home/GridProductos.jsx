@@ -63,6 +63,7 @@ const GridProductos = ({ category, data }) => {
   return (
     <SimpleGrid minChildWidth="250px" spacing="40px">
       {productos.map((m, index) => {
+        console.log(index);
         return (
           <Card
             className={classes.root}
@@ -72,7 +73,7 @@ const GridProductos = ({ category, data }) => {
             }}
           >
             <CardActionArea>
-              <Link to={`/detail/${m.id}`}>
+              <Link to={`/detail/${m.index}`}>
                 <CardMedia
                   className={classes.media}
                   image={m.img_url}
