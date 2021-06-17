@@ -18,7 +18,7 @@ import IconButton from '@material-ui/core/IconButton';
 
 //Icons
 import { GoChevronLeft, GoChevronRight, GoSearch } from "react-icons/go";
-import { FaShoppingCart, FaSearch, FaUser } from "react-icons/fa";
+import { FaShoppingCart, FaSearch, FaUser, FaMapMarkerAlt } from "react-icons/fa";
 import { ImHome3 } from "react-icons/im";
 import { GiOpenedFoodCan, GiHamburgerMenu } from "react-icons/gi";
 import { TiScissors } from "react-icons/ti";
@@ -295,7 +295,12 @@ const NabBarMiniVariantDrawer = () => {
                             <ListItemText primary="Toys" />
                         </ListItem>
                     </Link>
-
+                    <Link to='/maps'>
+                        <ListItem button key="Maps" >
+                            <ListItemIcon> <FaMapMarkerAlt style={{ fontSize: "20px" }} /> </ListItemIcon>
+                            <ListItemText primary="Maps" />
+                        </ListItem>
+                    </Link>
                 </List>
                 <Divider />
                 <List>

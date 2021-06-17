@@ -14,5 +14,6 @@ export const types = {
 
     productActive: '[Products] Active Product',
     addFavoriteProduct: '[Products] Favorite Product',
-    loadFavoriteProduct: '[Products] Load Favorite Product'
+    loadFavoriteProduct: '[Products] Load Favorite Product',
+    deleteFavoriteProduct: '[Products] Delete Favorite Product'
 }

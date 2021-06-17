@@ -24,6 +24,12 @@ const productsReducer = (state = initialState, action) => {
                 ...state,
                 favorite: [...action.payload]
             }
+        case types.deleteFavoriteProduct:
+            return {
+                ...state,
+                active: null,
+                favorite: state.favorite.filter(fav => fav.id !== action.payload)
+            }
         default:
             return state;
     }
