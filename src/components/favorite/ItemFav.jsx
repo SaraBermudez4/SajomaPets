@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components'
 import Button from '@material-ui/core/Button';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { startDeletingFav } from '../../actions/productAction';
 
 const FavItem = styled.div`
 display:flex;
@@ -25,15 +26,19 @@ width:320px;
 
 const ItemFav = (props) => {
 
+    const dispatch = useDispatch()
+
     const { favorite } = useSelector(state => state.products)
-    console.log(favorite);
-    // const { id, image, nombre, precio } = props
+
+    const handleDeleteFav = (fav) => {
+        dispatch(startDeletingFav(fav.id))
+    }
+
     return (
         <>
             {
                 favorite.map((item, index) =>
-                    <FavItem>
-                        <div></div>
+                    <FavItem key={index}>
                         <img src={item.img_url} alt={item.name} />
                         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
                             <CenterDiv style={{ flexDirection: 'column', textAlign: 'center' }}>
@@ -41,10 +46,12 @@ const ItemFav = (props) => {
                                 <span><h3>{item.price}</h3></span>
                             </CenterDiv>
                             <CenterDiv style={{ textAlign: 'center' }}>
-                                <Button variant="contained" color="primary" style={{ textAlign: 'center' }}>
+                                <Button variant="contained" color="primary" style={{ textAlign: 'center', marginRight: '10px' }}>
                                     Add cart
                                 </Button>
-
+                                <Button variant="transparent" color="primary" style={{ textAlign: 'center' }} onClick={() => handleDeleteFav(item)}>
+                                    Delete
+                                </Button>
                             </CenterDiv>
 
                         </div>

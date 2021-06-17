@@ -51,6 +51,22 @@ export const setFavData = (favorite) => ({
     payload: favorite
 })
 
+export const startDeletingFav = ( id ) => {
+    return async( dispatch, getState ) => {
+         
+        const { uid } = getState().auth;
+
+        await db.doc(`/profile/${uid}/favorites/${ id }`).delete();
+
+        dispatch(deleteFav(id));
+    }
+}
+
+export const deleteFav = (id) => ({
+    type: types.deleteFavoriteProduct,
+    payload: id
+});
+
 // export const startSearch = (search) => {
 //     return async (dispatch) => {
 //         const producto = await loadSearch(search)
