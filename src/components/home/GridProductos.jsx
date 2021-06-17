@@ -1,6 +1,6 @@
 import { SimpleGrid } from '@chakra-ui/layout'
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { activeProduct } from '../../actions/productAction'
 import { Link } from "react-router-dom"
 import { makeStyles } from '@material-ui/core/styles';
@@ -28,6 +28,8 @@ const GridProductos = ({ category, data }) => {
     const alimento = data[0].alimento
     const accessories = data[1].accessories
     const toys = data[2].toys
+
+    const auth = useSelector(state => state.auth)
 
     const productos = []
 
@@ -86,13 +88,17 @@ const GridProductos = ({ category, data }) => {
                                     <h3 style={{ color: "#00a650" }}>Envio gratis</h3>
                                 </CardContent>
                             </Link>
-                            <div style={{ display: "flex", justifyContent: "space-between", paddingLeft: "15px", paddingRight: "20px", position: "absolute", top: "0px", right: "0px", paddingTop: "5px" }}>
-                                <Fab color="secondary" aria-label="favorite" style={{ width: "40px", height: "40px" }} onClick={() => {
-                                    console.log(m.name, " añadido a favoritos");
-                                }}>
-                                    <FaHeart style={{ fontSize: "20px" }} />
-                                </Fab>
-                            </div>
+                            {
+                                auth.name !== undefined
+                                &&
+                                <div style={{ display: "flex", justifyContent: "space-between", paddingLeft: "15px", paddingRight: "20px", position: "absolute", top: "0px", right: "0px", paddingTop: "5px" }}>
+                                    <Fab color="secondary" aria-label="favorite" style={{ width: "40px", height: "40px" }} onClick={() => {
+                                        console.log(m.name, " añadido a favoritos");
+                                    }}>
+                                        <FaHeart style={{ fontSize: "20px" }} />
+                                    </Fab>
+                                </div>
+                            }
                             <div style={{ display: "flex", justifyContent: "space-between", paddingLeft: "15px", paddingRight: "20px", position: "absolute", top: "120px", left: "0px" }}>
                                 <Fab aria-label="share" style={{ width: "40px", height: "40px" }} onClick={() => {
                                     console.log(m.name, " compartido");

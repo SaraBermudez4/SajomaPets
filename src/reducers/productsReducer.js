@@ -1,9 +1,10 @@
 import { types } from '../types/types';
 
 const initialState = {
+    favorite: [],
     active: {
         id: "",
-        title:"",
+        title: "",
         imagen: ""
     }
 }
@@ -16,6 +17,11 @@ const productsReducer = (state = initialState, action) => {
                 active: {
                     ...action.payload
                 }
+            }
+        case types.addFavoriteProduct:
+            return {
+                ...state,
+                favorite: [action.payload, ...state.userData]
             }
         default:
             return state;
