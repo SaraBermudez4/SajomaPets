@@ -6,7 +6,6 @@ import { Button, fade, InputBase } from '@material-ui/core';
 import { GoSearch } from "react-icons/go";
 import styled from 'styled-components'
 import '../../styles/style.css'
-import img from '../../imagenes/perroConfundido.png'
 import { addCrtProduct, starCleanSearch, startSearch } from '../../actions/productAction';
 import { useDispatch, useSelector } from 'react-redux';
 import { LoadApiProducts } from '../../api/LoadApiProducts';
@@ -125,7 +124,7 @@ const RealizarBusqueda = () => {
                 search.length < 1
                     ?
                     <div style={{ textAlign: "-webkit-center" }}>
-                        <img src={img} alt="Icono de busqueda" width="480px" />
+                        <img src='https://i.ibb.co/JqVkkyN/perro-Confundido.png' alt="Icono de busqueda" width="480px" />
                         <h1>Realiza una búsqueda</h1>
                     </div>
                     :
@@ -177,7 +176,7 @@ const RealizarBusqueda = () => {
 const NoEncontrado = () => {
     return (
         <div style={{ textAlign: "-webkit-center" }}>
-            <img src={img} alt="Icono de busqueda" width="480px" />
+            <img src='https://i.ibb.co/JqVkkyN/perro-Confundido.png' alt="Icono de busqueda" width="480px" />
             <h1>Realiza una búsqueda</h1>
         </div>
     )

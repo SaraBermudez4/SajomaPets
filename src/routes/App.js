@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, Spinner } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
 import {
   BrowserRouter as Router,
@@ -26,6 +26,13 @@ import Contenedor from '../containers/sideBar/Contenedor';
 import Maps from '../containers/GoogleMapApi/Maps';
 import DatailProduct from '../containers/detailProduct/DatailProduct';
 import { startCrtLoad, startFavLoad } from '../actions/productAction';
+import styled from 'styled-components'
+
+const Carga = styled(Spinner)`
+     display:block;
+     margin-left:auto;
+     margin-right:auto;
+`
 
 const App = () => {
 
@@ -53,7 +60,11 @@ const App = () => {
 
   if (checking) {
     return (
-      <h1>Loading ...</h1>
+      <div>
+        <Carga animation="border" role="status">
+          <span className="sr-only">Loading...</span>
+        </Carga>
+      </div>
     )
   }
 

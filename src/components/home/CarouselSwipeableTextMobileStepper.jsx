@@ -68,7 +68,7 @@ function CarouselSwipeableTextMobileStepper({ images }) {
       >
         {images.map((step, index) => (
           <div key={step.label}>
-            {Math.abs(activeStep - index) <= 2 ? (
+            {Math.abs(activeStep - index) <= 3 ? (
               <StyledImage
                 className={classes.img}
                 src={step.imgPath}
