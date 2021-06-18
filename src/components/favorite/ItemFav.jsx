@@ -24,15 +24,15 @@ width:320px;
 
 const ItemFav = (props) => {
     console.log(props);
-    const {id,image,nombre,precio} = props
+    const {id,img_url,name,price} = props
     return ( 
         <FavItem>
                 <div></div>
-                <img src={image} alt={nombre} />
+                <img src={img_url} alt={name} />
             <div style={{display:'flex',flexWrap:'wrap',justifyContent:'center'}}>
                 <CenterDiv style={{flexDirection:'column', textAlign:'center'}}>
-                <h3  style={{width:'inherit'}}>{nombre}</h3>
-                <span><h3>{precio}</h3></span>
+                <h3  style={{width:'inherit'}}>{name}</h3>
+                <span><h3>{price}</h3></span>
                 </CenterDiv>
             <CenterDiv style={{ textAlign:'center'}}>
                 <Button variant="contained" color="primary" style={{textAlign:'center'}}>

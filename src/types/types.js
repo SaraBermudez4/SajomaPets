@@ -13,4 +13,7 @@ export const types = {
     dataUserUpdate: 'UpdateUserData',
 
     productActive: '[Products] Active Product',
+
+    searchProduct: '[Search] Product Search',
+    cleanSearch: '[Search] Clean Search',
 }

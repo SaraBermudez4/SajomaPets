@@ -3,19 +3,30 @@ import { types } from '../types/types';
 const initialState = {
     active: {
         id: "",
-        title:"",
+        title: "",
         imagen: ""
-    }
+    },
+    search: []
 }
 
 const productsReducer = (state = initialState, action) => {
-    switch (action.payload) {
+    switch (action.type) {
         case types.productActive:
             return {
                 ...state,
                 active: {
                     ...action.payload
                 }
+            }
+        case types.searchProduct:
+            return {
+                ...state,
+                search: [...action.payload]
+            }
+        case types.cleanSearch:
+            return {
+                ...state,
+                search: []
             }
         default:
             return state;

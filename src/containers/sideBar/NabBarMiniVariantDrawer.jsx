@@ -155,13 +155,13 @@ const NabBarMiniVariantDrawer = () => {
 
     const dispatch = useDispatch()
 
-    const {uid} = useSelector(state => state.auth)
+    const { uid } = useSelector(state => state.auth)
 
     console.log(uid);
-    
+
     const classes = useStyles();
     const theme = useTheme();
-    
+
     const [open, setOpen] = useState(false);
 
     const [isLoogedIn, setIsLoogedIn] = useState(false)
@@ -170,7 +170,7 @@ const NabBarMiniVariantDrawer = () => {
         dispatch(setUserData(
             [
                 {
-                    document:"",
+                    document: "",
                     lastName: "",
                     cellPhone: "",
                     nickName: "",
@@ -179,7 +179,7 @@ const NabBarMiniVariantDrawer = () => {
                     name: "",
                     cards: [],
                     addresses: []
-        
+
                 }
             ]
         ))
@@ -231,17 +231,19 @@ const NabBarMiniVariantDrawer = () => {
                     </Typography> */}
                     <StyledLogo src="https://i.ibb.co/1sDxzFT/LOGASO-NO-JODA-4.png" width="45%" />
                     <div className={classes.search}>
-                        <div className={classes.searchIcon}>
-                            <GoSearch />
-                        </div>
-                        <InputBase
-                            placeholder="Search…"
-                            classes={{
-                                root: classes.inputRoot,
-                                input: classes.inputInput,
-                            }}
-                            inputProps={{ 'aria-label': 'search' }}
-                        />
+                        <Link to="search">
+                            <div className={classes.searchIcon}>
+                                <GoSearch />
+                            </div>
+                            <InputBase
+                                placeholder="Search…"
+                                classes={{
+                                    root: classes.inputRoot,
+                                    input: classes.inputInput,
+                                }}
+                                inputProps={{ 'aria-label': 'search' }}
+                            />
+                        </Link>
                     </div>
                 </Toolbar>
             </AppBar>
