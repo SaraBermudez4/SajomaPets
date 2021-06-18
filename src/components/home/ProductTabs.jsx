@@ -33,7 +33,7 @@ const ProductTabs = ({ category, data, tipo }) => {
     let productos = []
     
     if (tipo === "alimento") {
-        productos = data[0].alimento
+        productos = data[0].food
     } else if (tipo === "toys") {
         productos = data[2].toys
     } else if (tipo === "accessories") {

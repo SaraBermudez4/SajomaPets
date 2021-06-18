@@ -24,10 +24,10 @@ const useStyles = makeStyles({
 });
 
 const GridProductos = ({ category, data }) => {
-  const classes = useStyles();
-  const alimento = data[0].alimento;
-  const accessories = data[1].accessories;
-  const toys = data[2].toys;
+    const classes = useStyles();
+    const alimento = data[0].food
+    const accessories = data[1].accessories
+    const toys = data[2].toys
 
   const auth = useSelector((state) => state.auth);
 
