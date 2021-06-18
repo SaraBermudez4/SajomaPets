@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import Button from "@material-ui/core/Button";
 import { addCrtProduct } from "../../actions/productAction";
+import { BiDollar } from "react-icons/bi";
 
 const DetailContainer = styled.div`
   width: 93vw;
@@ -78,14 +79,28 @@ const DetailProductItem = () => {
       <DetailContainer>
         <ItemContainer>
           <ImgDiv>
-            <img src={active.img_url} alt="" style={{ width: "40vw" }} />
+            <img src={active.img_url} alt="" style={{ height: "70vh" }} />
           </ImgDiv>
           <TextDetailsContainer>
-            <span style={{ textAlign: "center" }}>{active.name}</span>
-            <span style={{ textAlign: "center" }}>{active.price}</span>
+            <span style={{ textAlign: "center", fontSize: "30px" }}>{active.name}</span>
+            <span style={{ display: "flex", justifyContent: "center" }}>
+              <h3
+                style={{
+                  display: "flex",
+                  fontSize: "20px",
+                  marginBottom: "5px",
+                  color: "rgba(0, 0, 0, 0.54)",
+                }}
+              >
+                <BiDollar
+                  style={{ marginRight: "10px", marginTop: "5px" }}
+                />
+                {active.price}
+              </h3>
+            </span>
 
             <div>
-              <p style={{ fontSize: "12px", textAlign: "center" }}>
+              <p style={{ fontSize: "20px", textAlign: "center" }}>
                 {active.description}
               </p>
             </div>
@@ -116,7 +131,14 @@ const DetailProductItem = () => {
             {/* <span>{active.ingredients}</span> */}
           </TextDetailsContainer>
         </ItemContainer>
-        <div>Ingredientes:{active.ingredients}</div>
+        {
+          active.ingredients &&
+          <>
+            <h2>Ingredientes:</h2>
+            <div style={{ fontSize: "15" }}>{active.ingredients}</div>
+          </>
+        }
+
       </DetailContainer>
     </>
   );

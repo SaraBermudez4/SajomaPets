@@ -18,6 +18,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Spinner } from '@chakra-ui/react';
 import styled from 'styled-components'
 import ProductTabs from '../../components/home/ProductTabs';
+import CarouselSwipeableTextMobileStepper from '../../components/home/CarouselSwipeableTextMobileStepper';
 
 const Carga = styled(Spinner)`
      display:block;
@@ -27,7 +28,6 @@ const Carga = styled(Spinner)`
 const StyledRoot = styled.div`
 
     @media (max-width: 780px){
-        padding-top: 16%;
         padding-left: 13%;
     }
 `
@@ -70,11 +70,30 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
         backgroundColor: theme.palette.background.paper,
         paddingLeft: "6%",
-        paddingTop: "6%",
         width: "100%",
     },
 }));
 const Accessories = () => {
+
+    const tutorialSteps = [
+        {
+            label: 'Imagen3',
+            imgPath: 'https://i.ibb.co/GpkLvYP/consejo5.png',
+        },
+        {
+            label: 'Imagen1',
+            imgPath: 'https://i.ibb.co/9gk8x1g/ba-o.png',
+        },
+        {
+            label: 'Imagen2',
+            imgPath: 'https://i.ibb.co/C626wZB/consejo12.png',
+        },
+        {
+            label: 'Imagen1',
+            imgPath: 'https://i.ibb.co/JkYhMFB/consejo10.png',
+        },
+    ]
+
     const classes = useStyles();
     const [value, setValue] = useState(0);
 
@@ -96,44 +115,47 @@ const Accessories = () => {
     }
 
     return (
-        <StyledRoot className={classes.root}>
-            <AppBar position="static" color="default">
-                <Tabs
-                    value={value}
-                    onChange={handleChange}
-                    variant="scrollable"
-                    scrollButtons="on"
-                    indicatorColor="primary"
-                    textColor="primary"
-                    aria-label="scrollable force tabs example"
-                >
-                    <Tab label="Perros" icon={<FaDog style={{ fontSize: "20px" }} />} {...a11yProps(0)} />
-                    <Tab label="Gatos" icon={<FaCat style={{ fontSize: "20px" }} />} {...a11yProps(1)} />
-                    <Tab label="Pajaros" disabled icon={<GiHummingbird style={{ fontSize: "20px" }} />} {...a11yProps(2)} />
-                    <Tab label="Roedores" disabled icon={<GiRabbit style={{ fontSize: "20px" }} />} {...a11yProps(3)} />
-                    <Tab label="Reptiles" disabled icon={<GiGecko style={{ fontSize: "20px" }} />} {...a11yProps(4)} />
-                    <Tab label="Peces" disabled icon={<GiDoubleFish style={{ fontSize: "20px" }} />} {...a11yProps(5)} />
-                </Tabs>
-            </AppBar>
-            <TabPanel value={value} index={0}>
-                <ProductTabs category="Perros" data={dogs} tipo="accessories" />
-            </TabPanel>
-            <TabPanel value={value} index={1}>
-                <ProductTabs category="Gatos" data={cats} tipo="accessories" />
-            </TabPanel>
-            <TabPanel value={value} index={2}>
-                <ProductTabs category="Pajaros" data={dogs} tipo="accessories" />
-            </TabPanel>
-            <TabPanel value={value} index={3}>
-                <ProductTabs category="Roedores" data={dogs} tipo="accessories" />
-            </TabPanel>
-            <TabPanel value={value} index={4}>
-                <ProductTabs category="Reptiles" data={dogs} tipo="accessories" />
-            </TabPanel>
-            <TabPanel value={value} index={5}>
-                <ProductTabs category="Peces" data={dogs} tipo="accessories" />
-            </TabPanel>
-        </StyledRoot>
+        <>
+            <CarouselSwipeableTextMobileStepper images={tutorialSteps} />
+            <StyledRoot className={classes.root}>
+                <AppBar position="static" color="default">
+                    <Tabs
+                        value={value}
+                        onChange={handleChange}
+                        variant="scrollable"
+                        scrollButtons="on"
+                        indicatorColor="primary"
+                        textColor="primary"
+                        aria-label="scrollable force tabs example"
+                    >
+                        <Tab label="Perros" icon={<FaDog style={{ fontSize: "20px" }} />} {...a11yProps(0)} />
+                        <Tab label="Gatos" icon={<FaCat style={{ fontSize: "20px" }} />} {...a11yProps(1)} />
+                        <Tab label="Pajaros" disabled icon={<GiHummingbird style={{ fontSize: "20px" }} />} {...a11yProps(2)} />
+                        <Tab label="Roedores" disabled icon={<GiRabbit style={{ fontSize: "20px" }} />} {...a11yProps(3)} />
+                        <Tab label="Reptiles" disabled icon={<GiGecko style={{ fontSize: "20px" }} />} {...a11yProps(4)} />
+                        <Tab label="Peces" disabled icon={<GiDoubleFish style={{ fontSize: "20px" }} />} {...a11yProps(5)} />
+                    </Tabs>
+                </AppBar>
+                <TabPanel value={value} index={0}>
+                    <ProductTabs category="Perros" data={dogs} tipo="accessories" />
+                </TabPanel>
+                <TabPanel value={value} index={1}>
+                    <ProductTabs category="Gatos" data={cats} tipo="accessories" />
+                </TabPanel>
+                <TabPanel value={value} index={2}>
+                    <ProductTabs category="Pajaros" data={dogs} tipo="accessories" />
+                </TabPanel>
+                <TabPanel value={value} index={3}>
+                    <ProductTabs category="Roedores" data={dogs} tipo="accessories" />
+                </TabPanel>
+                <TabPanel value={value} index={4}>
+                    <ProductTabs category="Reptiles" data={dogs} tipo="accessories" />
+                </TabPanel>
+                <TabPanel value={value} index={5}>
+                    <ProductTabs category="Peces" data={dogs} tipo="accessories" />
+                </TabPanel>
+            </StyledRoot>
+        </>
     );
 }
 
