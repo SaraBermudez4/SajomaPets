@@ -12,6 +12,8 @@ import Typography from '@material-ui/core/Typography';
 import { FiMapPin } from 'react-icons/fi'
 import { IoEarth } from 'react-icons/io5'
 import { FaPhoneAlt } from 'react-icons/fa'
+import { LoadApiProducts } from '../../api/LoadApiProducts';
+import { Spinner } from '@chakra-ui/react';
 
 const StyledDivMap = styled.div`
     padding-left: 6% !important;
@@ -25,6 +27,11 @@ const useStyles = makeStyles({
         height: 140,
     },
 });
+const Carga = styled(Spinner)`
+     display:block;
+     margin-left:auto;
+     margin-right:auto;
+`
 
 const dataShops = [
     {
@@ -49,38 +56,49 @@ const dataShops = [
 
 const Maps = () => {
     const classes = useStyles();
+    const tiendas = LoadApiProducts('https://sajoma.herokuapp.com/stores')
+    if (tiendas === undefined) {
+        return (
+            <div>
+                <Carga animation="border" role="status">
+                    <span className="sr-only">Loading...</span>
+                </Carga>
+            </div>
+        )
+    }
+    // `[${tienda.latitude}, ${tiendas.longitude}]`
     return (
         <StyledDivMap>
-            <Map center={[6.256866693500489, -75.59602461491339]} zoom={10} >
+            <Map center={[6.256866693500489, -75.59602461491339]} zoom={12} >
                 <TileLayer
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
 
-                {dataShops.map((tienda, index) => {
+                {tiendas.map((tienda, index) => {
                     return (
-                        <Marker position={tienda.coordenadas} key={index}>
+                        <Marker position={[tienda.latitude, tienda.longitude]} key={index}>
                             <Popup>
                                 <Card className={classes.root}>
                                     <CardActionArea>
                                         <CardMedia
                                             className={classes.media}
-                                            image={tienda.image}
-                                            title={tienda.title}
+                                            image={tienda.img_url}
+                                            title={tienda.store_name}
                                         />
                                         <CardContent>
                                             <Typography gutterBottom variant="h5" component="h2">
-                                                {tienda.title}
+                                                {tienda.store_name}
                                             </Typography>
                                             <Typography variant="body2" color="textSecondary" component="p">
                                                 <div style={{ display: "flex" }}>
-                                                    <FiMapPin style={{ marginRight: "10px", marginTop: "5px" }} />{tienda.direccion}
+                                                    <FiMapPin style={{ marginRight: "10px", marginTop: "5px" }} />{tienda.province} {tienda.city} {tienda.address}
                                                 </div>
                                                 <div style={{ display: "flex" }}>
-                                                    <FaPhoneAlt style={{ marginRight: "10px", marginTop: "5px" }} />{tienda.phone}
+                                                    <FaPhoneAlt style={{ marginRight: "10px", marginTop: "5px" }} />{tienda.telephone}
                                                 </div>
                                                 <div style={{ display: "flex" }}>
-                                                    <IoEarth style={{ marginRight: "10px", marginTop: "5px" }} /><a href={tienda.web} target="_blank">Sitio web</a>
+                                                    <IoEarth style={{ marginRight: "10px", marginTop: "5px" }} /><a href={tienda.website} target="_blank">Sitio web</a>
                                                 </div>
                                             </Typography>
                                         </CardContent>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 import { makeStyles } from '@material-ui/core/styles';
 
-import { Card, CardActionArea, CardContent, CardMedia, fade, InputBase } from '@material-ui/core';
+import { Button, Card, CardActionArea, CardContent, CardMedia, fade, InputBase } from '@material-ui/core';
 import { GoSearch } from "react-icons/go";
 import styled from 'styled-components'
 import '../../styles/style.css'
@@ -19,28 +19,36 @@ import { Fab } from '@material-ui/core'
 import { LoadApiProducts } from '../../api/LoadApiProducts';
 import ItemFav from '../../components/favorite/ItemFav';
 
-const StyledTitulo = styled.h1`
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 48px;
-    line-height: 58px;
-    text-align: left;
-    letter-spacing: -0.005em;
-    color: black;
+const FavItem = styled.div`
+display:flex;
+justify-content:center;
+background-color:white;
+padding:20px;
+border: 10px double #eaecef;
+@media screen and (max-width: 900px) {
+    flex-wrap:wrap;}
+`
+const CenterDiv = styled.div`
+display:flex;
+justify-content:center;
+align-items:center;
+width:320px;
+@media screen and (max-width: 900px) {
+   width:auto;      
+}
 `
 const StyledDivPrincipal = styled.div`
-    /* margin-left: 83px;
-    margin-top: 56px; */
+/* margin-left: 83px;
+margin-top: 56px; */
     width: 93vw;
     background-color:#eaecef;
-    font-size:24px;
-    font-weight:600;
-    position:relative;
-    padding:15px;
+    font-size: 24px;
+    font-weight: 600;
+    position: relative;
+    padding: 15px;
     margin-left: 75px;
     margin-top: 66px;
-    @media (min-width: 320px) and (max-width: 480px){
+    @media(min-width: 320px) and(max-width: 480px){
         width: 85%;
         margin-left: 60px;
     }
@@ -77,7 +85,7 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.up('sm')]: {
             width: '215px',
         },
-        
+
     },
     inputInput: {
         padding: theme.spacing(1, 1, 1, 0),
@@ -127,49 +135,67 @@ const RealizarBusqueda = () => {
                         <h1>Resultados de la busqueda</h1>
                         {search.map((m, index) => {
                             return (
-                                <ItemFav key={index}{...m} id={index} />
 
-                                // <Card className={classes.root} key={index} onClick={() => {
-                                //     handleClickProduct(m)
-                                // }}>
-                                //     <CardActionArea>
-                                //         <Link to={`/detail/${m.id}`} >
-                                //             <CardMedia
-                                //                 className={classes.media}
-                                //                 image={m.img_url}
-                                //                 title={m.name}
-                                //             />
-                                //             <CardContent>
-                                //                 <h3 style={{ fontSize: "23px" }}>
-                                //                     {m.name}
-                                //                 </h3>
-                                //                 <div style={{ display: "flex", fontSize: "20px", marginBottom: "5px", color: "rgba(0, 0, 0, 0.54)" }}>
-                                //                     <BiDollar style={{ marginRight: "10px", marginTop: "5px" }} />{m.price}
-                                //                 </div>
-                                //                 <div style={{ display: "flex", fontSize: "15px", marginBottom: "5px", color: "rgba(0, 0, 0, 0.54)" }}>
-                                //                     <AiTwotoneShop style={{ marginRight: "10px", marginTop: "5px" }} />{m.brand}
-                                //                 </div>
-                                //                 <h3 style={{ color: "#00a650" }}>Envio gratis</h3>
-                                //             </CardContent>
-                                //         </Link>
-                                //         <div style={{ display: "flex", justifyContent: "space-between", paddingLeft: "15px", paddingRight: "20px", position: "absolute", top: "0px", right: "0px", paddingTop: "5px" }}>
-                                //             <Fab color="secondary" aria-label="favorite" style={{ width: "40px", height: "40px" }} onClick={() => {
-                                //                 console.log(m.name, " añadido a favoritos");
-                                //             }}>
-                                //                 <FaHeart style={{ fontSize: "20px" }} />
-                                //             </Fab>
-                                //         </div>
-                                //         <div style={{ display: "flex", justifyContent: "space-between", paddingLeft: "15px", paddingRight: "20px", position: "absolute", top: "120px", left: "0px" }}>
-                                //             <Fab aria-label="share" style={{ width: "40px", height: "40px" }} onClick={() => {
-                                //                 console.log(m.name, " compartido");
-                                //             }}>
-                                //                 <GrShareOption style={{ fontSize: "20px" }} />
-                                //             </Fab>
-                                //         </div>
-                                //     </CardActionArea>
-                                // </Card>
+                                <FavItem key={index}>
+                                    <img src={m.img_url} alt={m.name} />
+                                    <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+                                        <CenterDiv style={{ flexDirection: 'column', textAlign: 'center' }}>
+                                            <h3 style={{ width: 'inherit' }}>{m.name}</h3>
+                                            <span><h3>{m.price}</h3></span>
+                                        </CenterDiv>
+                                        <CenterDiv style={{ textAlign: 'center' }}>
+                                            <Button variant="contained" color="primary" style={{ textAlign: 'center', marginRight: '10px' }}>
+                                                Add cart
+                                            </Button>
+                                        </CenterDiv>
+                                    </div>
+
+                                    <hr />
+                                </FavItem>
                             )
-                        })}
+                        }
+
+                            // <Card className={classes.root} key={index} onClick={() => {
+                            //     handleClickProduct(m)
+                            // }}>
+                            //     <CardActionArea>
+                            //         <Link to={`/ detail / ${ m.id } `} >
+                            //             <CardMedia
+                            //                 className={classes.media}
+                            //                 image={m.img_url}
+                            //                 title={m.name}
+                            //             />
+                            //             <CardContent>
+                            //                 <h3 style={{ fontSize: "23px" }}>
+                            //                     {m.name}
+                            //                 </h3>
+                            //                 <div style={{ display: "flex", fontSize: "20px", marginBottom: "5px", color: "rgba(0, 0, 0, 0.54)" }}>
+                            //                     <BiDollar style={{ marginRight: "10px", marginTop: "5px" }} />{m.price}
+                            //                 </div>
+                            //                 <div style={{ display: "flex", fontSize: "15px", marginBottom: "5px", color: "rgba(0, 0, 0, 0.54)" }}>
+                            //                     <AiTwotoneShop style={{ marginRight: "10px", marginTop: "5px" }} />{m.brand}
+                            //                 </div>
+                            //                 <h3 style={{ color: "#00a650" }}>Envio gratis</h3>
+                            //             </CardContent>
+                            //         </Link>
+                            //         <div style={{ display: "flex", justifyContent: "space-between", paddingLeft: "15px", paddingRight: "20px", position: "absolute", top: "0px", right: "0px", paddingTop: "5px" }}>
+                            //             <Fab color="secondary" aria-label="favorite" style={{ width: "40px", height: "40px" }} onClick={() => {
+                            //                 console.log(m.name, " añadido a favoritos");
+                            //             }}>
+                            //                 <FaHeart style={{ fontSize: "20px" }} />
+                            //             </Fab>
+                            //         </div>
+                            //         <div style={{ display: "flex", justifyContent: "space-between", paddingLeft: "15px", paddingRight: "20px", position: "absolute", top: "120px", left: "0px" }}>
+                            //             <Fab aria-label="share" style={{ width: "40px", height: "40px" }} onClick={() => {
+                            //                 console.log(m.name, " compartido");
+                            //             }}>
+                            //                 <GrShareOption style={{ fontSize: "20px" }} />
+                            //             </Fab>
+                            //         </div>
+                            //     </CardActionArea>
+                            // </Card>
+                        )
+                        }
                     </div>
             }
         </div>
@@ -179,7 +205,7 @@ const RealizarBusqueda = () => {
 const NoEncontrado = () => {
     return (
         <div style={{ textAlign: "-webkit-center" }}>
-            <img src={img} alt="Icono de busqueda" width="480px"/>
+            <img src={img} alt="Icono de busqueda" width="480px" />
             <h1>Realiza una búsqueda</h1>
         </div>
     )
@@ -203,8 +229,8 @@ const Search = () => {
         // dispatch(startSearch(filter.toLowerCase()))
         // console.log(cats);
         // console.log(dogs);
-        const busquedaCatsAlimento = cats[0].alimento.filter(productos => productos.name.toLowerCase().includes(filter.toLowerCase()))
-        const busquedaDogsAlimento = dogs[0].alimento.filter(productos => productos.name.toLowerCase().includes(filter.toLowerCase()))
+        const busquedaCatsAlimento = cats[0].food.filter(productos => productos.name.toLowerCase().includes(filter.toLowerCase()))
+        const busquedaDogsAlimento = dogs[0].food.filter(productos => productos.name.toLowerCase().includes(filter.toLowerCase()))
         const busquedaCatsAccesories = cats[1].accessories.filter(productos => productos.name.toLowerCase().includes(filter.toLowerCase()))
         const busquedaDogsAccesories = dogs[1].accessories.filter(productos => productos.name.toLowerCase().includes(filter.toLowerCase()))
         const busquedaCatsToys = cats[2].toys.filter(productos => productos.name.toLowerCase().includes(filter.toLowerCase()))

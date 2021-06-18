@@ -6,7 +6,9 @@ const initialState = {
         title: "",
         imagen: ""
     },
-    search: []
+    search: [],
+    favorite: [],
+    active: {}
 }
 
 const productsReducer = (state = initialState, action) => {
@@ -27,6 +29,22 @@ const productsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 search: []
+            }
+        case types.addFavoriteProduct:
+            return {
+                ...state,
+                favorite: [action.payload, ...state.favorite]
+            }
+        case types.loadFavoriteProduct:
+            return {
+                ...state,
+                favorite: [...action.payload]
+            }
+        case types.deleteFavoriteProduct:
+            return {
+                ...state,
+                active: null,
+                favorite: state.favorite.filter(fav => fav.id !== action.payload)
             }
         default:
             return state;
