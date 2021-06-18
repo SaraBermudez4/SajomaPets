@@ -24,10 +24,8 @@ import Food from '../containers/products/Food';
 import Toys from '../containers/products/Toys';
 import Contenedor from '../containers/sideBar/Contenedor';
 import Maps from '../containers/GoogleMapApi/Maps';
-import UbicacionActualApi from '../containers/GoogleMapApi/UbicacionActualApi';
 import DatailProduct from '../containers/detailProduct/DatailProduct';
 import { startCrtLoad, startFavLoad } from '../actions/productAction';
-// import ProfileRoutes from './ProfileRoutes';
 
 const App = () => {
 

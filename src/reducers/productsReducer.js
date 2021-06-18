@@ -1,11 +1,6 @@
 import { types } from '../types/types';
 
 const initialState = {
-    active: {
-        id: "",
-        title: "",
-        imagen: ""
-    },
     search: [],
     favorite: [],
     cart: [],

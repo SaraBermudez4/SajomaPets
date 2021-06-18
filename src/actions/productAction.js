@@ -1,4 +1,3 @@
-import { LoadSearch } from "../helpers/loadHelp";
 import { db } from "../firebase/firebase-config";
 import { loadCrtData, loadFavData } from "../helpers/loadHelp";
 import { types } from "../types/types";
@@ -125,19 +124,9 @@ export const deleteCrt = (id) => ({
     payload: id
 });
 
-// export const startSearch = (search) => {
-//     return async (dispatch) => {
-//         const producto = await loadSearch(search)
-//         dispatch(setSearch(producto))
-//     }
-// }
-
 export const startSearch = (search) => {
     return async (dispatch) => {
-        const producto = await LoadSearch(search)
-        // console.log(producto);
-        dispatch(setSearch(producto))
-        // dispatch(setSearch(search))
+        dispatch(setSearch(search))
     }
 }
 

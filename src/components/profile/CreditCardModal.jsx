@@ -1,13 +1,10 @@
-import React, { useRef, useState } from 'react'
-import { Modal } from '@chakra-ui/modal';
+import React, { useRef } from 'react'
 import { ModalOverlay } from '@chakra-ui/modal';
 import { ModalContent } from '@chakra-ui/modal';
 import { ModalHeader } from '@chakra-ui/modal';
 import { ModalCloseButton } from '@chakra-ui/modal';
 import { ModalBody } from '@chakra-ui/modal';
 import { ModalFooter } from '@chakra-ui/modal';
-
-import { Heading } from '@chakra-ui/layout';
 
 import { Button, FormControl, InputAdornment, InputLabel, makeStyles, OutlinedInput } from '@material-ui/core';
 
@@ -37,7 +34,6 @@ const CreditCardModal = ({ onClose }) => {
     const classes = useStyles();
 
     const initialRef = useRef('')
-    const finalRef = useRef('')
 
     const numCard = useRef('')
     const validateCard = useRef('')

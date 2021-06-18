@@ -94,7 +94,7 @@ const Food = () => {
       </div>
     );
   }
-  console.log(cats);
+  
   return (
     <StyledRoot className={classes.root}>
       <AppBar position="static" color="default">

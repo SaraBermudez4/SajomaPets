@@ -3,6 +3,7 @@ import ItemCart from '../../components/cart/ItemCart'
 import styled from 'styled-components'
 import { useSelector } from 'react-redux'
 import { BiDollar } from "react-icons/bi";
+import NoHayProductos from '../../components/sinProductos/NoHayProductos';
 
 const CartContainer = styled.div`
     width: 93vw;
@@ -50,7 +51,13 @@ const Cart = () => {
                 {acum}
             </div>
             <br />
-            <ItemCart />
+            {
+                (cart.length < 1)
+                ?
+                <NoHayProductos />
+                :
+                <ItemCart />
+            }
         </CartContainer>
     )
 }

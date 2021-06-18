@@ -1,6 +1,8 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 import ItemFav from '../../components/favorite/ItemFav'
+import NoHayProductos from '../../components/sinProductos/NoHayProductos';
 
 const FavContainer = styled.div`
     width: 93vw;
@@ -16,21 +18,24 @@ const FavContainer = styled.div`
         margin-left: 60px;
     }
 `
-const FavResults = styled.div`
-    background-color:white;
-    margin-left:30px;
-    font-size:24px;
-    font-weight:600;
-    padding:50px 70px;
-`
+
 const Favorite = () => {
+
+    const { favorite } = useSelector((state) => state.products);
+
     return (
 
         <FavContainer>
             Favoritos
             <br />
             <br />
-            <ItemFav />
+            {
+                (favorite.length < 1)
+                    ?
+                    <NoHayProductos />
+                    :
+                    <ItemFav />
+            }
         </FavContainer>
 
 

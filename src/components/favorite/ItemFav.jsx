@@ -40,7 +40,6 @@ const ItemFav = (props) => {
   const handleAddCartP = (product) => {
 
     const found = cart.find(element => element.name === product.name);
-    console.log(found);
 
     if (found !== undefined) {
       alert('ya esta en el carrito')

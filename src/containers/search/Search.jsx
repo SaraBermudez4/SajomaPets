@@ -1,23 +1,15 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
 
 import { makeStyles } from '@material-ui/core/styles';
 
-import { Button, Card, CardActionArea, CardContent, CardMedia, fade, InputBase } from '@material-ui/core';
+import { Button, fade, InputBase } from '@material-ui/core';
 import { GoSearch } from "react-icons/go";
 import styled from 'styled-components'
 import '../../styles/style.css'
 import img from '../../imagenes/perroConfundido.png'
-import { starCleanSearch, startSearch } from '../../actions/productAction';
+import { addCrtProduct, starCleanSearch, startSearch } from '../../actions/productAction';
 import { useDispatch, useSelector } from 'react-redux';
-import { activeProduct } from '../../actions/productAction'
-import { BiDollar } from 'react-icons/bi'
-import { AiTwotoneShop } from 'react-icons/ai'
-import { FaHeart } from 'react-icons/fa'
-import { GrShareOption } from 'react-icons/gr'
-import { Fab } from '@material-ui/core'
 import { LoadApiProducts } from '../../api/LoadApiProducts';
-import ItemFav from '../../components/favorite/ItemFav';
 
 const FavItem = styled.div`
 display:flex;
@@ -108,17 +100,22 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const RealizarBusqueda = () => {
-    const classes = useStyles();
+
+    const dispatch = useDispatch()
 
     const { search } = useSelector(state => state.products)
 
-    const dispatch = useDispatch()
-    const handleClickProduct = (product, index) => {
-        dispatch(
-            activeProduct(index, {
-                ...product
-            })
-        );
+    const { cart } = useSelector(state => state.products)
+
+    const handleAddCartP = (product) => {
+
+        const found = cart.find(element => element.name === product.name);
+
+        if (found !== undefined) {
+            alert('ya esta en el carrito')
+        } else {
+            dispatch(addCrtProduct(product.img_url, product.name, product.price, product.description, product.brand))
+        }
     }
 
     return (
@@ -154,7 +151,9 @@ const RealizarBusqueda = () => {
                                                         </Button>
                                                     </a>
                                                     :
-                                                    <Button variant="contained" color="primary" style={{ textAlign: 'center', marginRight: '10px' }}>
+                                                    <Button variant="contained" color="primary" style={{ textAlign: 'center', marginRight: '10px' }} onClick={() => {
+                                                        handleAddCartP(m)
+                                                    }}>
                                                         Add cart
                                                     </Button>
                                             }
@@ -167,46 +166,6 @@ const RealizarBusqueda = () => {
                                 </FavItem>
                             )
                         }
-
-                            // <Card className={classes.root} key={index} onClick={() => {
-                            //     handleClickProduct(m)
-                            // }}>
-                            //     <CardActionArea>
-                            //         <Link to={`/ detail / ${ m.id } `} >
-                            //             <CardMedia
-                            //                 className={classes.media}
-                            //                 image={m.img_url}
-                            //                 title={m.name}
-                            //             />
-                            //             <CardContent>
-                            //                 <h3 style={{ fontSize: "23px" }}>
-                            //                     {m.name}
-                            //                 </h3>
-                            //                 <div style={{ display: "flex", fontSize: "20px", marginBottom: "5px", color: "rgba(0, 0, 0, 0.54)" }}>
-                            //                     <BiDollar style={{ marginRight: "10px", marginTop: "5px" }} />{m.price}
-                            //                 </div>
-                            //                 <div style={{ display: "flex", fontSize: "15px", marginBottom: "5px", color: "rgba(0, 0, 0, 0.54)" }}>
-                            //                     <AiTwotoneShop style={{ marginRight: "10px", marginTop: "5px" }} />{m.brand}
-                            //                 </div>
-                            //                 <h3 style={{ color: "#00a650" }}>Envio gratis</h3>
-                            //             </CardContent>
-                            //         </Link>
-                            //         <div style={{ display: "flex", justifyContent: "space-between", paddingLeft: "15px", paddingRight: "20px", position: "absolute", top: "0px", right: "0px", paddingTop: "5px" }}>
-                            //             <Fab color="secondary" aria-label="favorite" style={{ width: "40px", height: "40px" }} onClick={() => {
-                            //                 console.log(m.name, " añadido a favoritos");
-                            //             }}>
-                            //                 <FaHeart style={{ fontSize: "20px" }} />
-                            //             </Fab>
-                            //         </div>
-                            //         <div style={{ display: "flex", justifyContent: "space-between", paddingLeft: "15px", paddingRight: "20px", position: "absolute", top: "120px", left: "0px" }}>
-                            //             <Fab aria-label="share" style={{ width: "40px", height: "40px" }} onClick={() => {
-                            //                 console.log(m.name, " compartido");
-                            //             }}>
-                            //                 <GrShareOption style={{ fontSize: "20px" }} />
-                            //             </Fab>
-                            //         </div>
-                            //     </CardActionArea>
-                            // </Card>
                         )
                         }
                     </div>
@@ -239,10 +198,7 @@ const Search = () => {
 
     const handleDataSearch = (e) => {
         e.preventDefault()
-        // console.log(filter);
-        // dispatch(startSearch(filter.toLowerCase()))
-        // console.log(cats);
-        // console.log(dogs);
+
         const busquedaCatsAlimento = cats[0].food.filter(productos => productos.name.toLowerCase().includes(filter.toLowerCase()))
         const busquedaDogsAlimento = dogs[0].food.filter(productos => productos.name.toLowerCase().includes(filter.toLowerCase()))
         const busquedaCatsAccesories = cats[1].accessories.filter(productos => productos.name.toLowerCase().includes(filter.toLowerCase()))

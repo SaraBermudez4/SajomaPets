@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useRef, useState } from 'react'
-import { Map, TileLayer, Marker, Popup, Loca } from 'react-leaflet'
+import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
 import styled from 'styled-components'
 
 const StyledDivMap = styled.div`

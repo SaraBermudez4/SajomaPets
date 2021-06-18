@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import Button from "@material-ui/core/Button";
+import { addCrtProduct } from "../../actions/productAction";
 
 const DetailContainer = styled.div`
   width: 93vw;
@@ -54,8 +55,24 @@ const ButtonContainer = styled.div`
 `;
 
 const DetailProductItem = () => {
+
+  const dispatch = useDispatch()
+
   const { active } = useSelector((state) => state.products);
-  console.log(active);
+
+  const { cart } = useSelector(state => state.products)
+
+  const handleAddCartP = (product) => {
+
+    const found = cart.find(element => element.name === product.name);
+
+    if (found !== undefined) {
+      alert('ya esta en el carrito')
+    } else {
+      dispatch(addCrtProduct(product.img_url, product.name, product.price, product.description, product.brand))
+    }
+  }
+
   return (
     <>
       <DetailContainer>
@@ -89,6 +106,9 @@ const DetailProductItem = () => {
                 variant="contained"
                 color="primary"
                 style={{ textAlign: "center", width: "200px" }}
+                onClick={() => {
+                  handleAddCartP(active)
+                }}
               >
                 Agregar al carrito
               </Button>

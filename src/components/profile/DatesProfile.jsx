@@ -9,9 +9,9 @@ import styled from 'styled-components'
 import { useDisclosure } from '@chakra-ui/hooks';
 
 import { RiArrowDownSLine } from "react-icons/ri";
-import { FaRegCreditCard, FaCcMastercard, FaCcVisa, FaCcPaypal, FaMapMarkerAlt } from 'react-icons/fa'
+import { FaCcMastercard } from 'react-icons/fa'
 import { MdAddCircle } from 'react-icons/md'
-import { BsHouseDoor, BsBuilding } from 'react-icons/bs'
+import { BsHouseDoor } from 'react-icons/bs'
 import CreditCardModal from './CreditCardModal';
 import { Modal } from '@chakra-ui/react';
 import { startSaveUser } from '../../actions/userAction';
@@ -301,7 +301,7 @@ const DatesProfile = () => {
                 isOpen={isOpen}
                 onClose={onClose} >
                 {
-                    modalName == 'Add Card'
+                    modalName === 'Add Card'
                         ?
                         <CreditCardModal onClose={onClose} />
                         :
