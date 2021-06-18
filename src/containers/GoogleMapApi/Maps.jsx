@@ -16,9 +16,9 @@ import { LoadApiProducts } from '../../api/LoadApiProducts';
 import { Spinner } from '@chakra-ui/react';
 
 const StyledDivMap = styled.div`
-    padding-left: 6% !important;
-    padding-top: 6% !important;
-`
+  padding-left: 6% !important;
+  padding-top: 6% !important;
+`;
 const useStyles = makeStyles({
     root: {
         maxWidth: 345,
@@ -35,24 +35,24 @@ const Carga = styled(Spinner)`
 
 const dataShops = [
     {
-        "coordenadas": [6.256866693500489, -75.59602461491339],
-        "image": "https://lh6.googleusercontent.com/proxy/bCkvPk-S3RETF5QdEJFXWicdhoP8XpYtINICBcqKT0Ljx3EwfzDvh1kejNKdlgoPjPeWsHlRPpp0l0AjJEjlFGr0RFeGcWrDLYe2N9sHYnMXC2Ok09UsRqUK525FmWUDxcDgAUxgfv0OmKtxKAWsl87EHJMA35glPoQYKvcxo1Wx=w262-h104-p-k-no",
-        "title": "Tierra de gatos",
-        "direccion": "Cra. 78 ##47-24, Medellín, Antioquia",
-        "phone": "+573015858593",
-        "web": "https://tierradegatos.com"
-
+        coordenadas: [6.256866693500489, -75.59602461491339],
+        image:
+            "https://lh6.googleusercontent.com/proxy/bCkvPk-S3RETF5QdEJFXWicdhoP8XpYtINICBcqKT0Ljx3EwfzDvh1kejNKdlgoPjPeWsHlRPpp0l0AjJEjlFGr0RFeGcWrDLYe2N9sHYnMXC2Ok09UsRqUK525FmWUDxcDgAUxgfv0OmKtxKAWsl87EHJMA35glPoQYKvcxo1Wx=w262-h104-p-k-no",
+        title: "Tierra de gatos",
+        direccion: "Cra. 78 ##47-24, Medellín, Antioquia",
+        phone: "+573015858593",
+        web: "https://tierradegatos.com",
     },
     {
-        "coordenadas": [6.171669866106178, -75.60210186535102],
-        "image": "https://lh5.googleusercontent.com/p/AF1QipNlfqpdel8-BuXOEwQB-kmXvQeORDR1Ej_ZbA1c=w262-h104-p-k-no",
-        "title": "Mirringa Mirronga",
-        "direccion": "Cra. 42 ## 54A-155, Itagüi, Antioquia",
-        "phone": "+573106212052",
-        "web": "http://www.mirringamirronga.com/"
-
+        coordenadas: [6.171669866106178, -75.60210186535102],
+        image:
+            "https://lh5.googleusercontent.com/p/AF1QipNlfqpdel8-BuXOEwQB-kmXvQeORDR1Ej_ZbA1c=w262-h104-p-k-no",
+        title: "Mirringa Mirronga",
+        direccion: "Cra. 42 ## 54A-155, Itagüi, Antioquia",
+        phone: "+573106212052",
+        web: "http://www.mirringamirronga.com/",
     },
-]
+];
 
 const Maps = () => {
     const classes = useStyles();
@@ -114,11 +114,11 @@ const Maps = () => {
                                 </Card>
                             </Popup>
                         </Marker>
-                    )
+                    );
                 })}
             </Map>
         </StyledDivMap>
-    )
-}
+    );
+};
 
-export default Maps
+export default Maps;
