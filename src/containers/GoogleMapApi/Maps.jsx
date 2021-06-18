@@ -76,6 +76,7 @@ const Maps = () => {
                 />
 
                 {tiendas.map((tienda, index) => {
+                    console.log(tienda.website);
                     return (
                         <Marker position={[tienda.latitude, tienda.longitude]} key={index}>
                             <Popup>
@@ -91,15 +92,23 @@ const Maps = () => {
                                                 {tienda.name}
                                             </Typography>
                                             <Typography variant="body2" color="textSecondary" component="p">
-                                                <div style={{ display: "flex" }}>
-                                                    <FiMapPin style={{ marginRight: "10px", marginTop: "5px" }} />{tienda.province} {tienda.city} {tienda.address}
-                                                </div>
-                                                <div style={{ display: "flex" }}>
-                                                    <FaPhoneAlt style={{ marginRight: "10px", marginTop: "5px" }} />{tienda.telephone}
-                                                </div>
-                                                <div style={{ display: "flex" }}>
-                                                    <IoEarth style={{ marginRight: "10px", marginTop: "5px" }} /><a href={tienda.website} target="_blank">Sitio web</a>
-                                                </div>
+                                                {
+                                                    tienda.province &&
+                                                    <div style={{ display: "flex" }}>
+                                                        <FiMapPin style={{ marginRight: "10px", marginTop: "5px" }} />{tienda.province} {tienda.city} {tienda.address}
+                                                    </div>
+                                                }
+                                                {
+                                                    tienda.telephone && <div style={{ display: "flex" }}>
+                                                        <FaPhoneAlt style={{ marginRight: "10px", marginTop: "5px" }} />{tienda.telephone}
+                                                    </div>
+                                                }
+                                                {
+                                                    tienda.website && <div style={{ display: "flex" }}>
+                                                        <IoEarth style={{ marginRight: "10px", marginTop: "5px" }} /><a href={`https://${tienda.website}`} target="_blank">Sitio web</a>
+                                                    </div>
+                                                }
+
                                             </Typography>
                                         </CardContent>
                                     </CardActionArea>

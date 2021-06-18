@@ -97,7 +97,6 @@ const Accessories = () => {
 
     return (
         <StyledRoot className={classes.root}>
-            <h1>Accessories</h1>
             <AppBar position="static" color="default">
                 <Tabs
                     value={value}

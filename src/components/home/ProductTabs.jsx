@@ -31,7 +31,7 @@ const ProductTabs = ({ category, data, tipo }) => {
     const { favorite } = useSelector(state => state.products)
 
     let productos = []
-    
+
     if (tipo === "alimento") {
         productos = data[0].food
     } else if (tipo === "toys") {
@@ -75,7 +75,7 @@ const ProductTabs = ({ category, data, tipo }) => {
                         handleClickProduct(m)
                     }}>
                         <CardActionArea>
-                            <Link to={`/detail/${m.id}`} >
+                            <Link to={`/detail/${index}`} >
                                 <CardMedia
                                     className={classes.media}
                                     image={m.img_url}
@@ -105,13 +105,25 @@ const ProductTabs = ({ category, data, tipo }) => {
                                     </Fab>
                                 </div>
                             }
-                            {/* <div style={{ display: "flex", justifyContent: "space-between", paddingLeft: "15px", paddingRight: "20px", position: "absolute", top: "120px", left: "0px" }}>
-                                <Fab aria-label="share" style={{ width: "40px", height: "40px" }} onClick={() => {
-                                    console.log(m.name, " compartido");
-                                }}>
-                                    <GrShareOption style={{ fontSize: "20px" }} />
-                                </Fab>
-                            </div> */}
+                            <div
+                                style={{
+                                    display: "flex",
+                                    justifyContent: "space-between",
+                                    paddingLeft: "15px",
+                                    paddingRight: "20px",
+                                    position: "absolute",
+                                    top: "120px",
+                                    left: "0px",
+                                }}
+                            ><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//blog.hubspot.es/marketing/crear-enlaces-redes-sociales">
+                                    <Fab
+                                        aria-label="share"
+                                        style={{ width: "40px", height: "40px" }}
+                                    >
+                                        <GrShareOption style={{ fontSize: "20px" }} />
+                                    </Fab>
+                                </a>
+                            </div>
                         </CardActionArea>
                     </Card>
                 )
