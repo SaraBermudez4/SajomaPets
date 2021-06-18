@@ -105,13 +105,13 @@ const ProductTabs = ({ category, data, tipo }) => {
                                     </Fab>
                                 </div>
                             }
-                            <div style={{ display: "flex", justifyContent: "space-between", paddingLeft: "15px", paddingRight: "20px", position: "absolute", top: "120px", left: "0px" }}>
+                            {/* <div style={{ display: "flex", justifyContent: "space-between", paddingLeft: "15px", paddingRight: "20px", position: "absolute", top: "120px", left: "0px" }}>
                                 <Fab aria-label="share" style={{ width: "40px", height: "40px" }} onClick={() => {
                                     console.log(m.name, " compartido");
                                 }}>
                                     <GrShareOption style={{ fontSize: "20px" }} />
                                 </Fab>
-                            </div>
+                            </div> */}
                         </CardActionArea>
                     </Card>
                 )

@@ -1,12 +1,30 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import ItemCart from '../../components/cart/ItemCart'
+import styled from 'styled-components'
+
+const CartContainer = styled.div`
+    width: 93vw;
+    background-color:#eaecef;
+    font-size:24px;
+    font-weight:600;
+    position:relative;
+    padding:15px;
+    margin-left: 75px;
+    margin-top: 66px;
+    @media (min-width: 320px) and (max-width: 480px){
+        width: 85%;
+        margin-left: 60px;
+    }
+`
 
 const Cart = () => {
     return (
-        <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh'}}>
-            <Link to='/'>Volver </Link>
-            <h1>Cart</h1>
-        </div>
+        <CartContainer>
+            Cart
+            <br />
+            <br />
+            <ItemCart />
+        </CartContainer>
     )
 }
 

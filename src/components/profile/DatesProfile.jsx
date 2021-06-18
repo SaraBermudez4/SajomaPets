@@ -122,8 +122,6 @@ const DatesProfile = () => {
 
         modalName = e.target.textContent
 
-        console.log(modalName);
-
         onOpen()
     }
 

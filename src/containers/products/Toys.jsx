@@ -121,7 +121,8 @@ const Toys = () => {
 
     return (
         <StyledRoot className={classes.root}>
-            <CarouselSwipeableTextMobileStepper images={tutorialSteps} />
+            {/* <CarouselSwipeableTextMobileStepper images={tutorialSteps} /> */}
+            <h1>Toys</h1>
             <AppBar position="static" color="default">
                 <Tabs
                     value={value}

@@ -1,5 +1,5 @@
 import { db } from "../firebase/firebase-config";
-import { loadFavData } from "../helpers/loadHelp";
+import { loadCrtData, loadFavData } from "../helpers/loadHelp";
 import { types } from "../types/types";
 
 export const activeProduct = (id, product) => ({
@@ -66,6 +66,47 @@ export const deleteFav = (id) => ({
     type: types.deleteFavoriteProduct,
     payload: id
 });
+
+export const addCrtProduct = (img_url, name, price, description, brand) => {
+    return async (dispatch, getState) => {
+        const { uid } = getState().auth
+
+        const newCrtP = {
+            img_url,
+            name,
+            price,
+            description,
+            brand
+        }
+
+        await db.collection(`/profile/${uid}/cart`).add(newCrtP)
+
+        dispatch(addNewCrt(uid, newCrtP))
+        dispatch(startCrtLoad(uid))
+    }
+}
+
+export const addNewCrt = (id, cart) => {
+    return ({
+        type: types.addCartProduct,
+        payload: {
+            id,
+            ...cart
+        }
+    })
+}
+
+export const startCrtLoad = (id) => {
+    return async (dispatch) => {
+        const crt = await loadCrtData(id)
+        dispatch(setCrtData(crt))
+    }
+}
+
+export const setCrtData = (cart) => ({
+    type: types.loadCartProduct,
+    payload: cart
+})
 
 // export const startSearch = (search) => {
 //     return async (dispatch) => {

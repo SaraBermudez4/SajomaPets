@@ -93,7 +93,7 @@ export const startRegisterUser = (name, lastName, email, password) => {
                     document: "",
                     lastName: lastName,
                     cellPhone: "",
-                    nickName: "",
+                    nickName: user.displayName,
                     email: email,
                     phone: "",
                     name: name,

@@ -2,6 +2,7 @@ import { types } from '../types/types';
 
 const initialState = {
     favorite: [],
+    cart: [],
     active: {}
 }
 
@@ -29,6 +30,22 @@ const productsReducer = (state = initialState, action) => {
                 ...state,
                 active: null,
                 favorite: state.favorite.filter(fav => fav.id !== action.payload)
+            }
+        case types.addCartProduct:
+            return {
+                ...state,
+                cart: [action.payload, ...state.cart]
+            }
+        case types.loadCartProduct:
+            return {
+                ...state,
+                cart: [...action.payload]
+            }
+        case types.deleteCartProduct:
+            return {
+                ...state,
+                active: null,
+                cart: state.cart.filter(crt => crt.id !== action.payload)
             }
         default:
             return state;

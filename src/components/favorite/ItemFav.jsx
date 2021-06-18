@@ -26,12 +26,12 @@ const CenterDiv = styled.div`
 
 const ItemFav = (props) => {
   const dispatch = useDispatch();
+  
   const handleDeleteFav = (fav) => {
     dispatch(startDeletingFav(fav.id));
   };
+
   const { favorite } = useSelector((state) => state.products);
-  console.log(favorite);
-  // const { id, image, nombre, precio } = props
 
   return (
     <>

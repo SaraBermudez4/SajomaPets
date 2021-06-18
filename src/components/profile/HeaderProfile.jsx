@@ -29,14 +29,13 @@ const HeaderProfile = () => {
             </Avatar>
             <Heading as="h4" size="md">{name}</Heading>
             <Text fontSize="xl">{email}</Text>
-            <Button
+            {/* <Button
                 variant="outlined" color="primary"
                 className={classes.button}
                 startIcon={<MdEdit />}
             >
                 Edit
-            </Button>
-
+            </Button> */}
         </div>
     )
 }

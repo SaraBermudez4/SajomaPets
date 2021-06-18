@@ -29,3 +29,18 @@ export const loadFavData = async (id) => {
 
     return favData;
 }
+
+export const loadCrtData = async (id) => {
+
+    const crtDataSnap = await db.collection(`profile/${id}/cart`).get();
+    const crtData = [];
+
+    crtDataSnap.forEach(snapHijo => {
+        crtData.push({
+            id: snapHijo.id,
+            ...snapHijo.data()
+        })
+    });
+
+    return crtData;
+}
