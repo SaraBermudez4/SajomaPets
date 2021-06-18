@@ -105,7 +105,7 @@ const ProductTabs = ({ category, data, tipo }) => {
                                     </Fab>
                                 </div>
                             }
-                            <div
+                            {/* <div
                                 style={{
                                     display: "flex",
                                     justifyContent: "space-between",
@@ -123,7 +123,7 @@ const ProductTabs = ({ category, data, tipo }) => {
                                         <GrShareOption style={{ fontSize: "20px" }} />
                                     </Fab>
                                 </a>
-                            </div>
+                            </div> */}
                         </CardActionArea>
                     </Card>
                 )

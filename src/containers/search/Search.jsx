@@ -9,6 +9,7 @@ import '../../styles/style.css'
 import { addCrtProduct, starCleanSearch, startSearch } from '../../actions/productAction';
 import { useDispatch, useSelector } from 'react-redux';
 import { LoadApiProducts } from '../../api/LoadApiProducts';
+import { BiDollar } from "react-icons/bi";
 
 const FavItem = styled.div`
 display:flex;
@@ -138,7 +139,23 @@ const RealizarBusqueda = () => {
                                     <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
                                         <CenterDiv style={{ flexDirection: 'column', textAlign: 'center' }}>
                                             <h3 style={{ width: 'inherit' }}>{m.name}</h3>
-                                            <span><h3>{m.price}</h3></span>
+                                            {
+                                                !m.categorie
+                                                &&
+                                                <span><h3
+                                                    style={{
+                                                        display: "flex",
+                                                        fontSize: "20px",
+                                                        marginBottom: "5px",
+                                                        color: "rgba(0, 0, 0, 0.54)",
+                                                    }}
+                                                >
+                                                    <BiDollar
+                                                        style={{ marginRight: "10px", marginTop: "5px" }}
+                                                    />
+                                                    {m.price}
+                                                </h3></span>
+                                            }
                                         </CenterDiv>
                                         <CenterDiv style={{ textAlign: 'center' }}>
                                             {
@@ -257,7 +274,7 @@ const Search = () => {
         <StyledDivPrincipal style={{ height: "100vh" }}>
             <div >
                 <h1 style={{ fontSize: "30px" }}>
-                    ¡Busca tu producto favorito o encuentra nuevos!
+                    ¡Busca tu producto o tienda favorita!
                 </h1>
             </div>
             <div className={classes.search} style={{ width: "75vw", margin: "3%" }}>

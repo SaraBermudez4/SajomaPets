@@ -145,7 +145,7 @@ const DatesProfile = () => {
                     }} />
                     <StyledTextField type="email" value={userData[0].email} label='Email' variant="outlined" InputProps={{
                         readOnly: true,
-                    }} />
+                    }} style={{marginTop: '15px'}} />
                     {/* <StyledTextField type="password" value="123456789" label='Password' variant="outlined" InputProps={{
                         readOnly: true,
                     }} /> */}
@@ -164,10 +164,10 @@ const DatesProfile = () => {
                         ?
                         <StyledAccordionDetails>
                             <StyledTextField value={userData[0].name} label="Name" variant="outlined" />
-                            <StyledTextField value={userData[0].lastName} label='LastName' variant="outlined" />
-                            <StyledTextField value={userData[0].document} label='Document' variant="outlined" />
-                            <StyledTextField value={userData[0].phone} label='Phone Number' variant="outlined" />
-                            <StyledTextField value={userData[0].cellPhone} label='Cell Phone Number' variant="outlined" />
+                            <StyledTextField value={userData[0].lastName} label='LastName' variant="outlined" style={{marginTop: '15px'}} />
+                            <StyledTextField value={userData[0].document} label='Document' variant="outlined" style={{marginTop: '15px'}} />
+                            <StyledTextField value={userData[0].phone} label='Phone Number' variant="outlined" style={{marginTop: '15px'}} />
+                            <StyledTextField value={userData[0].cellPhone} label='Cell Phone Number' variant="outlined" style={{marginTop: '15px'}} />
                             <Button
                                 variant="outlined" color="primary"
                                 className={classes.button}
@@ -179,10 +179,10 @@ const DatesProfile = () => {
                         :
                         <StyledAccordionDetails>
                             <StyledTextField inputRef={newName} placeholder="Name" variant="outlined" />
-                            <StyledTextField inputRef={newLastName} placeholder='LastName' variant="outlined" />
-                            <StyledTextField inputRef={newDocument} placeholder='Document' variant="outlined" />
-                            <StyledTextField inputRef={newPhoneNumber} placeholder='Phone Number' variant="outlined" />
-                            <StyledTextField inputRef={newPhoneNumber2} placeholder='Cell Phone Number' variant="outlined" />
+                            <StyledTextField inputRef={newLastName} placeholder='LastName' variant="outlined" style={{marginTop: '15px'}} />
+                            <StyledTextField inputRef={newDocument} placeholder='Document' variant="outlined" style={{marginTop: '15px'}} />
+                            <StyledTextField inputRef={newPhoneNumber} placeholder='Phone Number' variant="outlined" style={{marginTop: '15px'}} />
+                            <StyledTextField inputRef={newPhoneNumber2} placeholder='Cell Phone Number' variant="outlined" style={{marginTop: '15px'}} />
                             <Button
                                 variant="outlined" color="primary"
                                 className={classes.button}

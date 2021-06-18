@@ -131,7 +131,7 @@ const GridProductos = ({ category, data }) => {
                                     </Fab>
                                 </div>
                             }
-                            <div
+                            {/* <div
                                 style={{
                                     display: "flex",
                                     justifyContent: "space-between",
@@ -149,7 +149,7 @@ const GridProductos = ({ category, data }) => {
                                         <GrShareOption style={{ fontSize: "20px" }} />
                                     </Fab>
                                 </a>
-                            </div>
+                            </div> */}
                         </CardActionArea>
                     </Card>
                 );
