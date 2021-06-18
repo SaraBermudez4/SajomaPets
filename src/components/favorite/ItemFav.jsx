@@ -10,6 +10,7 @@ const FavItem = styled.div`
   background-color: white;
   padding: 20px;
   border: 10px double #eaecef;
+  height: 300px;
   @media screen and (max-width: 900px) {
     flex-wrap: wrap;
   }
@@ -48,7 +49,7 @@ const ItemFav = (props) => {
             <CenterDiv style={{ flexDirection: "column", textAlign: "center" }}>
               <h3 style={{ width: "inherit" }}>{item.name}</h3>
               <span>
-                <h3>{item.price}</h3>
+                <h3>{`$ ${item.price}`}</h3>
               </span>
             </CenterDiv>
             <CenterDiv style={{ textAlign: "center" }}>

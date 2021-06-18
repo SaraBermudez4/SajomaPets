@@ -25,6 +25,7 @@ justify-content:center;
 background-color:white;
 padding:20px;
 border: 10px double #eaecef;
+height: 300px;
 @media screen and (max-width: 900px) {
     flex-wrap:wrap;}
 `
@@ -144,9 +145,21 @@ const RealizarBusqueda = () => {
                                             <span><h3>{m.price}</h3></span>
                                         </CenterDiv>
                                         <CenterDiv style={{ textAlign: 'center' }}>
-                                            <Button variant="contained" color="primary" style={{ textAlign: 'center', marginRight: '10px' }}>
-                                                Add cart
-                                            </Button>
+                                            {
+                                                m.categorie
+                                                    ?
+                                                    <a href={`https://${m.website}`} target="_blank">
+                                                        <Button variant="contained" color="primary" style={{ textAlign: 'center', marginRight: '10px' }}>
+                                                            Ver sitio web
+                                                        </Button>
+                                                    </a>
+                                                    :
+                                                    <Button variant="contained" color="primary" style={{ textAlign: 'center', marginRight: '10px' }}>
+                                                        Add cart
+                                                    </Button>
+                                            }
+
+
                                         </CenterDiv>
                                     </div>
 
@@ -221,6 +234,7 @@ const Search = () => {
     const { search } = useSelector(state => state.products)
     const cats = LoadApiProducts('https://sajoma.herokuapp.com/cat')
     const dogs = LoadApiProducts('https://sajoma.herokuapp.com/dog')
+    const tiendas = LoadApiProducts('https://sajoma.herokuapp.com/stores')
 
 
     const handleDataSearch = (e) => {
@@ -235,6 +249,7 @@ const Search = () => {
         const busquedaDogsAccesories = dogs[1].accessories.filter(productos => productos.name.toLowerCase().includes(filter.toLowerCase()))
         const busquedaCatsToys = cats[2].toys.filter(productos => productos.name.toLowerCase().includes(filter.toLowerCase()))
         const busquedaDogsAToys = dogs[2].toys.filter(productos => productos.name.toLowerCase().includes(filter.toLowerCase()))
+        const busquedaTiendas = tiendas.filter(productos => productos.name.toLowerCase().includes(filter.toLowerCase()))
 
         const encontrado = [];
 
@@ -271,6 +286,11 @@ const Search = () => {
                 encontrado.push(p)
             })
         }
+        if (busquedaTiendas !== []) {
+            busquedaTiendas.map(p => {
+                encontrado.push(p)
+            })
+        }
         dispatch(startSearch(encontrado))
     }
 
@@ -279,8 +299,8 @@ const Search = () => {
     }
 
     return (
-        <StyledDivPrincipal >
-            <div>
+        <StyledDivPrincipal style={{ height: "100vh" }}>
+            <div >
                 <h1 style={{ fontSize: "30px" }}>
                     ¡Busca tu producto favorito o encuentra nuevos!
                 </h1>
