@@ -46,11 +46,15 @@ const TextDetailsContainer = styled.div`
 
 const ButtonContainer = styled.div`
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: "50px";
   margin: 10px;
+  @media (min-width: 0) and (max-width: 500px) {
+    flex-wrap: wrap;
+
+    margin: 20px;
+  }
 `;
 
 const DetailProductItem = () => {
@@ -79,8 +83,8 @@ const DetailProductItem = () => {
                 color="primary"
                 style={{
                   textAlign: "center",
-                  marginBottom: "5px",
                   width: "200px",
+                  margin: "2px",
                 }}
               >
                 Comprar Ahora
@@ -88,7 +92,11 @@ const DetailProductItem = () => {
               <Button
                 variant="contained"
                 color="primary"
-                style={{ textAlign: "center", width: "200px" }}
+                style={{
+                  textAlign: "center",
+                  width: "200px",
+                  margin: "2px",
+                }}
               >
                 Agregar al carrito
               </Button>
@@ -96,7 +104,7 @@ const DetailProductItem = () => {
             {/* <span>{active.ingredients}</span> */}
           </TextDetailsContainer>
         </ItemContainer>
-        <div>Ingredientes:{active.ingredients}</div>
+        {active.ingredients && <div>Ingredientes:{active.ingredients}</div>}
       </DetailContainer>
     </>
   );
