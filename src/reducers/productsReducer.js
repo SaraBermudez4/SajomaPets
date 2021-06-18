@@ -1,6 +1,12 @@
 import { types } from '../types/types';
 
 const initialState = {
+    active: {
+        id: "",
+        title: "",
+        imagen: ""
+    },
+    search: [],
     favorite: [],
     cart: [],
     active: {}
@@ -14,6 +20,16 @@ const productsReducer = (state = initialState, action) => {
                 active: {
                     ...action.payload
                 }
+            }
+        case types.searchProduct:
+            return {
+                ...state,
+                search: [...action.payload]
+            }
+        case types.cleanSearch:
+            return {
+                ...state,
+                search: []
             }
         case types.addFavoriteProduct:
             return {

@@ -1,3 +1,4 @@
+import { LoadSearch } from "../helpers/loadHelp";
 import { db } from "../firebase/firebase-config";
 import { loadCrtData, loadFavData } from "../helpers/loadHelp";
 import { types } from "../types/types";
@@ -51,12 +52,12 @@ export const setFavData = (favorite) => ({
     payload: favorite
 })
 
-export const startDeletingFav = ( id ) => {
-    return async( dispatch, getState ) => {
-         
+export const startDeletingFav = (id) => {
+    return async (dispatch, getState) => {
+
         const { uid } = getState().auth;
 
-        await db.doc(`/profile/${uid}/favorites/${ id }`).delete();
+        await db.doc(`/profile/${uid}/favorites/${id}`).delete();
 
         dispatch(deleteFav(id));
     }
@@ -115,17 +116,26 @@ export const setCrtData = (cart) => ({
 //     }
 // }
 
-// export const setSearch = (products) => ({
-//     type: types.searchProduct,
-//     payload: products
-// });
+export const startSearch = (search) => {
+    return async (dispatch) => {
+        const producto = await LoadSearch(search)
+        // console.log(producto);
+        dispatch(setSearch(producto))
+        // dispatch(setSearch(search))
+    }
+}
 
-// export const starCleanSearch = () => {
-//     return async (dispatch) => {
-//         dispatch(cleanBusqueda());
-//     }
-// }
+export const setSearch = (products) => ({
+    type: types.searchProduct,
+    payload: products
+});
 
-// export const cleanBusqueda = () => ({
-//     type: types.cleanSearch
-// })
+export const starCleanSearch = () => {
+    return async (dispatch) => {
+        dispatch(cleanBusqueda());
+    }
+}
+
+export const cleanBusqueda = () => ({
+    type: types.cleanSearch
+})

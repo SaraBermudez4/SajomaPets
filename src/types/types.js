@@ -4,7 +4,7 @@ export const types = {
 
     uiSetError: 'SetError',
     uiRemoveError: 'RemoveError',
-    
+
     uiStartLoading: 'StartLoading',
     uiFinishLoading: 'FinishLoaging',
 
@@ -13,6 +13,10 @@ export const types = {
     dataUserUpdate: 'UpdateUserData',
 
     productActive: '[Products] Active Product',
+
+    searchProduct: '[Search] Product Search',
+    cleanSearch: '[Search] Clean Search',
+
     addFavoriteProduct: '[Products] Favorite Product',
     loadFavoriteProduct: '[Products] Load Favorite Product',
     deleteFavoriteProduct: '[Products] Delete Favorite Product',
