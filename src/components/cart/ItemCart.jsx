@@ -2,14 +2,16 @@ import React from 'react'
 import styled from "styled-components";
 import Button from "@material-ui/core/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { startDeletingFav } from "../../actions/productAction";
+import { startDeletingCrt } from "../../actions/productAction";
+import { BiDollar } from "react-icons/bi";
 
 const CartItem = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   background-color: white;
   padding: 20px;
   border: 10px double #eaecef;
+  height: 300px;
   @media screen and (max-width: 900px) {
     flex-wrap: wrap;
   }
@@ -26,17 +28,18 @@ const CenterDiv = styled.div`
 
 
 const ItemCart = () => {
+
     const dispatch = useDispatch();
 
-    const handleDeleteFav = (fav) => {
-        dispatch(startDeletingFav(fav.id));
+    const handleDeleteCrt = (crt) => {
+        dispatch(startDeletingCrt(crt.id));
     };
 
-    const { favorite } = useSelector((state) => state.products);
+    const { cart } = useSelector(state => state.products)
 
     return (
         <>
-            {favorite.map((item, index) => (
+            {cart.map((item, index) => (
                 <CartItem key={index}>
                     <img src={item.img_url} alt={item.name} />
                     <div
@@ -49,7 +52,19 @@ const ItemCart = () => {
                         <CenterDiv style={{ flexDirection: "column", textAlign: "center" }}>
                             <h3 style={{ width: "inherit" }}>{item.name}</h3>
                             <span>
-                                <h3>{item.price}</h3>
+                                <h3
+                                    style={{
+                                        display: "flex",
+                                        fontSize: "20px",
+                                        marginBottom: "5px",
+                                        color: "rgba(0, 0, 0, 0.54)",
+                                    }}
+                                >
+                                    <BiDollar
+                                        style={{ marginRight: "10px", marginTop: "5px" }}
+                                    />
+                                    {item.price}
+                                </h3>
                             </span>
                         </CenterDiv>
                         <CenterDiv style={{ textAlign: "center" }}>
@@ -57,7 +72,7 @@ const ItemCart = () => {
                                 variant="transparent"
                                 color="primary"
                                 style={{ textAlign: "center" }}
-                                onClick={() => handleDeleteFav(item)}
+                                onClick={() => handleDeleteCrt(item)}
                             >
                                 Delete
                             </Button>

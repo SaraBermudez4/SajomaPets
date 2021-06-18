@@ -26,7 +26,7 @@ import Contenedor from '../containers/sideBar/Contenedor';
 import Maps from '../containers/GoogleMapApi/Maps';
 import UbicacionActualApi from '../containers/GoogleMapApi/UbicacionActualApi';
 import DatailProduct from '../containers/detailProduct/DatailProduct';
-import { startFavLoad } from '../actions/productAction';
+import { startCrtLoad, startFavLoad } from '../actions/productAction';
 // import ProfileRoutes from './ProfileRoutes';
 
 const App = () => {
@@ -42,6 +42,7 @@ const App = () => {
         dispatch(login(user.uid, user.displayName, user.email, user.photoURL, user.phoneNumber))
         dispatch(startUserLoad(user.uid))
         dispatch(startFavLoad(user.uid))
+        dispatch(startCrtLoad(user.uid))
 
         console.log(dispatch(startUserLoad(user.uid)));
         setIsLoogedIn(true)

@@ -84,11 +84,11 @@ const Maps = () => {
                                         <CardMedia
                                             className={classes.media}
                                             image={tienda.img_url}
-                                            title={tienda.store_name}
+                                            title={tienda.name}
                                         />
                                         <CardContent>
                                             <Typography gutterBottom variant="h5" component="h2">
-                                                {tienda.store_name}
+                                                {tienda.name}
                                             </Typography>
                                             <Typography variant="body2" color="textSecondary" component="p">
                                                 <div style={{ display: "flex" }}>

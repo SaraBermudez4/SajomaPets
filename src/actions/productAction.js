@@ -109,6 +109,22 @@ export const setCrtData = (cart) => ({
     payload: cart
 })
 
+export const startDeletingCrt = (id) => {
+    return async (dispatch, getState) => {
+
+        const { uid } = getState().auth;
+
+        await db.doc(`/profile/${uid}/cart/${id}`).delete();
+
+        dispatch(deleteCrt(id));
+    }
+}
+
+export const deleteCrt = (id) => ({
+    type: types.deleteCartProduct,
+    payload: id
+});
+
 // export const startSearch = (search) => {
 //     return async (dispatch) => {
 //         const producto = await loadSearch(search)

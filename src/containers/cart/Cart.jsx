@@ -1,6 +1,8 @@
 import React from 'react'
 import ItemCart from '../../components/cart/ItemCart'
 import styled from 'styled-components'
+import { useSelector } from 'react-redux'
+import { BiDollar } from "react-icons/bi";
 
 const CartContainer = styled.div`
     width: 93vw;
@@ -18,10 +20,35 @@ const CartContainer = styled.div`
 `
 
 const Cart = () => {
+
+    let acum = 0
+    let precio
+
+    const { cart } = useSelector(state => state.products)
+
+    cart.forEach(crt => {
+        precio = crt.price
+        acum += precio
+    })
+
     return (
         <CartContainer>
             Cart
-            <br />
+            <div
+                style={{
+                    display: "flex",
+                    fontSize: "20px",
+                    marginBottom: "5px",
+                    color: "rgba(0, 0, 0, 0.54)",
+                    justifyContent: 'center'
+                }}
+            >
+                Total
+                <BiDollar
+                    style={{ marginLeft: "10px", marginRight: '5px', marginTop: "5px" }}
+                />
+                {acum}
+            </div>
             <br />
             <ItemCart />
         </CartContainer>

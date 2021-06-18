@@ -1,7 +1,7 @@
 import { SimpleGrid } from "@chakra-ui/layout";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { activeProduct } from "../../actions/productAction";
+import { activeProduct, addFavProduct } from "../../actions/productAction";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -24,12 +24,14 @@ const useStyles = makeStyles({
 });
 
 const GridProductos = ({ category, data }) => {
-    const classes = useStyles();
-    const alimento = data[0].food
-    const accessories = data[1].accessories
-    const toys = data[2].toys
+  const classes = useStyles();
+  const alimento = data[0].food
+  const accessories = data[1].accessories
+  const toys = data[2].toys
 
   const auth = useSelector((state) => state.auth);
+
+  const { favorite } = useSelector(state => state.products)
 
   const productos = [];
 
@@ -59,6 +61,17 @@ const GridProductos = ({ category, data }) => {
       })
     );
   };
+
+  const handleAddFavoriteP = (product) => {
+
+    const found = favorite.find(element => element.name === product.name);
+
+    if (found !== undefined) {
+      alert('ya esta en favoritos')
+    } else {
+      dispatch(addFavProduct(product.img_url, product.name, product.price, product.description, product.brand))
+    }
+  }
 
   return (
     <SimpleGrid minChildWidth="250px" spacing="40px">
@@ -128,14 +141,14 @@ const GridProductos = ({ category, data }) => {
                     aria-label="favorite"
                     style={{ width: "40px", height: "40px" }}
                     onClick={() => {
-                      console.log(m.name, " añadido a favoritos");
+                      handleAddFavoriteP(m);
                     }}
                   >
                     <FaHeart style={{ fontSize: "20px" }} />
                   </Fab>
                 </div>
               )}
-              <div
+              {/* <div
                 style={{
                   display: "flex",
                   justifyContent: "space-between",
@@ -155,7 +168,7 @@ const GridProductos = ({ category, data }) => {
                 >
                   <GrShareOption style={{ fontSize: "20px" }} />
                 </Fab>
-              </div>
+              </div> */}
             </CardActionArea>
           </Card>
         );
