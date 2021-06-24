@@ -59,11 +59,21 @@ const Maps = () => {
                             <Popup>
                                 <Card className={classes.root}>
                                     <CardActionArea>
-                                        <CardMedia
-                                            className={classes.media}
-                                            image={tienda.img_url}
-                                            title={tienda.name}
-                                        />
+                                        {
+                                            tienda.img_url == ''
+                                            ?
+                                            <CardMedia
+                                                className={classes.media}
+                                                image='http://maps.gstatic.com/tactile/pane/default_geocode-1x.png'
+                                                title={tienda.name}
+                                            />
+                                            :
+                                            <CardMedia
+                                                className={classes.media}
+                                                image={tienda.img_url}
+                                                title={tienda.name}
+                                            />
+                                        }
                                         <CardContent>
                                             <Typography gutterBottom variant="h5" component="h2">
                                                 {tienda.name}
